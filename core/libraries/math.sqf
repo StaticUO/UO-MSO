@@ -38,3 +38,9 @@ CORE_fnc_rand = {
 	_seed = (((2^8) + 1) * _seed + ((2^11) + 1)) mod (2^16);
 	_seed
 };
+
+CORE_fnc_simplifyDeg = {
+	private ["_angle"];
+	_angle = _this select 0;
+	((_angle % 360) + 360) % 360;
+};
