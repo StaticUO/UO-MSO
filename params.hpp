@@ -29,4 +29,13 @@
 class Params
 {
 	
+	// Time Sync Module Parameters
+	#include "modules\common\syncTime\params.hpp"
+	
+	// Game Loop Module Parameters
+	#include "modules\common\gameLoop\params.hpp"
+	
+	// Mission Settings Parameters
+	#include "modules\common\missionSettings\params.hpp"
+	
 };

@@ -1,0 +1,380 @@
+/*%FSM<COMPILE "C:\Programme\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, RUBE_AI_INF_garrisonBuildings">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"init",0,250,-46.291061,-269.281921,43.708946,-219.281967,0.000000,"init"};
+item1[] = {"unitReady",4,218,-47.142803,-77.857170,41.428585,-36.428585,0.000000,"unitReady"};
+item2[] = {"garrison_decisio",2,250,-48.571419,125.714233,41.428596,175.714233,0.000000,"garrison" \n "decision"};
+item3[] = {"dead",4,218,69.999992,52.857128,160.000000,102.857117,1.000000,"dead"};
+item4[] = {"dead",1,250,70.000038,-45.000023,160.000031,4.999981,0.000000,"dead"};
+item5[] = {"_",4,218,61.428589,139.999969,81.428558,158.571396,0.000000,""};
+item6[] = {"delay_loop",2,250,98.571411,124.999977,188.571365,175.000000,0.000000,"delay loop"};
+item7[] = {"delay",4,218,98.571426,194.285675,188.571381,244.285706,0.000000,"delay"};
+item8[] = {"_",4,218,-15.714377,-189.999924,11.428477,-168.571350,0.000000,""};
+item9[] = {"move_to_position",2,250,-47.142952,-146.428436,42.857056,-96.428513,0.000000,"move to" \n "position"};
+item10[] = {"dead",4,218,69.999924,-144.285828,159.999908,-94.285889,1.000000,"dead"};
+item11[] = {"init_building_po",2,250,-47.857147,-14.285719,42.142864,35.714287,0.000000,"init building" \n "pool"};
+item12[] = {"_",4,218,-18.571476,65.714272,12.142826,90.714279,0.000000,""};
+item13[] = {"no_buildings_in",4,218,-180.714203,-23.571424,-69.285706,40.714287,1.000000,"no buildings" \n "in area"};
+item14[] = {"yeah__very__funny",1,250,-169.999847,-105.714256,-79.999908,-55.714294,0.000000,"yeah, very" \n " funny..."};
+item15[] = {"cooldown",4,218,-168.571442,125.714249,-78.571411,175.714249,1.000000,"cooldown"};
+item16[] = {"garrison_activit",2,250,-169.285583,208.571350,-79.285667,258.571289,0.000000,"garrison" \n "activity"};
+item17[] = {"_",4,218,-16.428574,224.285629,8.571427,241.428619,0.000000,""};
+link0[] = {0,8};
+link1[] = {1,11};
+link2[] = {2,3};
+link3[] = {2,5};
+link4[] = {2,15};
+link5[] = {3,4};
+link6[] = {5,6};
+link7[] = {6,7};
+link8[] = {7,2};
+link9[] = {8,9};
+link10[] = {9,1};
+link11[] = {9,10};
+link12[] = {10,4};
+link13[] = {11,12};
+link14[] = {11,13};
+link15[] = {12,2};
+link16[] = {13,14};
+link17[] = {15,16};
+link18[] = {16,17};
+link19[] = {17,2};
+globals[] = {0.000000,0,0,0,0,640,480,1,19,6316128,1,-247.142670,352.857178,119.285713,-338.571259,840,641,1};
+window[] = {0,-1,-1,-1,-1,816,1484,2913,44,1,857};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "RUBE_AI_INF_garrisonBuildings";
+  class States
+  {
+    /*%FSM<STATE "init">*/
+    class init
+    {
+      name = "init";
+      init = /*%FSM<STATEINIT""">*/"/*" \n
+       "	Description:" \n
+       "	 infantery group fsm to garrison buildings" \n
+       "*/" \n
+       "" \n
+       "private [" \n
+       "	""_group"", ""_position"", ""_radius"", ""_blacklist""," \n
+       "	""_behaviour"", ""_speed""," \n
+       "	""_abortionWaypointTypes""" \n
+       "];" \n
+       "" \n
+       "_group = grpNull;" \n
+       "_position = [];" \n
+       "_radius = 300;" \n
+       "" \n
+       "// blacklisted building classes " \n
+       "_blacklist = [];" \n
+       "" \n
+       "_behaviour = [""AWARE""];" \n
+       "_speed = [""LIMITED""];" \n
+       "" \n
+       "_abortionWaypointTypes = [""HOLD"", ""GUARD"", ""SENTRY""];" \n
+       "" \n
+       "{" \n
+       "	switch (_x select 0) do" \n
+       "	{" \n
+       "		case ""group"": { _group = _x select 1; };" \n
+       "		case ""position"": { _position = _x select 1; };" \n
+       "		case ""radius"": { _radius = _x select 1; };" \n
+       "		case ""blacklist"": { _blacklist = _x select 1; };" \n
+       "	};" \n
+       "} forEach _this;" \n
+       "" \n
+       "" \n
+       "/*" \n
+       "	init" \n
+       "*/" \n
+       "private [" \n
+       "	""_t"", ""_delay"", ""_cooldown"", ""_actCoef"", " \n
+       "	""_units"", ""_buildings"", ""_buildingPositions""" \n
+       "];" \n
+       "" \n
+       "_t = time;" \n
+       "_delay = 4.5 + (random 0.5);" \n
+       "_cooldown = 0;" \n
+       "_actCoef = 1.0;" \n
+       "_units = [];" \n
+       "_buildings = []; // [building, buildingPositions]" \n
+       "_buildingPositions = []; // working copy to randomly pop from" \n
+       "" \n
+       "/*" \n
+       "	some private functions" \n
+       "*/" \n
+       "private [" \n
+       "	""_initBuildings"", ""_nextBuildingPosition"", ""_garrisonActivity""" \n
+       "];" \n
+       "" \n
+       "// retrieve buildings with building positions" \n
+       "// and build the working pool" \n
+       "_initBuildings = {" \n
+       "	private [""_bp""];" \n
+       "	{" \n
+       "		_bp = _x call RUBE_getBuildingPositions;" \n
+       "		if (((count _bp) > 2) && !((typeOf _x) in _blacklist)) then" \n
+       "		{" \n
+       "			_buildings set [" \n
+       "				(count _buildings)," \n
+       "				[_x, _bp]" \n
+       "			];" \n
+       "		};	" \n
+       "	} forEach (nearestObjects [(leader _group), [""Building""], _radius]);" \n
+       "};" \n
+       "" \n
+       "// returns the next building position" \n
+       "_nextBuildingPosition = {" \n
+       "	// refill working pool if needed" \n
+       "	if ((count _buildingPositions) == 0) then" \n
+       "	{" \n
+       "		{" \n
+       "			[_buildingPositions, (_x select 1)] call RUBE_arrayAppend;" \n
+       "		} forEach _buildings;" \n
+       "	};" \n
+       "" \n
+       "	(_buildingPositions call RUBE_randomPop)" \n
+       "};" \n
+       "" \n
+       "// run garrison activity for the given units" \n
+       "_garrisonActivity = {" \n
+       "	{" \n
+       "		_x setUnitPos ""AUTO"";" \n
+       "		doStop _x;" \n
+       "		_x forceSpeed 2;" \n
+       "		_x doMove ([] call _nextBuildingPosition);" \n
+       "		_x spawn {" \n
+       "			waitUntil{moveToCompleted _this};" \n
+       "			if (33 call RUBE_chance) then" \n
+       "			{" \n
+       "				_this setUnitPos ""Middle"";" \n
+       "			};" \n
+       "			doStop _this;" \n
+       "			_this forceSpeed -1;" \n
+       "		};" \n
+       "	} forEach _this;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="move_to_position";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "garrison_decisio">*/
+    class garrison_decisio
+    {
+      name = "garrison_decisio";
+      init = /*%FSM<STATEINIT""">*/"// update time" \n
+       "_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "cooldown">*/
+        class cooldown
+        {
+          priority = 1.000000;
+          to="garrison_activit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _cooldown"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 1.000000;
+          to="dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_group call RUBE_aliveGroup)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="delay_loop";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "dead">*/
+    class dead
+    {
+      name = "dead";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "delay_loop">*/
+    class delay_loop
+    {
+      name = "delay_loop";
+      init = /*%FSM<STATEINIT""">*/"// update time" \n
+       "_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="garrison_decisio";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "move_to_position">*/
+    class move_to_position
+    {
+      name = "move_to_position";
+      init = /*%FSM<STATEINIT""">*/"[" \n
+       "	[""group"", _group]," \n
+       "	[""type"", ""MOVE""]," \n
+       "	[""position"", _position]" \n
+       "] call RUBE_updateWaypoint;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 1.000000;
+          to="dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_group call RUBE_aliveGroup)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "unitReady">*/
+        class unitReady
+        {
+          priority = 0.000000;
+          to="init_building_po";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"unitReady (leader _group)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "init_building_po">*/
+    class init_building_po
+    {
+      name = "init_building_po";
+      init = /*%FSM<STATEINIT""">*/"([] call _initBuildings)"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "no_buildings_in">*/
+        class no_buildings_in
+        {
+          priority = 1.000000;
+          to="yeah__very__funny";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(count _buildings) == 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="garrison_decisio";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"commandStop (units _group);"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "yeah__very__funny">*/
+    class yeah__very__funny
+    {
+      name = "yeah__very__funny";
+      init = /*%FSM<STATEINIT""">*/"[" \n
+       "	[""group"", _group]," \n
+       "	[""type"", (_abortionWaypointTypes call RUBE_randomSelect)]," \n
+       "	[""speed"", ""NORMAL""]" \n
+       "] call RUBE_updateWaypoint;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "garrison_activit">*/
+    class garrison_activit
+    {
+      name = "garrison_activit";
+      init = /*%FSM<STATEINIT""">*/"_units = units _group;" \n
+       "" \n
+       "if (_actCoef < 1.0) then" \n
+       "{" \n
+       "	_units = [_units, _actCoef] call RUBE_randomSubSet;" \n
+       "};" \n
+       "" \n
+       "// run new activity" \n
+       "_units call _garrisonActivity;" \n
+       "" \n
+       "// update cooldown time" \n
+       "_cooldown = (10 + (random 40));" \n
+       "" \n
+       "// update proportion of the group that" \n
+       "// will change activity on the next run" \n
+       "_actCoef = (0.2 + (random 0.8));" \n
+       "" \n
+       "[" \n
+       "	[""group"", _group]," \n
+       "	[""behaviour"", (_behaviour call RUBE_randomSelect)]," \n
+       "	[""speed"", (_speed call RUBE_randomSelect)]" \n
+       "] call RUBE_updateWaypoint;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="garrison_decisio";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="init";
+  finalStates[] =
+  {
+    "dead",
+    "yeah__very__funny",
+  };
+};
+/*%FSM</COMPILE>*/

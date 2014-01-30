@@ -1,0 +1,934 @@
+/*%FSM<COMPILE "C:\Programme\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, RUBE_PE_burnDownBuilding">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"init",0,250,-40.098221,-342.536316,49.901779,-292.536438,0.000000,"init"};
+item1[] = {"_",4,218,-9.371838,-50.493713,20.628160,-26.207998,0.000000,""};
+item2[] = {"stage_1__burning",2,250,-39.018913,0.777290,50.981102,50.777264,0.000000,"stage 1" \n "(burning)"};
+item3[] = {"_",4,218,-57.857410,-51.571400,-28.714558,-25.571400,0.000000,""};
+item4[] = {"delay_loop",2,250,-155.571533,-54.142834,-86.143082,-22.999990,0.000000,"delay loop"};
+item5[] = {"delay",4,218,-165.000244,1.571447,-75.000259,51.571449,0.000000,"delay"};
+item6[] = {"destroyed",4,218,176.362518,305.887054,266.362671,355.887054,3.000000,"destroyed"};
+item7[] = {"",7,210,217.505829,20.458559,225.505829,28.458557,0.000000,""};
+item8[] = {"timeout_or_half",4,218,-55.285923,77.857224,66.428352,152.714355,1.000000,"timeout or" \n "half damage"};
+item9[] = {"stage_2__burning",2,250,-46.714470,301.571472,56.999832,361.000061,0.000000,"stage 2" \n "(burning)"};
+item10[] = {"_",4,218,-61.286060,252.714172,-34.714638,276.142761,0.000000,""};
+item11[] = {"delay_loop_1",2,250,-152.143097,250.999878,-83.571770,277.857056,0.000000,"delay loop"};
+item12[] = {"delay",4,218,-162.428802,306.714142,-72.428963,356.714172,0.000000,"delay"};
+item13[] = {"",7,210,218.354538,814.267334,226.354538,822.267212,0.000000,""};
+item14[] = {"half_collapse",2,250,-41.142933,177.713638,48.857090,227.713638,0.000000,"half collapse"};
+item15[] = {"_",4,218,-9.857222,251.856537,18.428493,276.142181,0.000000,""};
+item16[] = {"timeout",4,218,-38.143002,385.142944,49.285591,437.714386,1.000000,"timeout"};
+item17[] = {"collapse",2,250,-39.857273,461.787506,50.142735,511.787323,0.000000,"collapse"};
+item18[] = {"timeout",4,218,-33.625584,713.788635,43.045876,766.085754,1.000000,"timeout"};
+item19[] = {"final_stage__last",2,250,-39.856995,794.857117,50.143021,844.857117,0.000000,"final stage" \n "(last smokes)"};
+item20[] = {"timeout",4,218,-40.714230,867.713684,49.285770,917.713684,0.000000,"timeout"};
+item21[] = {"clean_up",1,250,-41.571373,949.142212,48.428658,999.142212,0.000000,"clean up"};
+item22[] = {"spread_fire",4,218,-210.101501,87.011497,-87.007217,156.528656,2.000000,"spread fire"};
+item23[] = {"spread_fire",4,218,-182.233994,363.829254,-59.139694,439.286377,2.000000,"spread fire"};
+item24[] = {"no_ruin__detecte",4,218,-46.369514,535.582886,56.443810,592.647034,2.000000,"no ruin " \n "detected"};
+item25[] = {"stage_3__smokes",2,250,-39.538528,635.188843,50.461479,685.188843,0.000000,"stage 3" \n "(smokes)"};
+item26[] = {"_",4,218,-65.695908,580.922607,-41.035934,605.465454,0.000000,""};
+item27[] = {"delay_loop_2",2,250,-154.944305,579.183044,-85.310005,607.968750,0.000000,"delay loop"};
+item28[] = {"delay",4,218,-164.278595,635.188782,-74.278603,685.188782,0.000000,"delay"};
+item29[] = {"ruin",4,218,93.857582,465.537384,164.340408,510.445709,3.000000,"ruin"};
+item30[] = {"recreate_particle",2,250,73.300705,539.843018,185.704498,610.294434,0.000000,"recreate" \n "particle sources" \n "for new ruin"};
+item31[] = {"_",4,218,114.881081,647.896240,142.935349,673.287659,0.000000,""};
+item32[] = {"pop_kill_flames",4,218,-175.015839,710.902039,-61.823692,785.878113,0.000000,"pop/kill flames"};
+item33[] = {"spread_smokes",4,218,72.068787,710.009888,180.800842,773.389893,0.000000,"spread" \n "smokes"};
+item34[] = {"detect_ruin",4,218,75.636795,390.672455,165.636810,440.672455,1.000000,"detect ruin"};
+item35[] = {"_",4,218,-84.923218,461.141205,-53.795364,482.597137,0.000000,""};
+item36[] = {"delay_loop_3",2,250,-184.827454,459.357117,-109.991478,484.381134,0.000000,"delay loop"};
+item37[] = {"delay",4,218,-191.963425,503.957214,-101.963478,553.957214,0.000000,"delay"};
+item38[] = {"_",4,218,-8.410757,-271.046997,18.890011,-251.446594,0.000000,""};
+item39[] = {"only_one_at_a_time",2,250,-40.710335,-220.697601,49.289680,-170.697586,0.000000,"only one" \n "at a time..."};
+item40[] = {"already_burning",4,218,78.988182,-221.647522,168.988098,-171.647568,1.000000,"already" \n "burning"};
+item41[] = {"exit",1,250,208.186478,-221.647583,298.186523,-171.647583,0.000000,"exit"};
+item42[] = {"_",4,218,-9.360713,-151.348404,19.840034,-127.948067,0.000000,""};
+item43[] = {"set_burning_flag",2,250,-43.560295,-103.848999,54.039619,-75.698723,0.000000,"set burning flag"};
+link0[] = {0,38};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,7};
+link4[] = {2,8};
+link5[] = {2,22};
+link6[] = {3,4};
+link7[] = {4,5};
+link8[] = {5,2};
+link9[] = {6,13};
+link10[] = {7,6};
+link11[] = {8,14};
+link12[] = {9,6};
+link13[] = {9,10};
+link14[] = {9,16};
+link15[] = {9,23};
+link16[] = {10,11};
+link17[] = {11,12};
+link18[] = {12,9};
+link19[] = {13,19};
+link20[] = {14,15};
+link21[] = {15,9};
+link22[] = {16,17};
+link23[] = {17,24};
+link24[] = {17,29};
+link25[] = {17,34};
+link26[] = {17,35};
+link27[] = {18,19};
+link28[] = {19,20};
+link29[] = {20,21};
+link30[] = {22,2};
+link31[] = {23,9};
+link32[] = {24,25};
+link33[] = {25,18};
+link34[] = {25,26};
+link35[] = {25,32};
+link36[] = {25,33};
+link37[] = {26,27};
+link38[] = {27,28};
+link39[] = {28,25};
+link40[] = {29,30};
+link41[] = {30,31};
+link42[] = {31,25};
+link43[] = {32,25};
+link44[] = {33,25};
+link45[] = {34,17};
+link46[] = {35,36};
+link47[] = {36,37};
+link48[] = {37,17};
+link49[] = {38,39};
+link50[] = {39,40};
+link51[] = {39,42};
+link52[] = {40,41};
+link53[] = {42,43};
+link54[] = {43,1};
+globals[] = {0.000000,0,0,0,0,640,480,1,49,6316128,1,-299.706970,387.134583,293.546387,-452.194397,723,785,1};
+window[] = {0,-1,-1,-1,-1,989,1532,3006,73,1,740};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "RUBE_PE_burnDownBuilding";
+  class States
+  {
+    /*%FSM<STATE "init">*/
+    class init
+    {
+      name = "init";
+      init = /*%FSM<STATEINIT""">*/"/*" \n
+       "	Description:" \n
+       "	 burns down a building (see pe_houseBurn.sqf)" \n
+       "	 smokes, flames and destruction, yay!" \n
+       "*/" \n
+       "" \n
+       "private [" \n
+       "	""_building"", ""_ruin"", ""_buildingPosition"", ""_timeout""," \n
+       "	""_flames"", ""_smokes"", ""_lights"", ""_sounds""," \n
+       "	""_remainingPositions"", ""_spreadFireFunctions""," \n
+       "	""_t0"", ""_t"", ""_t1"",  ""_delay"", ""_ruinDetectionRadius""," \n
+       "	""_doFire"", ""_doSmoke"", ""_doSound"", ""_doLight""," \n
+       "	""_tStage1"", ""_tStage2"", ""_tStage3"", ""_tStage4""," \n
+       "	""_spreadChance1"", ""_spreadChance2"", ""_detectRuin"", ""_getOffset""," \n
+       "	""_spreadFire"",  ""_deleteSources"", " \n
+       "	""_pos"", ""_i"", ""_particle"", " \n
+       "	""_manDetectionRadius"", ""_setMenOnFire"", ""_catchFireDistance""" \n
+       "];" \n
+       "" \n
+       "_building = _this select 0;" \n
+       "_ruin = objNull;" \n
+       "" \n
+       "_timeout = _this select 1;" \n
+       "_flames = _this select 2;" \n
+       "_smokes = _this select 3;" \n
+       "_lights = _this select 4;" \n
+       "_sounds = _this select 5;" \n
+       "" \n
+       "_buildingPosition = position _building;" \n
+       "_remainingPositions = [];" \n
+       "_spreadFireFunctions = [];" \n
+       "" \n
+       "if ((count _this) > 6) then" \n
+       "{" \n
+       "	_remainingPositions = _this select 6;" \n
+       "};" \n
+       "" \n
+       "if ((count _this) > 7) then" \n
+       "{" \n
+       "	_spreadFireFunctions = _this select 7;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "_t0 = time;" \n
+       "_t1 = time;" \n
+       "_t = time;" \n
+       "_delay = 4.0 + (random 1.0);" \n
+       "" \n
+       "_catchFireDistance = 3.25;" \n
+       "_manDetectionRadius = 20;" \n
+       "_ruinDetectionRadius = 20;" \n
+       "" \n
+       "_doFire = false;" \n
+       "if ((count _flames) > 0) then { _doFire = true; };" \n
+       "" \n
+       "_doSmoke = false;" \n
+       "if ((count _smokes) > 0) then { _doSmoke = true; };" \n
+       "" \n
+       "_doSound = false;" \n
+       "if ((count _sounds) > 0) then { _doSound = true; };" \n
+       "" \n
+       "_doLight = _doFire;" \n
+       "" \n
+       "_tStage1 = _timeout * (0.5 + (random 1.0)); // start burning" \n
+       "_tStage2 = _timeout * (2.5 + (random 2.0)); // burning" \n
+       "_tStage3 = _timeout * (5.0 + (random 3.0)); // collapsed, pop kill flames" \n
+       "_tStage4 = _timeout * (9.0 + (random 4.0)); // smokes" \n
+       "" \n
+       "_spreadChance1 = 0;" \n
+       "_spreadChance2 = 0;" \n
+       "if ((count _remainingPositions) > 0) then" \n
+       "{" \n
+       "	// ~ticks/checks in stage1 / remaining positions * 0.67" \n
+       "	_spreadChance1 = (_tStage1 / _delay) / (count _remainingPositions) * 0.67;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "// void => void" \n
+       "_detectRuin = {" \n
+       "	private [""_ruins""];" \n
+       "" \n
+       "	// some ruins do not actually inherit from ""Ruins"", oh well..." \n
+       "	_ruins = nearestObjects [_buildingPosition, [""House""], _ruinDetectionRadius];" \n
+       "	if ((count _ruins) > 0) then" \n
+       "	{" \n
+       "		if (_building != (_ruins select 0)) then" \n
+       "		{" \n
+       "			//diag_log format [""sealth detection: %1"", (_ruins select 0)];" \n
+       "			_ruin = _ruins select 0;" \n
+       "		};" \n
+       "	};" \n
+       "" \n
+       "	_ruins = nearestObjects [_buildingPosition, [""Ruins""], _ruinDetectionRadius];" \n
+       "	if ((count _ruins) > 0) then" \n
+       "	{" \n
+       "		_ruin = _ruins select 0;" \n
+       "	};" \n
+       "	_ruinDetectionRadius = _ruinDetectionRadius + 5;" \n
+       "" \n
+       "	//diag_log format[""detect ruin: %1"", _ruin];" \n
+       "};" \n
+       "" \n
+       "" \n
+       "// some building-position => offset (array)" \n
+       "_getOffset = {" \n
+       "   private [""_pos""];" \n
+       "   _pos = [0,0,0];" \n
+       "   _pos set [0, ((_this select 0) - (_buildingPosition select 0))];" \n
+       "   _pos set [1, ((_this select 1) - (_buildingPosition select 1))];" \n
+       "   _pos set [2, (((_this select 2) - (_buildingPosition select 2)) - (0.15 + (random 0.25)))];" \n
+       "   " \n
+       "   _pos" \n
+       "};" \n
+       "" \n
+       "" \n
+       "// void => void" \n
+       "_spreadFire = {" \n
+       "	private [""_pos""];" \n
+       "	_pos = (_remainingPositions call RUBE_randomPop) call _getOffset;;" \n
+       "" \n
+       "	/*" \n
+       "	if (!(_doFire && _doSound)) then" \n
+       "	{" \n
+       "		diag_log format[""spreadSmoke to: %1"", _pos];" \n
+       "	} else" \n
+       "	{" \n
+       "		diag_log format[""spreadFire to: %1"", _pos];" \n
+       "	};" \n
+       "	*/" \n
+       "" \n
+       "	// call spread fire functions" \n
+       "	if (((count _spreadFireFunctions) > 0) && _doFire) then" \n
+       "	{" \n
+       "		_flames set [(count _flames), ([_building, _buildingPosition, _pos] call (_spreadFireFunctions select 0))];" \n
+       "	};" \n
+       "" \n
+       "	if (((count _spreadFireFunctions) > 1) && _doSmoke) then" \n
+       "	{" \n
+       "		_smokes set [(count _smokes), ([_building, _buildingPosition, _pos] call (_spreadFireFunctions select 1))];" \n
+       "	};" \n
+       "" \n
+       "	if (((count _spreadFireFunctions) > 2) && _doSound) then" \n
+       "	{" \n
+       "		_sounds set [(count _sounds), ([_building, _buildingPosition, _pos] call (_spreadFireFunctions select 2))];" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "// index => void" \n
+       "_deleteSources = {" \n
+       "	// delete flames" \n
+       "	if ((count _flames) > _this) then" \n
+       "	{" \n
+       "		if (!(isNull (_flames select _this))) then" \n
+       "		{" \n
+       "			deleteVehicle (_flames select _this);" \n
+       "		};" \n
+       "	};" \n
+       "" \n
+       "	// delete smokes" \n
+       "	if ((count _smokes) > _this) then" \n
+       "	{" \n
+       "		if (!(isNull (_smokes select _this))) then" \n
+       "		{" \n
+       "			deleteVehicle (_smokes select _this);" \n
+       "		};" \n
+       "	};" \n
+       "" \n
+       "	// delete sounds" \n
+       "	if ((count _sounds) > _this) then" \n
+       "	{" \n
+       "		if (!(isNull (_sounds select _this))) then" \n
+       "		{" \n
+       "			deleteVehicle (_sounds select _this);" \n
+       "		};" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "" \n
+       "// scans for men near particle sources and sets them on fire" \n
+       "_setMenOnFire = {" \n
+       "	private [""_men""];" \n
+       "	_men = nearestObjects [_buildingPosition, [""Man""], _manDetectionRadius];" \n
+       "" \n
+       "	// filter men in range" \n
+       "	if ((count _men) > 0) then" \n
+       "	{" \n
+       "		_men = [_men, {" \n
+       "			// already dead" \n
+       "			if (!(alive _this)) exitWith { false };" \n
+       "			" \n
+       "			// already on fire" \n
+       "			if ([_this, ""RUBE_isBurning""] call RUBE_isTrue) exitWith { false };" \n
+       "" \n
+       "			// distance check to flames" \n
+       "			if ([_this, _flames, {" \n
+       "				(((_this select 0) distance (_this select 1)) > _catchFireDistance)" \n
+       "			}] call RUBE_multipass) exitWith { false };" \n
+       "" \n
+       "			// burn baby" \n
+       "			true" \n
+       "		}] call RUBE_arrayFilter;" \n
+       "	};" \n
+       "" \n
+       "	//hint format[""SET MEN ON FIRE:\n%1"", _men];" \n
+       "" \n
+       "	// set them on fire" \n
+       "	{" \n
+       "		[_x] execFSM ""modules\common\RUBE\pe\catchFire.fsm"";" \n
+       "	} forEach _men;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="only_one_at_a_time";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "stage_1__burning">*/
+    class stage_1__burning
+    {
+      name = "stage_1__burning";
+      init = /*%FSM<STATEINIT""">*/"//hintSilent format[""BURN DOWN\nbuilding: %1\n\nSTAGE 1: %2s\ndamage: %3"", _building, (_tStage1 - (time - _t0)), (damage _building)];" \n
+       "" \n
+       "if ((damage _building) < 0.3) then" \n
+       "{" \n
+       "	_building setDamage ((damage _building) + (random 0.02));" \n
+       "};" \n
+       "" \n
+       "[] call _setMenOnFire;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "destroyed">*/
+        class destroyed
+        {
+          priority = 3.000000;
+          to="final_stage__last";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((damage _building) > 0.99) || (isNull _building)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "spread_fire">*/
+        class spread_fire
+        {
+          priority = 2.000000;
+          to="stage_1__burning";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((count _remainingPositions) > 0) && ((random 1.0) < _spreadChance1)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"[] call _spreadFire;" \n
+           "" \n
+           "// decrease spread chance" \n
+           "_spreadChance1 = _spreadChance1 * 0.5;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "timeout_or_half">*/
+        class timeout_or_half
+        {
+          priority = 1.000000;
+          to="half_collapse";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((damage _building) > 0.49) || ((time - _t0) > _tStage1)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="delay_loop";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "delay_loop">*/
+    class delay_loop
+    {
+      name = "delay_loop";
+      init = /*%FSM<STATEINIT""">*/"_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="stage_1__burning";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "stage_2__burning">*/
+    class stage_2__burning
+    {
+      name = "stage_2__burning";
+      init = /*%FSM<STATEINIT""">*/"//hintSilent format[""BURN DOWN\nbuilding: %1\n\nSTAGE 2: %2s\ndamage: %3"", _building, (_tStage2 - (time - _t0)), (damage _building)];" \n
+       "" \n
+       "if ((damage _building) < 0.49) then" \n
+       "{" \n
+       "	_building setDamage ((damage _building) + (random 0.02));" \n
+       "};" \n
+       "" \n
+       "[] call _setMenOnFire;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "destroyed">*/
+        class destroyed
+        {
+          priority = 3.000000;
+          to="final_stage__last";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((damage _building) > 0.99) || (isNull _building)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "spread_fire">*/
+        class spread_fire
+        {
+          priority = 2.000000;
+          to="stage_2__burning";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((count _remainingPositions) > 0) && ((random 1.0) < 0.3)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"[] call _spreadFire;" \n
+           "" \n
+           "// decrease spread chance" \n
+           "_spreadChance2 = _spreadChance1 * 0.78;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "timeout">*/
+        class timeout
+        {
+          priority = 1.000000;
+          to="collapse";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((time - _t0) > _tStage2)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"// wait a little to detect a ruin" \n
+           "_t1 = time + (2 * _delay);"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="delay_loop_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "delay_loop_1">*/
+    class delay_loop_1
+    {
+      name = "delay_loop_1";
+      init = /*%FSM<STATEINIT""">*/"_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="stage_2__burning";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "half_collapse">*/
+    class half_collapse
+    {
+      name = "half_collapse";
+      init = /*%FSM<STATEINIT""">*/"_building setDamage ((damage _building) max (0.3 + (random 0.1)));" \n
+       "" \n
+       "if ((count _remainingPositions) > 0) then" \n
+       "{" \n
+       "	// ~ticks/checks in stage2 / remaining positions * 0.67" \n
+       "	_spreadChance2 = (_tStage2 / _delay) / (count _remainingPositions) * 0.67;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="stage_2__burning";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "collapse">*/
+    class collapse
+    {
+      name = "collapse";
+      init = /*%FSM<STATEINIT""">*/"//hintSilent format[""BURN DOWN\nbuilding: %1\n\ncollapse\ndamage: %2"", _building, (damage _building)];" \n
+       "" \n
+       "if ((random 1.0) > 0.89) then" \n
+       "{" \n
+       "	_building setDamage ((damage _building) max (0.95 + (random 0.05)));" \n
+       "} else" \n
+       "{" \n
+       "	_building setDamage 1.0;" \n
+       "};" \n
+       "" \n
+       "// delete flames" \n
+       "for ""_i"" from 0 to ((count _flames) - 1) do" \n
+       "{" \n
+       "	if (!(isNull (_flames select _i))) then" \n
+       "	{" \n
+       "		deleteVehicle (_flames select _i);" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "[] call _setMenOnFire;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "ruin">*/
+        class ruin
+        {
+          priority = 3.000000;
+          to="recreate_particle";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(isNull _ruin)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "no_ruin__detecte">*/
+        class no_ruin__detecte
+        {
+          priority = 2.000000;
+          to="stage_3__smokes";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((time - _t1) > _delay) || (_ruinDetectionRadius > 100)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"// spread only smokes now (if at all)" \n
+           "_doFire = false;" \n
+           "_doSound = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "detect_ruin">*/
+        class detect_ruin
+        {
+          priority = 1.000000;
+          to="collapse";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isNull _ruin"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"[] call _detectRuin;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="delay_loop_3";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "final_stage__last">*/
+    class final_stage__last
+    {
+      name = "final_stage__last";
+      init = /*%FSM<STATEINIT""">*/"//hintSilent format[""BURN DOWN\nbuilding: %1\n\nFINAL STAGE\ndamage: %2"", _building, (damage _building)];" \n
+       "" \n
+       "// house/ruin is ""save"" again" \n
+       "_building setVariable [""RUBE_isBurning"", false, true];" \n
+       "" \n
+       "// delete all sources except for the last smokes" \n
+       "for ""_i"" from 1 to ((count _smokes) - 1) do" \n
+       "{" \n
+       "	_i call _deleteSources;" \n
+       "};" \n
+       "" \n
+       "// delete last flames" \n
+       "if ((count _flames) > 0) then" \n
+       "{" \n
+       "	if (!(isNull (_flames select 0))) then" \n
+       "	{" \n
+       "		deleteVehicle (_flames select 0);" \n
+       "	};" \n
+       "	deleteVehicle (_flames select 0);" \n
+       "};" \n
+       "" \n
+       "// delete last flame sound" \n
+       "if ((count _sounds) > 0) then" \n
+       "{" \n
+       "	if (!(isNull (_sounds select 0))) then" \n
+       "	{" \n
+       "		deleteVehicle (_sounds select 0);" \n
+       "	};" \n
+       "	deleteVehicle (_sounds select 0);" \n
+       "};" \n
+       "" \n
+       "// delete lightsources (only one (if any) usually)" \n
+       "{" \n
+       "	if (!(isNull _x)) then" \n
+       "	{" \n
+       "		deleteVehicle _x;" \n
+       "	};" \n
+       "} forEach _lights;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "timeout">*/
+        class timeout
+        {
+          priority = 0.000000;
+          to="clean_up";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((time - _t0) > _tStage4)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "clean_up">*/
+    class clean_up
+    {
+      name = "clean_up";
+      init = /*%FSM<STATEINIT""">*/"//hintSilent format[""BURN DOWN\nbuilding: %1\n\nEXIT\ndamage: %2"", _building, (damage _building)];" \n
+       "//diag_log ""RUBE_PE_burnDownBuilding EXIT"";" \n
+       "" \n
+       "// delete particle- and sound sources" \n
+       "for ""_i"" from 0 to ((count _smokes) - 1) do" \n
+       "{" \n
+       "	_i call _deleteSources;" \n
+       "};" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "stage_3__smokes">*/
+    class stage_3__smokes
+    {
+      name = "stage_3__smokes";
+      init = /*%FSM<STATEINIT""">*/"//hintSilent format[""BURN DOWN\nbuilding: %1\n\nSTAGE 3: collapsed\ndamage: %2"", _building, (damage _building)];" \n
+       "" \n
+       "[] call _setMenOnFire;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "timeout">*/
+        class timeout
+        {
+          priority = 1.000000;
+          to="final_stage__last";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((time - _t0) > _tStage3)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "pop_kill_flames">*/
+        class pop_kill_flames
+        {
+          priority = 0.000000;
+          to="stage_3__smokes";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((random 1.0) > 0.78) && ((count _flames) > 1)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_particle = _flames call BIS_fnc_arrayPop;" \n
+           "" \n
+           "if (!(isNull _particle)) then" \n
+           "{" \n
+           "	deleteVehicle _particle;" \n
+           "};"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "spread_smokes">*/
+        class spread_smokes
+        {
+          priority = 0.000000;
+          to="stage_3__smokes";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((random 1.0) > 0.74) && ((count _remainingPositions) > 0)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"[] call _spreadFire;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="delay_loop_2";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "delay_loop_2">*/
+    class delay_loop_2
+    {
+      name = "delay_loop_2";
+      init = /*%FSM<STATEINIT""">*/"_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="stage_3__smokes";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "recreate_particle">*/
+    class recreate_particle
+    {
+      name = "recreate_particle";
+      init = /*%FSM<STATEINIT""">*/"// delete original particle- and sound sources" \n
+       "for ""_i"" from 0 to ((count _smokes) - 1) do" \n
+       "{" \n
+       "	_i call _deleteSources;" \n
+       "};" \n
+       "" \n
+       "// delete lightsources (only one (if any) usually)" \n
+       "{" \n
+       "	if (!(isNull _x)) then" \n
+       "	{" \n
+       "		deleteVehicle _x;" \n
+       "	};" \n
+       "} forEach _lights;" \n
+       "" \n
+       "// reset sources" \n
+       "_flames = [];" \n
+       "_smokes =  [];" \n
+       "_lights =  [];" \n
+       "_sounds =  [];" \n
+       "" \n
+       "// create new owns for the ruin" \n
+       "_remainingPositions = _ruin call RUBE_getBuildingPositions;" \n
+       "_building = _ruin;" \n
+       "_buildingPosition = position _ruin;" \n
+       "" \n
+       "//diag_log format[""new particle sources for: %1"", _ruin];" \n
+       "" \n
+       "[] call _spreadFire;" \n
+       "" \n
+       "// new light" \n
+       "if (((count _spreadFireFunctions) > 3) && _doLight) then" \n
+       "{" \n
+       "	_lights set [(count _lights), ([_building, _buildingPosition, [0,0,0]] call (_spreadFireFunctions select 3))];" \n
+       "};" \n
+       "" \n
+       "" \n
+       "for ""_i"" from 1 to ((count _remainingPositions) - 1) do" \n
+       "{" \n
+       "	if ((random 1.0) > 0.17) then" \n
+       "	{" \n
+       "		[] call _spreadFire;" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "// spread only smokes now (if at all)" \n
+       "_doFire = false;" \n
+       "_doSound = false;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="stage_3__smokes";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "delay_loop_3">*/
+    class delay_loop_3
+    {
+      name = "delay_loop_3";
+      init = /*%FSM<STATEINIT""">*/"_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="collapse";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "only_one_at_a_time">*/
+    class only_one_at_a_time
+    {
+      name = "only_one_at_a_time";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "already_burning">*/
+        class already_burning
+        {
+          priority = 1.000000;
+          to="exit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([_building, ""RUBE_isBurning""] call RUBE_isTrue)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="set_burning_flag";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "exit">*/
+    class exit
+    {
+      name = "exit";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "set_burning_flag">*/
+    class set_burning_flag
+    {
+      name = "set_burning_flag";
+      init = /*%FSM<STATEINIT""">*/"// one fire is enough" \n
+       "// ... also let the AI know that the building is burning." \n
+       "_building setVariable [""RUBE_isBurning"", true, true];" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="stage_1__burning";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="init";
+  finalStates[] =
+  {
+    "clean_up",
+    "exit",
+  };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,441 @@
+/*%FSM<COMPILE "C:\Programme\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, RUBE_AI_guardBuilding">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"init",0,250,-133.922607,-214.063141,-43.922592,-164.063141,0.000000,"init"};
+item1[] = {"_",4,218,-99.869484,-29.988386,-75.427666,-9.204529,0.000000,""};
+item2[] = {"guard_building_d",2,250,-48.563057,39.132759,41.436958,89.132759,0.000000,"guard building" \n "decision"};
+item3[] = {"_",4,218,24.833599,-0.772210,52.125820,22.861958,0.000000,""};
+item4[] = {"delay_loop",2,250,70.439331,-41.389793,160.439423,8.610216,0.000000,"delay loop"};
+item5[] = {"delay",4,218,-48.563053,-41.389801,41.436993,8.610205,0.000000,"delay"};
+item6[] = {"dead",4,218,67.588951,39.132778,157.588928,89.132767,3.000000,"dead"};
+item7[] = {"dead",1,250,189.441681,39.845367,279.441711,89.845322,0.000000,"dead"};
+item8[] = {"alarm",4,4314,-49.275658,110.391922,40.724331,160.391922,2.000000,"alarm"};
+item9[] = {"alarmed",2,250,-52.838604,322.030823,37.161423,372.030853,0.000000,"alarmed"};
+item10[] = {"exitOnAlarm",4,218,87.541420,321.318237,177.541367,371.318268,2.000000,"exitOnAlarm"};
+item11[] = {"done",1,250,207.969009,320.605652,297.969086,370.605682,0.000000,"done"};
+item12[] = {"all_clear",4,218,-176.116470,173.812332,-86.116516,223.812332,1.000000,"all clear"};
+item13[] = {"_",4,218,-20.772108,386.163849,6.520047,406.235138,0.000000,""};
+item14[] = {"delay_loop_1",2,250,-53.551186,422.505951,36.448990,472.505951,0.000000,"delay loop"};
+item15[] = {"delay",4,218,22.695807,373.337250,112.695923,423.337250,0.000000,"delay"};
+item16[] = {"dead",4,218,73.289635,232.957230,163.289764,282.957214,3.000000,"dead"};
+item17[] = {"run_alarm_code",2,250,-49.988338,178.800339,40.011673,228.800339,0.000000,"run alarm code"};
+item18[] = {"scriptDone",4,218,-49.988365,250.059235,40.011646,300.059235,0.000000,"scriptDone"};
+item19[] = {"cooldown",4,218,-198.206711,-7.185774,-108.206734,42.814232,1.000000,"cooldown"};
+item20[] = {"patrol__move__whatever",2,250,-289.418091,42.695457,-199.418121,92.695457,0.000000,"patrol, move," \n "whatever..."};
+item21[] = {"groupReady",4,218,-184.667542,84.738213,-94.667542,134.738251,0.000000,"groupReady"};
+item22[] = {"_",4,218,-101.294670,-147.565735,-76.140297,-123.931503,0.000000,""};
+item23[] = {"init_behaviour_",2,250,-133.361206,-104.097847,-43.361153,-54.097748,0.000000,"init behaviour," \n "limit speed..."};
+link0[] = {0,22};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,6};
+link4[] = {2,8};
+link5[] = {2,19};
+link6[] = {3,4};
+link7[] = {4,5};
+link8[] = {5,2};
+link9[] = {6,7};
+link10[] = {8,17};
+link11[] = {9,10};
+link12[] = {9,12};
+link13[] = {9,13};
+link14[] = {9,16};
+link15[] = {10,11};
+link16[] = {12,2};
+link17[] = {13,14};
+link18[] = {14,15};
+link19[] = {15,9};
+link20[] = {16,7};
+link21[] = {17,18};
+link22[] = {18,9};
+link23[] = {19,20};
+link24[] = {20,21};
+link25[] = {21,2};
+link26[] = {22,23};
+link27[] = {23,1};
+globals[] = {0.000000,0,0,0,0,640,480,1,25,6316128,1,-307.126099,292.873901,195.962021,-270.783844,842,655,1};
+window[] = {0,-1,-1,-1,-1,808,1462,3019,22,1,859};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "RUBE_AI_guardBuilding";
+  class States
+  {
+    /*%FSM<STATE "init">*/
+    class init
+    {
+      name = "init";
+      init = /*%FSM<STATEINIT""">*/"/*" \n
+       "	Description:" \n
+       "	 makes a group occupy one building. While the leader" \n
+       "	 should stay inside, other units may aswell patrol a little" \n
+       "	 bit..." \n
+       "*/" \n
+       "" \n
+       "private [" \n
+       "	""_group"", ""_building"", ""_buildingPositions""," \n
+       "	""_triggerAlarm"", ""_exitOnAlarm"", ""_onFailure"", ""_onAlarm""" \n
+       "];" \n
+       "" \n
+       "_group = grpNull;" \n
+       "_building = objNull;" \n
+       "_buildingPositions = [];" \n
+       "" \n
+       "// may be triggered per setFSMVariable from anywhere else..." \n
+       "_triggerAlarm = false;" \n
+       "_exitOnAlarm = true;" \n
+       "_onFailure = """";" \n
+       "_onAlarm = """";" \n
+       "" \n
+       "{" \n
+       "	switch (_x select 0) do" \n
+       "	{" \n
+       "		case ""group"": { _group = _x select 1; };" \n
+       "		case ""building"": { _building = _x select 1; };" \n
+       "		case ""exitOnAlarm"": { _exitOnAlarm = _x select 1; };" \n
+       "		case ""onFailure"": { _onFailure = _x select 1; };" \n
+       "		case ""onAlarm"": { _onAlarm = _x select 1; };" \n
+       "	};" \n
+       "} forEach _this;" \n
+       "" \n
+       "" \n
+       "// init" \n
+       "private [" \n
+       "	""_t"", ""_delay"", ""_bPosCopy"", ""_codeHandle""," \n
+       "	""_patrolCoolDown"", ""_patrolCoolDownTime""," \n
+       "	""_getNextPosition""" \n
+       "];" \n
+       "" \n
+       "_t = time;" \n
+       "_delay = 4.5 + (random 0.5);" \n
+       "_buildingPositions = _building call RUBE_getBuildingPositions;" \n
+       "_bPosCopy = [];" \n
+       "" \n
+       "// empty/null handle for alarm-code" \n
+       "_codeHandle =  0 spawn {};" \n
+       "" \n
+       "_patrolCoolDown = 0;" \n
+       "_patrolCoolDownTime = 12;" \n
+       "" \n
+       "// pops next patrol position, always a building position" \n
+       "// for leaders..." \n
+       "_getNextPosition = {" \n
+       "	private [""_pos""];" \n
+       "	_pos = [];" \n
+       "" \n
+       "	if ((count _bPosCopy) == 0) then" \n
+       "	{" \n
+       "		_bPosCopy = + _buildingPositions;" \n
+       "	};" \n
+       "" \n
+       "	if (_this == (leader _group)) then" \n
+       "	{" \n
+       "		_pos = _bPosCopy call RUBE_randomPop;" \n
+       "	} else" \n
+       "	{" \n
+       "		if (34 call RUBE_chance) then" \n
+       "		{" \n
+       "			_pos = [(position _building), [9,9], [30, 30]] call RUBE_randomizePos;" \n
+       "		} else" \n
+       "		{" \n
+       "			_pos = _bPosCopy call RUBE_randomPop;" \n
+       "		};" \n
+       "	};" \n
+       "" \n
+       "	_pos" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="init_behaviour_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "guard_building_d">*/
+    class guard_building_d
+    {
+      name = "guard_building_d";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 3.000000;
+          to="dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_group call RUBE_aliveGroup)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "alarm">*/
+        class alarm
+        {
+          priority = 2.000000;
+          to="run_alarm_code";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((behaviour  (leader _group)) in [""COMBAT"", ""STEALTH""]) || _triggerAlarm"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "cooldown">*/
+        class cooldown
+        {
+          priority = 1.000000;
+          to="patrol__move__whatever";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _patrolCoolDown) > _patrolCoolDownTime"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="delay_loop";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "delay_loop">*/
+    class delay_loop
+    {
+      name = "delay_loop";
+      init = /*%FSM<STATEINIT""">*/"// update time" \n
+       "_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="guard_building_d";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "dead">*/
+    class dead
+    {
+      name = "dead";
+      init = /*%FSM<STATEINIT""">*/"// run onFailure" \n
+       "if ((typeName _onFailure) == ""CODE"") then" \n
+       "{" \n
+       "	_group call _onFailure;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "alarmed">*/
+    class alarmed
+    {
+      name = "alarmed";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 3.000000;
+          to="dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_group call RUBE_aliveGroup)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "exitOnAlarm">*/
+        class exitOnAlarm
+        {
+          priority = 2.000000;
+          to="done";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_exitOnAlarm"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "all_clear">*/
+        class all_clear
+        {
+          priority = 1.000000;
+          to="guard_building_d";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!((waypointBehaviour  [_group, (currentWaypoint _group)]) in [""COMBAT"", ""STEALTH""])"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_triggerAlarm = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="delay_loop_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "done">*/
+    class done
+    {
+      name = "done";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "delay_loop_1">*/
+    class delay_loop_1
+    {
+      name = "delay_loop_1";
+      init = /*%FSM<STATEINIT""">*/"// update time" \n
+       "_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="alarmed";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "run_alarm_code">*/
+    class run_alarm_code
+    {
+      name = "run_alarm_code";
+      init = /*%FSM<STATEINIT""">*/"(units _group) commandFollow (leader _group);" \n
+       "" \n
+       "{" \n
+       "	_x forceSpeed -1;" \n
+       "} forEach (units _group);" \n
+       "" \n
+       "[" \n
+       "	[""group"", _group]," \n
+       "	[""speed"", ""FULL""]" \n
+       "] call RUBE_updateWaypoint;" \n
+       "" \n
+       "" \n
+       "// run alarm code" \n
+       "if ((typeName _onAlarm) == ""CODE"") then" \n
+       "{" \n
+       "	_codeHandle = _group spawn _onAlarm;" \n
+       "};" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "scriptDone">*/
+        class scriptDone
+        {
+          priority = 0.000000;
+          to="alarmed";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _codeHandle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "patrol__move__whatever">*/
+    class patrol__move__whatever
+    {
+      name = "patrol__move__whatever";
+      init = /*%FSM<STATEINIT""">*/"// update and randomize cooldown time" \n
+       "_patrolCoolDown = time;" \n
+       "_patrolCoolDownTime = 2 + (random 20);" \n
+       "" \n
+       "{" \n
+       "	_x doMove (_x call _getNextPosition);" \n
+       "} forEach (units _group);"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "groupReady">*/
+        class groupReady
+        {
+          priority = 0.000000;
+          to="guard_building_d";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_group call RUBE_groupReady)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "init_behaviour_">*/
+    class init_behaviour_
+    {
+      name = "init_behaviour_";
+      init = /*%FSM<STATEINIT""">*/"{" \n
+       "	_x forceSpeed 1.5;" \n
+       "} forEach (units _group);" \n
+       "" \n
+       "[" \n
+       "	[""group"", _group]," \n
+       "	[""type"", ""MOVE""]," \n
+       "	[""position"", (position _building)]," \n
+       "	[""behaviour"", ""SAFE""]," \n
+       "	[""combatMode"", ""GREEN""]," \n
+       "	[""speed"", ""LIMITED""]" \n
+       "] call RUBE_updateWaypoint;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="guard_building_d";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="init";
+  finalStates[] =
+  {
+    "dead",
+    "done",
+  };
+};
+/*%FSM</COMPILE>*/

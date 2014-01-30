@@ -1,0 +1,518 @@
+/*%FSM<COMPILE "C:\Programme\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, RUBE_AI_INF_domesticCivilians">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"init",0,4346,-38.250011,-221.839752,51.749973,-171.839737,0.000000,"init"};
+item1[] = {"_",4,218,-6.377244,-52.844330,18.053890,-27.095825,0.000000,""};
+item2[] = {"decision",2,250,-38.712570,-2.544935,51.287449,47.455078,0.000000,"decision"};
+item3[] = {"_",4,218,-41.407196,-51.946140,-13.383242,-26.197639,0.000000,""};
+item4[] = {"delay_loop",2,250,-150.089798,-51.946140,-82.544899,-26.197628,0.000000,"delay loop"};
+item5[] = {"delay",4,218,-160.868271,-2.544937,-70.868279,47.455059,0.000000,"delay"};
+item6[] = {"dead",4,218,74.461067,-72.604797,164.461060,-22.604824,4.000000,"dead"};
+item7[] = {"dead",1,250,204.700592,-72.604797,294.700775,-22.604832,0.000000,"dead"};
+item8[] = {"cooldown",4,218,-124.042572,57.634819,-34.042572,107.634804,1.000000,"cooldown"};
+item9[] = {"domestic_activit",2,250,-138.413818,134.880341,-22.365891,195.658783,0.000000,"domestic" \n "activity"};
+item10[] = {"_",4,218,-7.276079,80.988113,19.849669,111.227631,0.000000,""};
+item11[] = {"captive_s_",4,218,75.358635,-2.544815,165.358582,47.455189,3.000000,"captive(s)"};
+item12[] = {"collapsed_house",4,218,71.765823,72.006081,161.765808,122.006081,2.000000,"collapsed" \n "house"};
+item13[] = {"survival",1,250,205.598206,-1.646603,295.598328,48.353386,0.000000,"survival"};
+item14[] = {"homeless",1,250,206.496384,72.904289,296.496460,122.904266,0.000000,"homeless"};
+item15[] = {"_",4,218,-9.970692,-155.239410,20.747852,-128.592697,0.000000,""};
+item16[] = {"init_1",2,250,-23.443729,-104.041786,35.119160,-80.089699,0.000000,"init"};
+link0[] = {0,15};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,6};
+link4[] = {2,8};
+link5[] = {2,11};
+link6[] = {2,12};
+link7[] = {3,4};
+link8[] = {4,5};
+link9[] = {5,2};
+link10[] = {6,7};
+link11[] = {8,9};
+link12[] = {9,10};
+link13[] = {10,2};
+link14[] = {11,13};
+link15[] = {12,14};
+link16[] = {15,16};
+link17[] = {16,1};
+globals[] = {0.000000,0,0,0,0,640,480,1,19,6316128,1,-271.258087,328.741974,347.605011,-252.394989,668,619,1};
+window[] = {0,-1,-1,-1,-1,816,1506,2724,66,1,685};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "RUBE_AI_INF_domesticCivilians";
+  class States
+  {
+    /*%FSM<STATE "init">*/
+    class init
+    {
+      name = "init";
+      init = /*%FSM<STATEINIT""">*/"/*" \n
+       "	Description:" \n
+       "	 group fsm for domestic civilians" \n
+       "" \n
+       "	 needs to be enhanced at some point to make women henfeeding and" \n
+       "	 gardenwork and stuff... would be nice at least :)" \n
+       "*/" \n
+       "" \n
+       "private [" \n
+       "	""_group"", ""_building"", ""_buildingPosition"",	""_buildingPositions""," \n
+       "	""_radius"", ""_checkBuilding""," \n
+       "	""_onSurvival"", ""_onHomeless""" \n
+       "];" \n
+       "" \n
+       "_group = grpNull;" \n
+       "_building = objNull;" \n
+       "_buildingPosition = [];" \n
+       "_buildingPositions = [];" \n
+       "_radius = 32;" \n
+       "_checkBuilding = true;" \n
+       "" \n
+       "_onSurvival = """";" \n
+       "_onHomeless = """";" \n
+       "" \n
+       "{" \n
+       "	switch (_x select 0) do" \n
+       "	{" \n
+       "		case ""group"": { _group = _x select 1; };" \n
+       "		case ""building"": { _building = _x select 1; };" \n
+       "		case ""radius"": { _radius = _x select 1; };" \n
+       "		case ""onSurvival"": { _onSurvival = _x select 1; };" \n
+       "		case ""onHomeless"": { _onHomeless = _x select 1; };" \n
+       "	};" \n
+       "} forEach _this;" \n
+       "" \n
+       "" \n
+       "" \n
+       "// init" \n
+       "private [" \n
+       "	""_t"", ""_delay"", ""_cooldown"", ""_actCoef""," \n
+       "	""_units"", ""_deadUnits"", ""_injuredUnits"", ""_captiveUnits""," \n
+       "	""_i""" \n
+       "];" \n
+       "" \n
+       "_t = time;" \n
+       "_t1 = time;" \n
+       "_delay = 4 + (random 1.0);" \n
+       "_cooldown = 0;" \n
+       "_actCoef = 1.0;" \n
+       "_bPosCopy = [];" \n
+       "" \n
+       "_units = [];" \n
+       "_deadUnits = [];" \n
+       "_injuredUnits = [];" \n
+       "_captiveUnits = [];" \n
+       "" \n
+       "if (!(isNull _building)) then" \n
+       "{" \n
+       "	_buildingPosition = position _building;" \n
+       "	if ((count _buildingPositions) == 0) then" \n
+       "	{" \n
+       "		_buildingPositions = _building call RUBE_getBuildingPositions;" \n
+       "	};" \n
+       "} else" \n
+       "{" \n
+       "	// random fake/garbage positions, so the fsm doesn't bug out, if we haven't" \n
+       "	// got a building..." \n
+       "	_buildingPosition = position (leader _group);" \n
+       "	for ""_i"" from 0 to 12 do" \n
+       "	{" \n
+       "		_buildingPositions set [_i, ( [_buildingPosition, [0, 0], [30, 30]] call RUBE_randomizePos)];" \n
+       "	};" \n
+       "	// no collapsed house check in that case..." \n
+       "	_checkBuilding = false;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "// private functions" \n
+       "private [" \n
+       "	""_classifyUnits"", ""_getNextPosition"", ""_getFriendlyPos""," \n
+       "	""_scriptNothing"", ""_scriptSitDown""," \n
+       "	""_randomActivity""," \n
+       "	""_domesticActivity"", ""_enableUnits""," \n
+       "	""_isHouseDestroyed""" \n
+       "];" \n
+       "" \n
+       "// void => void" \n
+       "_classifyUnits = {" \n
+       "	_units = [];" \n
+       "	_deadUnits = [];" \n
+       "	_injuredUnits = [];" \n
+       "	_captiveUnits = [];" \n
+       "" \n
+       "	{" \n
+       "		switch (true) do" \n
+       "		{" \n
+       "			case (!(alive _x)): { _deadUnits set [(count _deadUnits), _x]; };" \n
+       "			case (!(canStand _x)): { _injuredUnits set [(count _injuredUnits), _x]; };" \n
+       "			case (captive _x): { _captiveUnits set [(count _captiveUnits), _x]; };" \n
+       "			default" \n
+       "			{" \n
+       "				_units set [(count _units), _x];" \n
+       "			};" \n
+       "		};" \n
+       "	} forEach (units _group);" \n
+       "};" \n
+       "" \n
+       "// string => position" \n
+       "_getNextPosition = {" \n
+       "	private [""_type""];" \n
+       "	_type = ""any"";" \n
+       "	if ((typeName _this) == ""STRING"") then" \n
+       "	{" \n
+       "		_type = _this;" \n
+       "	};" \n
+       "" \n
+       "	if ((count _bPosCopy) == 0) then" \n
+       "	{" \n
+       "		_bPosCopy = + _buildingPositions;" \n
+       "	};" \n
+       "" \n
+       "	// building position" \n
+       "	if ((_type in [""any"", ""indoor""]) && (random 1.0) > 0.42) exitWith" \n
+       "	{" \n
+       "		(_bPosCopy call RUBE_randomPop)" \n
+       "	};" \n
+       "" \n
+       "	// outdoor position" \n
+       "	( [(position _building), [9, 9], [_radius, _radius]] call RUBE_randomizePos)" \n
+       "};" \n
+       "" \n
+       "" \n
+       "// tries to return a position from a nearby friendly" \n
+       "_getFriendlyPos = {" \n
+       "	private [""_men"", ""_man""];" \n
+       "" \n
+       "	_men = nearestObjects [_this, [""man""], (_radius * (1 + (random 0.5)))];" \n
+       "" \n
+       "	if ((count _men) > 0) exitWith" \n
+       "	{" \n
+       "		_man = _men call RUBE_randomSelect;" \n
+       "		_this doWatch _man;" \n
+       "		(position _man)" \n
+       "	};" \n
+       "" \n
+       "	// random position otherwise..." \n
+       "	([_position, [2, 2], [_radius, _radius]] call RUBE_randomizePos)" \n
+       "};" \n
+       "" \n
+       "// ACTIVITY SCRIPTS" \n
+       "//" \n
+       "// unit => script handle" \n
+       "_scriptNothing = {};" \n
+       "" \n
+       "_scriptSitDown = {" \n
+       "	_this action [""SitDown"", _this];" \n
+       "	_this disableAI ""ANIM"";" \n
+       "};" \n
+       "" \n
+       "// ACTIVITY SCRIPT SELECTORS" \n
+       "//" \n
+       "// select random activity, outdoor or indoor" \n
+       "// units => script" \n
+       "_randomActivity = {" \n
+       "	private [""_script""];" \n
+       "	_script = {};" \n
+       "" \n
+       "	if ([_this, ""RUBE_isMale""] call RUBE_isTrue) then" \n
+       "	{" \n
+       "		// male activities" \n
+       "		_script = [" \n
+       "			_scriptSitDown," \n
+       "			_scriptNothing" \n
+       "		] call RUBE_randomSelect;" \n
+       "	} else" \n
+       "	{" \n
+       "		// female activities" \n
+       "		_script = [" \n
+       "			_scriptNothing" \n
+       "		] call RUBE_randomSelect;" \n
+       "	};" \n
+       "" \n
+       "	_script" \n
+       "};" \n
+       "" \n
+       "" \n
+       "// units => void" \n
+       "_domesticActivity = {" \n
+       "	private [""_r"", ""_p"", ""_h""];" \n
+       "" \n
+       "	// re-enable AI" \n
+       "	_this call _enableUnits;" \n
+       "" \n
+       "	// stop units" \n
+       "	doStop _this;" \n
+       "" \n
+       "	{" \n
+       "		_r = floor (random 100);" \n
+       "		// always try to get the next buddy and watch him.." \n
+       "		// civilians care for each other... :)" \n
+       "		_p = _x call _getFriendlyPos;" \n
+       "" \n
+       "		// stop running" \n
+       "		_x forceSpeed 2.0;" \n
+       "" \n
+       "		switch (true) do" \n
+       "		{" \n
+       "			// walk to another unit" \n
+       "			case ((_r%3) == 0):" \n
+       "			{" \n
+       "				[_x, _p] execFSM ""modules\common\RUBE\ai\doMoveStop.fsm"";" \n
+       "			};" \n
+       "			// walk to another position" \n
+       "			default" \n
+       "			{" \n
+       "				_p =  ""any"" call _getNextPosition;" \n
+       "				_h = [_x,_p, (_x call _randomActivity)] execFSM ""modules\common\RUBE\ai\doMoveStop.fsm"";" \n
+       "			};" \n
+       "		};" \n
+       "	} forEach _this;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "// units => void" \n
+       "_enableUnits = {" \n
+       "	{" \n
+       "		_x playMoveNow ""AmovPercMstpSlowWrflDnon"";" \n
+       "		_x switchMove """";" \n
+       "" \n
+       "		_x setUnitPos ""AUTO"";" \n
+       "		_x doWatch objNull;" \n
+       "		_x enableAI ""MOVE"";" \n
+       "		_x enableAI ""ANIM"";" \n
+       "		_x enableAI ""AUTOTARGET"";" \n
+       "	} forEach _this;" \n
+       "};" \n
+       "" \n
+       "// void => boolean" \n
+       "_isHouseDestroyed = {" \n
+       "	if (isNull _building) exitWith" \n
+       "	{" \n
+       "		_checkBuilding" \n
+       "	};" \n
+       "	if ((damage _building) > 0.99) exitWith" \n
+       "	{" \n
+       "		_checkBuilding" \n
+       "	};" \n
+       "" \n
+       "	false" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="init_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "decision">*/
+    class decision
+    {
+      name = "decision";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 4.000000;
+          to="dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_group call RUBE_aliveGroup)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "captive_s_">*/
+        class captive_s_
+        {
+          priority = 3.000000;
+          to="survival";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(count _captiveUnits) > 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "collapsed_house">*/
+        class collapsed_house
+        {
+          priority = 2.000000;
+          to="homeless";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([] call _isHouseDestroyed)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "cooldown">*/
+        class cooldown
+        {
+          priority = 1.000000;
+          to="domestic_activit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t1) > _cooldown"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="delay_loop";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "delay_loop">*/
+    class delay_loop
+    {
+      name = "delay_loop";
+      init = /*%FSM<STATEINIT""">*/"_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "dead">*/
+    class dead
+    {
+      name = "dead";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "domestic_activit">*/
+    class domestic_activit
+    {
+      name = "domestic_activit";
+      init = /*%FSM<STATEINIT""">*/"[] call _classifyUnits;" \n
+       "" \n
+       "if (_actCoef < 1.0) then" \n
+       "{" \n
+       "	_units = [_units, _actCoef] call RUBE_randomSubSet;" \n
+       "};" \n
+       "" \n
+       "// run new activity" \n
+       "_units call _domesticActivity;" \n
+       "" \n
+       "// update cooldown time" \n
+       "_cooldown = (10 + (random 50));" \n
+       "" \n
+       "// update proportion of the group that" \n
+       "// will change activity on the next run" \n
+       "_actCoef = (0.1 + (random 0.35));"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_t1 = time;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "survival">*/
+    class survival
+    {
+      name = "survival";
+      init = /*%FSM<STATEINIT""">*/"// run onSurvival" \n
+       "if ((typeName _onSurvival) == ""CODE"") then" \n
+       "{" \n
+       "	_group call _onSurvival;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "homeless">*/
+    class homeless
+    {
+      name = "homeless";
+      init = /*%FSM<STATEINIT""">*/"// run onHomeless" \n
+       "if ((typeName _onHomeless) == ""CODE"") then" \n
+       "{" \n
+       "	_group call _onHomeless;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "init_1">*/
+    class init_1
+    {
+      name = "init_1";
+      init = /*%FSM<STATEINIT""">*/"[" \n
+       "	[""group"", _group]," \n
+       "	[""position"", _buildingPosition]," \n
+       "	[""type"", ""MOVE""]," \n
+       "	[""speed"", ""LIMITED""]" \n
+       "] call RUBE_updateWaypoint;" \n
+       "" \n
+       "// init sex" \n
+       "{" \n
+       "	_x setVariable [""RUBE_isMale"", (_x call RUBE_isMale), true];" \n
+       "} forEach (units _group);" \n
+       "" \n
+       "_t1 = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="init";
+  finalStates[] =
+  {
+    "dead",
+    "survival",
+    "homeless",
+  };
+};
+/*%FSM</COMPILE>*/

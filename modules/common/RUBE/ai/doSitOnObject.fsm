@@ -1,0 +1,357 @@
+/*%FSM<COMPILE "C:\Programme\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, RUBE_AI_doSitOnObject">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"init",0,250,-39.148243,-122.139137,50.851753,-72.139137,0.000000,"init"};
+item1[] = {"_",4,218,-11.252667,-50.707645,23.009216,-22.665092,0.000000,""};
+item2[] = {"doMove",2,250,-39.099426,6.301077,50.900585,56.301060,0.000000,"doMove"};
+item3[] = {"unknown_object",4,218,85.682434,-122.661331,175.682434,-72.661331,1.000000,"unknown" \n "object"};
+item4[] = {"exit",1,250,221.677246,-121.838928,311.677246,-71.838943,0.000000,"exit"};
+item5[] = {"dead",4,218,88.104530,6.500324,178.104538,56.500320,1.000000,"dead"};
+item6[] = {"dead",1,250,219.849197,7.344833,309.849213,57.344818,0.000000,"dead"};
+item7[] = {"unitReady",4,218,-39.417557,89.263008,50.582443,139.263000,0.000000,"unitReady"};
+item8[] = {"sit_on_object",2,250,-40.262066,165.860870,49.737949,215.860870,0.000000,"sit on object"};
+item9[] = {"_",4,218,87.260017,165.860886,177.260025,215.860886,0.000000,""};
+item10[] = {"done",1,250,219.849213,166.705414,309.849243,216.705399,0.000000,"done"};
+item11[] = {"no_unit",4,218,79.940002,-192.323425,169.940002,-142.323425,2.000000,"no unit"};
+link0[] = {0,1};
+link1[] = {0,3};
+link2[] = {0,11};
+link3[] = {1,2};
+link4[] = {2,5};
+link5[] = {2,7};
+link6[] = {3,4};
+link7[] = {5,6};
+link8[] = {7,8};
+link9[] = {8,9};
+link10[] = {9,10};
+link11[] = {11,4};
+globals[] = {0.000000,0,0,0,0,640,480,1,13,6316128,1,-145.659653,362.739685,241.597198,-229.643341,620,601,1};
+window[] = {0,-1,-1,-1,-1,974,1682,2881,242,1,637};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "RUBE_AI_doSitOnObject";
+  class States
+  {
+    /*%FSM<STATE "init">*/
+    class init
+    {
+      name = "init";
+      init = /*%FSM<STATEINIT""">*/"/*" \n
+       "	Description:" \n
+       "	 doMove to given object and sit on it." \n
+       "*/" \n
+       "" \n
+       "private [" \n
+       "	""_unit"", ""_object"", ""_class"", ""_position""," \n
+       "	""_animations"", ""_posOffset"", ""_dirOffset""," \n
+       "	""_animationSetIdle""," \n
+       "	""_animationSetUnarmL""," \n
+       "	""_animationSetUnarmR""," \n
+       "	""_animationSetHigh""," \n
+       "	""_pitchBank"", ""_pos"", ""_d"", ""_e""" \n
+       "];" \n
+       "" \n
+       "_unit = _this select 0;" \n
+       "_object = _this select 1;" \n
+       "" \n
+       "_class = typeOf _object;" \n
+       "_position = [];" \n
+       "_animations = [];" \n
+       "_posOffset = [];" \n
+       "_dirOffset = 0;" \n
+       "" \n
+       "_animationSetIdle = [" \n
+       "	""situnarm_l_idleloop""," \n
+       "	""situnarm_l_idleloop2""" \n
+       "];" \n
+       "" \n
+       "_animationSetUnarmL = [" \n
+       "	""sitUnarm_L_idleLoop2""," \n
+       "	""sitUnarm_L_idleLoop3""," \n
+       "	""sitUnarm_L_idleLoop4""," \n
+       "	""sitUnarm_L_idleLoop5""," \n
+       "	""sitUnarm_L_killingFly""," \n
+       "	""sitUnarm_L_relaxing""," \n
+       "	""sitUnarm_L_talking""" \n
+       "];" \n
+       "" \n
+       "_animationSetUnarmR = [" \n
+       "	""sitUnarm_R_idleLoop2""," \n
+       "	""sitUnarm_R_idleLoop3""," \n
+       "	""sitUnarm_R_idleLoop4""," \n
+       "	""sitUnarm_R_idleLoop5""," \n
+       "	""sitUnarm_R_killingFly""," \n
+       "	""sitUnarm_R_relaxing""," \n
+       "	""sitUnarm_R_talking""" \n
+       "];" \n
+       "" \n
+       "_animationSetHigh = [" \n
+       "	""sitTableUnarm_talkingListening_TowingTractor""" \n
+       "];" \n
+       "" \n
+       "" \n
+       "switch (_class) do" \n
+       "{" \n
+       "	case ""Park_bench1"":" \n
+       "	{" \n
+       "		_position = _object modelToWorld [0, 1, 0];" \n
+       "		_d = 0;" \n
+       "		if ((random 1.0) > 0.5) then" \n
+       "		{" \n
+       "			_animations =[" \n
+       "				_animations," \n
+       "				_animationSetIdle," \n
+       "				_animationSetUnarmL" \n
+       "			] call RUBE_arrayAppend;" \n
+       "		} else" \n
+       "		{" \n
+       "			_animations =[" \n
+       "				_animations," \n
+       "				_animationSetUnarmR" \n
+       "			] call RUBE_arrayAppend;" \n
+       "			_d = 180;" \n
+       "		};" \n
+       "" \n
+       "		_posOffset = [0, 0.05, 0];" \n
+       "		_dirOffset = -270 + _d;" \n
+       "	};" \n
+       "	case ""FoldChair"":" \n
+       "	{" \n
+       "		_position = _object modelToWorld [0, 1, 0];" \n
+       "		_d = 0;" \n
+       "		if ((random 1.0) > 0.5) then" \n
+       "		{" \n
+       "			_animations =[" \n
+       "				_animations," \n
+       "				_animationSetUnarmL," \n
+       "				_animationSetIdle" \n
+       "			] call RUBE_arrayAppend;" \n
+       "		} else" \n
+       "		{" \n
+       "			_animations =[" \n
+       "				_animations," \n
+       "				_animationSetUnarmR" \n
+       "			] call RUBE_arrayAppend;" \n
+       "			_d = 180;" \n
+       "		};" \n
+       "" \n
+       "		_posOffset = [0, -0.15, 0.01];" \n
+       "		_dirOffset = -90 + _d;" \n
+       "	};" \n
+       "	case ""USBasicWeaponsBox"":" \n
+       "	{" \n
+       "		_position = _object modelToWorld [0, 1, 0];" \n
+       "		_d = 0;" \n
+       "		if ((random 1.0) > 0.5) then" \n
+       "		{" \n
+       "			_animations =[" \n
+       "				_animations," \n
+       "				_animationSetUnarmL," \n
+       "				_animationSetIdle" \n
+       "			] call RUBE_arrayAppend;" \n
+       "		} else" \n
+       "		{" \n
+       "			_animations =[" \n
+       "				_animations," \n
+       "				_animationSetUnarmR" \n
+       "			] call RUBE_arrayAppend;" \n
+       "			_d = 180;" \n
+       "		};" \n
+       "" \n
+       "		_posOffset = [-0.21, 0.01, 0.11];" \n
+       "		_dirOffset = -270 + _d;" \n
+       "	};" \n
+       "	case ""Land_Chair_EP1"":" \n
+       "	{" \n
+       "		_position = _object modelToWorld [0, 1, 0];" \n
+       "		_d = 0;" \n
+       "		_e = 0.02;" \n
+       "		if ((random 1.0) > 0.5) then" \n
+       "		{" \n
+       "			_animations =[" \n
+       "				_animations," \n
+       "				_animationSetUnarmL," \n
+       "				_animationSetIdle" \n
+       "			] call RUBE_arrayAppend;" \n
+       "			_e = 0.07;" \n
+       "		} else" \n
+       "		{" \n
+       "			_animations =[" \n
+       "				_animations," \n
+       "				_animationSetUnarmR" \n
+       "			] call RUBE_arrayAppend;" \n
+       "			_d = 180;" \n
+       "		};" \n
+       "" \n
+       "		_posOffset = [0.15, _e, 0];" \n
+       "		_dirOffset = 180 + _d;" \n
+       "	};" \n
+       "	case ""Land_Table_EP1"":" \n
+       "	{" \n
+       "		_position = _object modelToWorld [0, 1, 0];" \n
+       "		_d = 0;" \n
+       "		if ((random 1.0) > 0.5) then" \n
+       "		{" \n
+       "			_animations =[" \n
+       "				_animations," \n
+       "				_animationSetUnarmL," \n
+       "				_animationSetIdle" \n
+       "			] call RUBE_arrayAppend;" \n
+       "		} else" \n
+       "		{" \n
+       "			_animations =[" \n
+       "				_animations," \n
+       "				_animationSetUnarmR" \n
+       "			] call RUBE_arrayAppend;" \n
+       "			_d = 180;" \n
+       "		};" \n
+       "" \n
+       "		_posOffset = [0.67, -0.25, 0];" \n
+       "		_dirOffset = 0 + _d;" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "no_unit">*/
+        class no_unit
+        {
+          priority = 2.000000;
+          to="exit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(isNil ""_unit"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "unknown_object">*/
+        class unknown_object
+        {
+          priority = 1.000000;
+          to="exit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((count _position) == 0)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="doMove";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "doMove">*/
+    class doMove
+    {
+      name = "doMove";
+      init = /*%FSM<STATEINIT""">*/"_position set [2, 0];" \n
+       "" \n
+       "_unit forceSpeed 2.0;" \n
+       "_unit doMove _position;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 1.000000;
+          to="dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(alive _unit)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "unitReady">*/
+        class unitReady
+        {
+          priority = 0.000000;
+          to="sit_on_object";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"unitReady _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "exit">*/
+    class exit
+    {
+      name = "exit";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "dead">*/
+    class dead
+    {
+      name = "dead";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "sit_on_object">*/
+    class sit_on_object
+    {
+      name = "sit_on_object";
+      init = /*%FSM<STATEINIT""">*/"doStop _unit;" \n
+       "" \n
+       "_unit switchMove (_animations call RUBE_randomSelect);" \n
+       "_unit disableAI ""ANIM"";" \n
+       "_unit disableAI ""AUTOTARGET"";" \n
+       "" \n
+       "_pos = _object modelToWorld _posOffset;" \n
+       "_pos set [2, (_posOffset select 2)];" \n
+       "" \n
+       "_unit setDir ((direction _object) + _dirOffset);" \n
+       "_unit setPos _pos;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="done";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "done">*/
+    class done
+    {
+      name = "done";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="init";
+  finalStates[] =
+  {
+    "exit",
+    "dead",
+    "done",
+  };
+};
+/*%FSM</COMPILE>*/

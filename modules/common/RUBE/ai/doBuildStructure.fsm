@@ -1,0 +1,1334 @@
+/*%FSM<COMPILE "C:\Programme\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, doBuildStructure">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"init",0,250,-555.019165,-706.151367,-465.019287,-656.150879,0.000000,"init"};
+item1[] = {"no_supplies",4,218,28.281952,-527.935547,118.282089,-477.935516,3.000000,"no" \n "supplies"};
+item2[] = {"abort",1,250,-193.974426,-706.226563,-103.974411,-656.226440,0.000000,"abort"};
+item3[] = {"player_",4,218,-439.628967,-475.318024,-349.628967,-424.339264,1.000000,"player?"};
+item4[] = {"AI",4,218,-439.316406,-566.667603,-349.316345,-516.667603,0.000000,"AI"};
+item5[] = {"abort_input_listener",2,250,-318.101501,-473.726105,-191.956940,-422.747223,0.000000,"abort input listener" \n "and create cam"};
+item6[] = {"_",-1,250,362.192200,-131.330002,365.128601,-131.330002,0.000000,""};
+item7[] = {"prepare_to_work",2,250,-55.604225,-46.132240,61.286591,5.036909,0.000000,"prepare to work" \n "(drop supplies)"};
+item8[] = {"dragging_supplie",4,218,-117.488228,-390.948669,-27.488235,-340.948669,0.000000,"dragging" \n "supplies"};
+item9[] = {"cant_stand__dead",4,218,136.947311,241.752289,226.947311,291.752075,8.000000,"cant stand/" \n "dead"};
+item10[] = {"abort",4,218,85.147758,328.970001,175.147797,378.969879,9.000000,"abort"};
+item11[] = {"_",4,218,-13.977705,28.527809,22.188684,58.951973,0.000000,""};
+item12[] = {"working_loop",2,250,-82.538116,235.735992,88.184776,298.989044,0.000000,"working loop"};
+item13[] = {"go_on",4,218,-39.807327,330.590210,50.192673,380.590210,0.000000,"go on"};
+item14[] = {"move_to_workplac",2,250,-42.216957,408.903503,47.783058,458.903503,0.000000,"move to" \n "workplace"};
+item15[] = {"invalid_building",4,218,-346.370544,-706.090698,-256.370544,-656.090576,2.000000,"invalid" \n "building site"};
+item16[] = {"ready",4,218,-42.216972,488.253052,47.783028,538.252686,0.000000,"ready"};
+item17[] = {"out_of_supplies",4,218,152.412079,165.432739,242.412079,215.432739,7.000000,"out of" \n "supplies"};
+item18[] = {"work__consum_op",2,250,-72.631996,704.092529,77.608986,761.321472,0.000000,"work" \n "(consum op. supplies)"};
+item19[] = {"out_of__op__supp",4,218,-212.391022,708.911560,-122.391060,758.911560,1.000000,"out of " \n "op. supplies"};
+item20[] = {"job_finished_",4,218,273.579071,707.714111,363.579071,757.714233,2.000000,"job finished!"};
+item21[] = {"move_to_supply_o",2,250,-211.265045,479.819275,-121.265030,529.819336,0.000000,"move to" \n "supply object"};
+item22[] = {"ready",4,218,-210.060242,394.277130,-120.060242,444.277130,0.000000,"ready"};
+item23[] = {"take_more_op__su",2,250,-208.855423,313.554199,-118.855408,363.554199,0.000000,"take more" \n "op. supplies"};
+item24[] = {"delay",4,218,-201.799774,246.148788,-128.127289,285.112152,0.000000,"delay"};
+item25[] = {"work",4,218,-140.006653,798.919373,-50.006584,848.919556,0.000000,"work"};
+item26[] = {"consume_supplies",2,250,-77.130157,881.105835,41.577312,932.957886,0.000000,"consume supplies/" \n "raise structure"};
+item27[] = {"delay",4,218,31.576981,792.791504,121.576950,842.791504,0.000000,"delay"};
+item28[] = {"clean_up_building",2,250,273.454498,584.532776,363.454468,634.532654,0.000000,"clean up" \n "building site"};
+item29[] = {"clean_up_re_enable",2,250,269.855591,242.627396,359.855621,292.627380,0.000000,"clean up" \n "re-enable unit"};
+item30[] = {"start_working_an",2,250,-42.748070,563.882813,47.251945,613.882813,0.000000,"start working" \n "animation"};
+item31[] = {"_",4,218,-15.379718,639.380188,19.883583,669.994263,0.000000,""};
+item32[] = {"player_",4,218,406.577698,331.928833,496.577850,381.928833,0.000000,"player?"};
+item33[] = {"AI",4,218,407.718109,458.507477,497.717834,508.507477,1.000000,"AI"};
+item34[] = {"exit",1,250,666.577026,457.367065,756.577087,507.367004,0.000000,"exit"};
+item35[] = {"exit_cam",2,250,538.858032,330.788513,628.858032,380.788513,0.000000,"exit cam"};
+item36[] = {"wait",4,218,665.436646,329.648163,755.436646,379.648132,0.000000,"wait"};
+item37[] = {"",7,210,-293.595795,500.700256,-285.595795,508.700073,0.000000,""};
+item38[] = {"",7,210,-292.507965,955.032532,-284.507965,963.032532,0.000000,""};
+item39[] = {"",7,210,127.139999,956.172729,135.139999,964.172729,0.000000,""};
+item40[] = {"",7,210,127.139992,551.349365,135.140015,559.349304,0.000000,""};
+item41[] = {"",7,210,-326.665863,480.174011,-318.665863,488.174164,0.000000,""};
+item42[] = {"",7,210,-325.578064,997.225220,-317.578064,1005.225220,0.000000,""};
+item43[] = {"",7,210,196.701218,998.365662,204.701218,1006.365723,0.000000,""};
+item44[] = {"",7,210,195.560852,560.472168,203.560852,568.472107,0.000000,""};
+item45[] = {"destroy_cam",2,250,830.786987,329.648163,920.786987,379.648163,0.000000,"destroy" \n "cam"};
+item46[] = {"_",4,218,830.787048,453.946075,920.787048,503.946075,0.000000,""};
+item47[] = {"scan_for_supplies",2,250,160.772797,-525.402832,297.539337,-476.571869,0.000000,"scan for" \n "supplies in range"};
+item48[] = {"_",4,218,-161.282501,-461.587982,-128.571533,-432.632965,0.000000,""};
+item49[] = {"_",4,218,-193.484222,-556.970093,-161.942474,-526.845825,0.000000,""};
+item50[] = {"no_supplies",4,218,365.376678,-525.987427,455.376678,-475.987335,1.000000,"no supplies"};
+item51[] = {"supplies_in_rang",4,218,240.276031,-432.454071,330.275970,-382.454071,0.000000,"supplies" \n "in range"};
+item52[] = {"pick_supplies",2,250,240.276031,-338.336243,330.275940,-288.336243,0.000000,"pick supplies"};
+item53[] = {"s__already_in_use",4,218,358.361572,-338.336182,470.575562,-287.167053,1.000000,"s. already in" \n "use (help)"};
+item54[] = {"new_supplies",4,218,123.359467,-337.166840,213.359451,-287.166840,0.000000,"new supplies"};
+item55[] = {"move_out",2,250,369.468628,-250.064331,459.468506,-200.064255,0.000000,"move out"};
+item56[] = {"take_initial_op",2,250,-41.466766,91.181908,48.533340,141.181915,0.000000,"take initial" \n "op.supplies"};
+item57[] = {"_",4,218,-13.432825,170.250519,21.616430,194.528900,0.000000,""};
+item58[] = {"ready",4,218,368.884033,91.916466,458.883789,141.916443,0.000000,"ready"};
+item59[] = {"_",4,218,-525.527100,-592.045288,-491.646912,-560.751953,0.000000,""};
+item60[] = {"init_building_si",2,250,-554.756226,-509.034576,-464.756226,-459.034393,0.000000,"init" \n "building site"};
+item61[] = {"move_out_1",2,250,122.190292,-264.678864,212.190277,-214.678848,0.000000,"move out"};
+item62[] = {"ready",4,218,121.021156,-195.698166,211.021149,-145.698151,0.000000,"ready"};
+item63[] = {"drag_supplies_and",2,250,106.991241,-119.702393,221.543686,-72.040710,0.000000,"drag supplies" \n "and move to b.s."};
+item64[] = {"",7,210,553.612183,-505.526886,561.612122,-497.526886,0.000000,""};
+item65[] = {"",7,210,554.860596,262.569611,562.860596,270.569641,0.000000,""};
+item66[] = {"ready",4,218,119.267441,-43.706650,209.267426,6.293344,0.000000,"ready"};
+item67[] = {"",7,210,508.093933,-416.715240,516.093933,-408.715240,0.000000,""};
+item68[] = {"",7,210,273.012695,-182.837311,281.012695,-174.837311,0.000000,""};
+item69[] = {"",7,210,308.087616,-122.040718,316.087616,-114.040718,0.000000,""};
+item70[] = {"",7,210,273.091827,31.074963,281.091827,39.074966,0.000000,""};
+item71[] = {"",7,210,126.946213,31.074965,134.946198,39.074966,0.000000,""};
+item72[] = {"",7,210,308.166779,153.837296,316.166779,161.837296,0.000000,""};
+item73[] = {"stumpled",4,218,245.537262,-76.443237,335.537323,-26.443245,1.000000,"stumpled"};
+item74[] = {"abort_AI_action",2,250,-317.415710,-566.323486,-227.415680,-516.323486,0.000000,"abort AI action"};
+item75[] = {"del_empty_s__cra",2,250,311.595001,165.573883,401.595032,215.573883,0.000000,"del empty" \n "s.-crate"};
+item76[] = {"__1",2,250,-118.657669,-527.740967,-28.657606,-477.740936,0.000000,""};
+item77[] = {"_",4,218,496.323059,176.096390,527.864868,207.389740,0.000000,""};
+version=1;
+class LayoutItems
+{
+	class Item6
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=10;
+			lStyle=1;
+		};
+	};
+};
+link0[] = {0,15};
+link1[] = {0,59};
+link2[] = {1,47};
+link3[] = {3,5};
+link4[] = {4,74};
+link5[] = {5,48};
+link6[] = {7,11};
+link7[] = {8,7};
+link8[] = {9,29};
+link9[] = {10,29};
+link10[] = {11,56};
+link11[] = {12,9};
+link12[] = {12,10};
+link13[] = {12,13};
+link14[] = {12,17};
+link15[] = {13,14};
+link16[] = {14,16};
+link17[] = {14,40};
+link18[] = {14,44};
+link19[] = {15,2};
+link20[] = {16,30};
+link21[] = {17,75};
+link22[] = {18,19};
+link23[] = {18,20};
+link24[] = {18,25};
+link25[] = {18,40};
+link26[] = {18,44};
+link27[] = {19,21};
+link28[] = {20,28};
+link29[] = {21,22};
+link30[] = {21,37};
+link31[] = {21,41};
+link32[] = {22,23};
+link33[] = {23,24};
+link34[] = {24,12};
+link35[] = {25,26};
+link36[] = {26,27};
+link37[] = {27,18};
+link38[] = {28,32};
+link39[] = {28,33};
+link40[] = {29,32};
+link41[] = {29,33};
+link42[] = {30,31};
+link43[] = {31,18};
+link44[] = {32,35};
+link45[] = {33,34};
+link46[] = {35,36};
+link47[] = {36,45};
+link48[] = {37,38};
+link49[] = {38,39};
+link50[] = {39,40};
+link51[] = {40,10};
+link52[] = {41,42};
+link53[] = {42,43};
+link54[] = {43,44};
+link55[] = {44,9};
+link56[] = {45,46};
+link57[] = {46,34};
+link58[] = {47,50};
+link59[] = {47,51};
+link60[] = {48,76};
+link61[] = {49,76};
+link62[] = {50,64};
+link63[] = {51,52};
+link64[] = {52,53};
+link65[] = {52,54};
+link66[] = {53,55};
+link67[] = {54,61};
+link68[] = {55,58};
+link69[] = {55,68};
+link70[] = {55,69};
+link71[] = {56,57};
+link72[] = {57,12};
+link73[] = {58,56};
+link74[] = {59,60};
+link75[] = {60,3};
+link76[] = {60,4};
+link77[] = {61,62};
+link78[] = {61,68};
+link79[] = {61,69};
+link80[] = {62,63};
+link81[] = {63,66};
+link82[] = {63,68};
+link83[] = {63,69};
+link84[] = {63,73};
+link85[] = {64,65};
+link86[] = {65,29};
+link87[] = {66,7};
+link88[] = {67,47};
+link89[] = {68,70};
+link90[] = {69,72};
+link91[] = {70,71};
+link92[] = {71,10};
+link93[] = {72,9};
+link94[] = {73,63};
+link95[] = {74,49};
+link96[] = {75,77};
+link97[] = {76,1};
+link98[] = {76,8};
+link99[] = {77,67};
+globals[] = {0.000000,0,0,0,0,640,480,1,88,6316128,1,-643.048584,243.685532,103.887543,-738.848938,786,747,1};
+window[] = {2,-1,-1,-1,-1,837,22,1114,22,3,803};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "doBuildStructure";
+  class States
+  {
+    /*%FSM<STATE "init">*/
+    class init
+    {
+      name = "init";
+      init = /*%FSM<STATEINIT""">*/"/*" \n
+       "	Description:" \n
+       "	 build at building site with supplies the unit is currently dragging" \n
+       "*/" \n
+       "" \n
+       "" \n
+       "_unit = _units;" \n
+       "_cam = objNull;" \n
+       "_camScript =  0 spawn {};" \n
+       "_inputListener = -1;" \n
+       "_aiAbortAction = -1;" \n
+       "_t = time;" \n
+       "_delay = RUBE_makeBuildableSupplyDelay;" \n
+       "" \n
+       "if ((typeName _units) == ""ARRAY"") then" \n
+       "{" \n
+       "	_unit = _units select 0;" \n
+       "};" \n
+       "" \n
+       "_buildingSite = _target;" \n
+       "_suppliesObject = _unit getVariable ""RUBE_attachObj"";" \n
+       "" \n
+       "_supplies = 0;" \n
+       "_opSupplies = 0;" \n
+       "" \n
+       "switch (true) do" \n
+       "{" \n
+       "	case (isnil ""_suppliesObject""): {};" \n
+       "	case (!(isNull _suppliesObject)) : " \n
+       "	{" \n
+       "		_supplies = _suppliesObject getVariable ""RUBE_supplies"";" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "" \n
+       "// since there is no player while the player executes this... (selectNoPlayer)" \n
+       "// we can't save stuff on the unit/player.. ha." \n
+       "RUBE_PLAYER_ABORT_ACTION = false;" \n
+       "" \n
+       "/*" \n
+       "	private functions" \n
+       "*/" \n
+       "" \n
+       "_isReady = {" \n
+       "	((moveToCompleted _unit) || (moveToFailed _unit))" \n
+       "};" \n
+       "" \n
+       "_takeSupplies = {" \n
+       "	private [""_amount""];" \n
+       "	_amount = _this;" \n
+       "	_supplies = _suppliesObject getVariable ""RUBE_supplies"";" \n
+       "" \n
+       "	if (_supplies >= _amount) then" \n
+       "	{" \n
+       "		_suppliesObject setVariable [""RUBE_supplies"", (_supplies - _amount), true];" \n
+       "	} else" \n
+       "	{" \n
+       "		_amount = _supplies;" \n
+       "		_suppliesObject setVariable [""RUBE_supplies"", 0, true];" \n
+       "	};" \n
+       "" \n
+       "	_amount" \n
+       "};" \n
+       "" \n
+       "_consumeSupplies = {" \n
+       "	private [""_amount"", ""_consumed"", ""_needed"", ""_base""];" \n
+       "	_amount = _this;" \n
+       "	_consumed = _buildingSite getVariable ""RUBE_BS_consumed"";" \n
+       "	_needed = _cost - _consumed;" \n
+       "" \n
+       "	if (_needed < _amount) then" \n
+       "	{" \n
+       "		_amount = _needed;" \n
+       "	};" \n
+       "" \n
+       "	if (_opSupplies < _amount) then" \n
+       "	{" \n
+       "		_amount = _opSupplies;" \n
+       "	};" \n
+       "" \n
+       "	// withdraw/transfer supplies amount" \n
+       "	_opSupplies = _opSupplies - _amount;" \n
+       "	_consumed = _consumed + _amount;" \n
+       "	_buildingSite setVariable [""RUBE_BS_consumed"", _consumed, true];" \n
+       "" \n
+       "	if (_consumed >= _cost) then" \n
+       "	{" \n
+       "		_structureComplete = true;" \n
+       "	};" \n
+       "" \n
+       "	// raise building" \n
+       "	_base = _buildingSite getVariable ""RUBE_BS_heightBase"";" \n
+       "	_structure setPos [" \n
+       "		(_position select 0)," \n
+       "		(_position select 1)," \n
+       "		(_base + (_heightPerSupply * _consumed))" \n
+       "	];" \n
+       "" \n
+       "	// update builiding site marker" \n
+       "	if (_marker != """") then" \n
+       "	{" \n
+       "		_marker setMarkerText format[""%1/%2"", _consumed, _cost];" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "_killParticles = {" \n
+       "	{" \n
+       "		deleteVehicle _x;" \n
+       "	} forEach _particles;" \n
+       "" \n
+       "	_particles = [];" \n
+       "};" \n
+       "" \n
+       "_enableUnit = {" \n
+       "	_unit forceSpeed 1;" \n
+       "	_unit setUnitPos ""AUTO"";" \n
+       "" \n
+       "	_unit doWatch objNull;" \n
+       "	if (alive _unit) then" \n
+       "	{" \n
+       "		//_unit switchMove ""AmovPknlMstpSnonWnonDnon_AmovPercMstpSnonWnonDnon"";" \n
+       "		_unit switchMove """";" \n
+       "	};" \n
+       "	//_unit enableAI ""MOVE"";" \n
+       "	//_unit enableAI ""AUTOTARGET"";" \n
+       "" \n
+       "	[_unit] allowGetIn true;" \n
+       "	unassignVehicle _unit;" \n
+       "};" \n
+       "" \n
+       "_cleanUp = {" \n
+       "	[] call _killParticles;" \n
+       "	_unit forceSpeed -1;" \n
+       "	_unit forceWalk false;" \n
+       "	_unit removeEventHandler [""killed"", _eventHandler];" \n
+       "	_unit setVariable [""RUBE_abortAction"", nil, true];" \n
+       "" \n
+       "	// remove from worker list" \n
+       "	_buildingSiteWorkers = _buildingSite getVariable ""RUBE_BS_workers"";" \n
+       "	_buildingSiteWorkers = _buildingSiteWorkers - [_unit];" \n
+       "	_buildingSite setVariable [""RUBE_BS_workers"", _buildingSiteWorkers, true];" \n
+       "" \n
+       "	// remove AI abort action" \n
+       "	if (_aiAbortAction > -1) then" \n
+       "	{" \n
+       "		[_unit, _aiAbortAction] call RUBE_removeAction;" \n
+       "	};" \n
+       "" \n
+       "	// put supplies (in hand) back to supplies-object (crate or something)" \n
+       "	if (_opSupplies > 0) then" \n
+       "	{" \n
+       "		_suppliesObject setVariable [""RUBE_supplies"", (_supplies + _opSupplies), true];" \n
+       "	};" \n
+       "" \n
+       "	// make supplies-object draggable again" \n
+       "	_suppliesObject setVariable [""RUBE_assignedFor"", nil, true];" \n
+       "	[_suppliesObject] call RUBE_makeDraggable;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "invalid_building">*/
+        class invalid_building
+        {
+          priority = 2.000000;
+          to="abort";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!([_buildingSite, ""RUBE_BS_structure""] call RUBE_isObject)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="init_building_si";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "abort">*/
+    class abort
+    {
+      name = "abort";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "abort_input_listener">*/
+    class abort_input_listener
+    {
+      name = "abort_input_listener";
+      init = /*%FSM<STATEINIT""">*/"RUBE_PLAYER_CURRENT_UNIT = _unit;" \n
+       "" \n
+       "// add input listener to abort building action" \n
+       "_inputListener = [" \n
+       "   [""handlerName"", ""KeyDown""]," \n
+       "   [""code"", {" \n
+       "      private [""_abort""];" \n
+       "      _abort = false;" \n
+       "      " \n
+       "      switch ((_this select 1) select 1) do" \n
+       "      {" \n
+       "         case 17: { _abort = true; }; // W" \n
+       "         case 30: { _abort = true; }; // A" \n
+       "         case 31: { _abort = true; }; // S" \n
+       "         case 32: { _abort = true; }; // D" \n
+       "         case 57: { _abort = true; }; // space" \n
+       "      };" \n
+       "      " \n
+       "      if (_abort) then" \n
+       "      {" \n
+       "	   // there is no player, hahaha" \n
+       "         RUBE_PLAYER_CURRENT_UNIT setVariable [""RUBE_abortAction"", true, true];	" \n
+       "      };" \n
+       "      " \n
+       "      false" \n
+       "   }]" \n
+       "] call RUBE_addInputListener;" \n
+       "" \n
+       "" \n
+       "// create cam and AI/noPlayer" \n
+       "_cam = ""camera"" camCreate (position _unit); " \n
+       "_cam cameraEffect [""internal"",""back""];" \n
+       "_cam camSetFOV 0.78;" \n
+       "" \n
+       "selectNoPlayer;" \n
+       "" \n
+       "_camScript = [" \n
+       "   _cam," \n
+       "   _unit," \n
+       "   2.97, // distance" \n
+       "   1.94, // rel. height above target" \n
+       "   160, // target dir" \n
+       "   0.95 // pan mul" \n
+       "] execVM ""modules\common\RUBE\cam\cam_panShotFollow.sqf"";" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="__1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "prepare_to_work">*/
+    class prepare_to_work
+    {
+      name = "prepare_to_work";
+      init = /*%FSM<STATEINIT""">*/"// release supplies (but don't make draggable yet)" \n
+       "[_unit, _unit, -1, false] spawn RUBE_makeDraggableRelease;" \n
+       "" \n
+       "_suppliesObject setVariable [""RUBE_assignedFor"", _buildingSite, true];" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="take_initial_op";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "working_loop">*/
+    class working_loop
+    {
+      name = "working_loop";
+      init = /*%FSM<STATEINIT""">*/"_unit forceSpeed 2.0;" \n
+       "_unit setUnitPos ""AUTO"";" \n
+       "_unit doWatch objNull;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "abort">*/
+        class abort
+        {
+          priority = 9.000000;
+          to="clean_up_re_enable";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([_unit, ""RUBE_abortAction""] call RUBE_isTrue)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "cant_stand__dead">*/
+        class cant_stand__dead
+        {
+          priority = 8.000000;
+          to="clean_up_re_enable";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(canStand _unit) || !(alive _unit)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "out_of_supplies">*/
+        class out_of_supplies
+        {
+          priority = 7.000000;
+          to="del_empty_s__cra";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_opSupplies == 0)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "go_on">*/
+        class go_on
+        {
+          priority = 0.000000;
+          to="move_to_workplac";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "move_to_workplac">*/
+    class move_to_workplac
+    {
+      name = "move_to_workplac";
+      init = /*%FSM<STATEINIT""">*/"_pos = [" \n
+       "	_position, " \n
+       "	[0, 0], " \n
+       "	[_radius, _radius]" \n
+       "] call RUBE_randomizePos;" \n
+       "" \n
+       "//_pos = _position;" \n
+       "" \n
+       "_unit doWatch _structure;" \n
+       "_unit moveTo _pos;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "abort">*/
+        class abort
+        {
+          priority = 9.000000;
+          to="clean_up_re_enable";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([_unit, ""RUBE_abortAction""] call RUBE_isTrue)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "cant_stand__dead">*/
+        class cant_stand__dead
+        {
+          priority = 8.000000;
+          to="clean_up_re_enable";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(canStand _unit) || !(alive _unit)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "ready">*/
+        class ready
+        {
+          priority = 0.000000;
+          to="start_working_an";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([] call _isReady)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "work__consum_op">*/
+    class work__consum_op
+    {
+      name = "work__consum_op";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "abort">*/
+        class abort
+        {
+          priority = 9.000000;
+          to="clean_up_re_enable";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([_unit, ""RUBE_abortAction""] call RUBE_isTrue)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "cant_stand__dead">*/
+        class cant_stand__dead
+        {
+          priority = 8.000000;
+          to="clean_up_re_enable";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(canStand _unit) || !(alive _unit)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "job_finished_">*/
+        class job_finished_
+        {
+          priority = 2.000000;
+          to="clean_up_building";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_structureComplete"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "out_of__op__supp">*/
+        class out_of__op__supp
+        {
+          priority = 1.000000;
+          to="move_to_supply_o";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_opSupplies == 0)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "work">*/
+        class work
+        {
+          priority = 0.000000;
+          to="consume_supplies";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "move_to_supply_o">*/
+    class move_to_supply_o
+    {
+      name = "move_to_supply_o";
+      init = /*%FSM<STATEINIT""">*/"[] call _killParticles;" \n
+       "[] call _enableUnit;" \n
+       "" \n
+       "_unit moveTo (position _suppliesObject);" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "abort">*/
+        class abort
+        {
+          priority = 9.000000;
+          to="clean_up_re_enable";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([_unit, ""RUBE_abortAction""] call RUBE_isTrue)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "cant_stand__dead">*/
+        class cant_stand__dead
+        {
+          priority = 8.000000;
+          to="clean_up_re_enable";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(canStand _unit) || !(alive _unit)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "ready">*/
+        class ready
+        {
+          priority = 0.000000;
+          to="take_more_op__su";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([] call _isReady)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "take_more_op__su">*/
+    class take_more_op__su
+    {
+      name = "take_more_op__su";
+      init = /*%FSM<STATEINIT""">*/"_unit doWatch _suppliesObject;" \n
+       "_unit setUnitPos ""Middle"";" \n
+       "_unit forceSpeed 0;" \n
+       "" \n
+       "// take hand full of initial operating supplies" \n
+       "_opSupplies = (RUBE_makeBuildableCarryCapacity + (floor (random 5))) call _takeSupplies;" \n
+       "" \n
+       "_t = time;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="working_loop";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((time - _t) > _delay)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "consume_supplies">*/
+    class consume_supplies
+    {
+      name = "consume_supplies";
+      init = /*%FSM<STATEINIT""">*/"1 call _consumeSupplies;" \n
+       "" \n
+       "// extra particles" \n
+       "[_structure, _radius] spawn {" \n
+       "   private [""_obj"", ""_r"", ""_particles""];" \n
+       "   " \n
+       "   _obj = _this select 0;" \n
+       "   _r = _this select 1;" \n
+       "   " \n
+       "   _particles = [" \n
+       "      _obj, " \n
+       "      [([0, _r] call RUBE_randomizeValue), ([0, _r] call RUBE_randomizeValue), ([2, 1] call RUBE_randomizeValue)]" \n
+       "   ] call RUBE_PE_Building;" \n
+       "" \n
+       "   _particles = _particles + ([_obj, [0.25, 0.25, 3]] call RUBE_PE_Building);" \n
+       "   sleep (RUBE_makeBuildableSupplyDelay * (0.6 + (random 0.6)));" \n
+       "   " \n
+       "   {" \n
+       "      deleteVehicle _x;" \n
+       "   } forEach _particles;" \n
+       "};" \n
+       "" \n
+       "_t = time;" \n
+       "_delay = RUBE_makeBuildableSupplyDelay * (0.6 + (random 0.6));"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="work__consum_op";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((time - _t) > _delay)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "clean_up_building">*/
+    class clean_up_building
+    {
+      name = "clean_up_building";
+      init = /*%FSM<STATEINIT""">*/"[] call _enableUnit;" \n
+       "[] call _cleanUp;" \n
+       "" \n
+       "// clean up building site" \n
+       "[_buildingSite] call RUBE_makeBuildableCleanUp;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "AI">*/
+        class AI
+        {
+          priority = 1.000000;
+          to="exit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _camScript"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "player_">*/
+        class player_
+        {
+          priority = 0.000000;
+          to="exit_cam";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "clean_up_re_enable">*/
+    class clean_up_re_enable
+    {
+      name = "clean_up_re_enable";
+      init = /*%FSM<STATEINIT""">*/"[] call _enableUnit;" \n
+       "[] call _cleanUp;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "AI">*/
+        class AI
+        {
+          priority = 1.000000;
+          to="exit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _camScript"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "player_">*/
+        class player_
+        {
+          priority = 0.000000;
+          to="exit_cam";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "start_working_an">*/
+    class start_working_an
+    {
+      name = "start_working_an";
+      init = /*%FSM<STATEINIT""">*/"// building animation" \n
+       "_unit doWatch _structure;" \n
+       "_unit disableAI ""MOVE"";" \n
+       "_unit disableAI ""AUTOTARGET"";" \n
+       "_unit switchMove ""RepairingKneel"";" \n
+       "" \n
+       "{" \n
+       "	_particles set [(count _particles), _x];" \n
+       "} foreach ([_unit, [0.5, 0.5, 2]] call RUBE_PE_Building);" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="work__consum_op";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "exit">*/
+    class exit
+    {
+      name = "exit";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "exit_cam">*/
+    class exit_cam
+    {
+      name = "exit_cam";
+      init = /*%FSM<STATEINIT""">*/"_unit setVariable [""exitCamScript"", true];" \n
+       "" \n
+       "// we need to select a player prior to exiting the cam script" \n
+       "// or the fsm will hang -- dunno why?! it used to work at some point... :/" \n
+       "selectPlayer _unit;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "wait">*/
+        class wait
+        {
+          priority = 0.000000;
+          to="destroy_cam";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _camScript"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "destroy_cam">*/
+    class destroy_cam
+    {
+      name = "destroy_cam";
+      init = /*%FSM<STATEINIT""">*/"player cameraEffect [""terminate"",""back""];" \n
+       "camDestroy _cam;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="exit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "scan_for_supplies">*/
+    class scan_for_supplies
+    {
+      name = "scan_for_supplies";
+      init = /*%FSM<STATEINIT""">*/"_suppliesInRange = [" \n
+       "	(nearestObjects [_buildingSite, [""All""], RUBE_makeBuildableAISupplyScanRadius])," \n
+       "	{" \n
+       "		private [""_s""];" \n
+       "		_s = _this getVariable ""RUBE_supplies"";" \n
+       "		if (isnil ""_s"") exitWith { false };" \n
+       "		if ((typeName _s) != ""SCALAR"") exitWith { false };" \n
+       "" \n
+       "		// already dragged by someone?" \n
+       "		if ([_this, ""RUBE_attachedTo""] call RUBE_isObject) exitWith { false };" \n
+       "" \n
+       "		if (_s > 0) exitWith { true };" \n
+       "		false" \n
+       "	}" \n
+       "] call RUBE_arrayFilter;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "no_supplies">*/
+        class no_supplies
+        {
+          priority = 1.000000;
+          to="clean_up_re_enable";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(count _suppliesInRange) == 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "supplies_in_rang">*/
+        class supplies_in_rang
+        {
+          priority = 0.000000;
+          to="pick_supplies";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "pick_supplies">*/
+    class pick_supplies
+    {
+      name = "pick_supplies";
+      init = /*%FSM<STATEINIT""">*/"_suppliesInRange = [" \n
+       "	_suppliesInRange," \n
+       "	{" \n
+       "		(_this distance _buildingSite)" \n
+       "	}" \n
+       "] call RUBE_shellSort;" \n
+       "" \n
+       "//_suppliesObject = _suppliesInRange call RUBE_randomSelect;" \n
+       "_suppliesObject = _suppliesInRange select 0;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "s__already_in_use">*/
+        class s__already_in_use
+        {
+          priority = 1.000000;
+          to="move_out";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([_suppliesObject, ""RUBE_assignedFor""] call RUBE_isObject)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "new_supplies">*/
+        class new_supplies
+        {
+          priority = 0.000000;
+          to="move_out_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "move_out">*/
+    class move_out
+    {
+      name = "move_out";
+      init = /*%FSM<STATEINIT""">*/"_unit moveTo (position _suppliesObject);" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "abort">*/
+        class abort
+        {
+          priority = 9.000000;
+          to="clean_up_re_enable";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([_unit, ""RUBE_abortAction""] call RUBE_isTrue)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "cant_stand__dead">*/
+        class cant_stand__dead
+        {
+          priority = 8.000000;
+          to="clean_up_re_enable";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(canStand _unit) || !(alive _unit)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "ready">*/
+        class ready
+        {
+          priority = 0.000000;
+          to="take_initial_op";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([] call _isReady)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "take_initial_op">*/
+    class take_initial_op
+    {
+      name = "take_initial_op";
+      init = /*%FSM<STATEINIT""">*/"// take hand full of initial operating supplies" \n
+       "_opSupplies = RUBE_makeBuildableCarryCapacity call _takeSupplies;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="working_loop";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "init_building_si">*/
+    class init_building_si
+    {
+      name = "init_building_si";
+      init = /*%FSM<STATEINIT""">*/"_structure = _buildingSite getVariable ""RUBE_BS_structure"";" \n
+       "_position = position _structure;" \n
+       "_radius = (_buildingSite getVariable ""RUBE_BS_radius"") * 0.6;" \n
+       "" \n
+       "_markers = _buildingSite getVariable ""RUBE_BS_markers"";" \n
+       "_marker = """";" \n
+       "if ((count _markers) > 0) then" \n
+       "{" \n
+       "	_marker = _markers select 1; // info/text-marker" \n
+       "};" \n
+       "" \n
+       "_structureComplete = false;" \n
+       "_cost = _buildingSite getVariable ""RUBE_BS_cost"";" \n
+       "_heightPerSupply = _buildingSite getVariable ""RUBE_BS_heightPerSupply"";" \n
+       "_particles = [];" \n
+       "" \n
+       "_buildingSiteWorkers = _buildingSite getVariable ""RUBE_BS_workers"";" \n
+       "_buildingSiteWorkers set [(count _buildingSiteWorkers), _unit];" \n
+       "_buildingSite setVariable [""RUBE_BS_workers"", _buildingSiteWorkers, true];" \n
+       "" \n
+       "_unit forceWalk true;" \n
+       "_unit forceSpeed 2.0;" \n
+       "_unit action [""WEAPONONBACK"", _unit];" \n
+       "" \n
+       "" \n
+       "unassignVehicle _unit;" \n
+       "[_unit] allowGetIn false;" \n
+       "" \n
+       "" \n
+       "_eventHandler = _unit addEventHandler [""killed"", {" \n
+       "   (_this select 0) switchMove """";" \n
+       "}];" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "player_">*/
+        class player_
+        {
+          priority = 1.000000;
+          to="abort_input_listener";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_unit == player"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "AI">*/
+        class AI
+        {
+          priority = 0.000000;
+          to="abort_AI_action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "move_out_1">*/
+    class move_out_1
+    {
+      name = "move_out_1";
+      init = /*%FSM<STATEINIT""">*/"_suppliesObject setVariable [""RUBE_assignedFor"", _buildingSite, true];" \n
+       "_unit moveTo (position _suppliesObject);"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "abort">*/
+        class abort
+        {
+          priority = 9.000000;
+          to="clean_up_re_enable";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([_unit, ""RUBE_abortAction""] call RUBE_isTrue)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "cant_stand__dead">*/
+        class cant_stand__dead
+        {
+          priority = 8.000000;
+          to="clean_up_re_enable";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(canStand _unit) || !(alive _unit)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "ready">*/
+        class ready
+        {
+          priority = 0.000000;
+          to="drag_supplies_and";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([] call _isReady)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "drag_supplies_and">*/
+    class drag_supplies_and
+    {
+      name = "drag_supplies_and";
+      init = /*%FSM<STATEINIT""">*/"[_suppliesObject, _unit] call RUBE_makeDraggableStart;" \n
+       "_unit moveTo (position _buildingSite);"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "abort">*/
+        class abort
+        {
+          priority = 9.000000;
+          to="clean_up_re_enable";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([_unit, ""RUBE_abortAction""] call RUBE_isTrue)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "cant_stand__dead">*/
+        class cant_stand__dead
+        {
+          priority = 8.000000;
+          to="clean_up_re_enable";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(canStand _unit) || !(alive _unit)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "stumpled">*/
+        class stumpled
+        {
+          priority = 1.000000;
+          to="drag_supplies_and";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(isNull (_unit getVariable ""RUBE_attachObj""))"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "ready">*/
+        class ready
+        {
+          priority = 0.000000;
+          to="prepare_to_work";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([] call _isReady)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "abort_AI_action">*/
+    class abort_AI_action
+    {
+      name = "abort_AI_action";
+      init = /*%FSM<STATEINIT""">*/"_aiAbortAction = [" \n
+       "	[""object"", _unit]," \n
+       "	[""title"", format[RUBE_STR_buildAbortAIBuilding, (_structure call RUBE_makeBuildableName)]]," \n
+       "	[""hideOnUse"", false]," \n
+       "	[""callback"", RUBE_makeBuildableAbortAI]" \n
+       "] call RUBE_addAction;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="__1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "del_empty_s__cra">*/
+    class del_empty_s__cra
+    {
+      name = "del_empty_s__cra";
+      init = /*%FSM<STATEINIT""">*/"if ((_suppliesObject getVariable ""RUBE_supplies"") == 0) then" \n
+       "{" \n
+       "	// hmmm, this can kill our _unit, oO" \n
+       "	// maybe simply delete empty supplies?" \n
+       "	// -> maybe delayed?" \n
+       "	//_suppliesObject setDamage 1.0;" \n
+       "" \n
+       "	deleteVehicle _suppliesObject;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="scan_for_supplies";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "__1">*/
+    class __1
+    {
+      name = "__1";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "no_supplies">*/
+        class no_supplies
+        {
+          priority = 3.000000;
+          to="scan_for_supplies";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_supplies > 0)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dragging_supplie">*/
+        class dragging_supplie
+        {
+          priority = 0.000000;
+          to="prepare_to_work";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="init";
+  finalStates[] =
+  {
+    "abort",
+    "exit",
+  };
+};
+/*%FSM</COMPILE>*/

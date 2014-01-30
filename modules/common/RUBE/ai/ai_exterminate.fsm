@@ -1,0 +1,1098 @@
+/*%FSM<COMPILE "C:\Programme\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, RUBE_AI_exterminate">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"init",0,250,-160.368073,-264.705933,-70.368042,-214.705780,0.000000,"init"};
+item1[] = {"vehicle",4,218,-243.582001,-193.483307,-153.581894,-143.483215,1.000000,"vehicle"};
+item2[] = {"on_foot",4,218,-76.339905,-190.999985,13.660082,-140.999954,0.000000,"on foot"};
+item3[] = {"get_in_vehicle",2,250,-243.085907,-122.292801,-153.085876,-72.292770,0.000000,"get in vehicle"};
+item4[] = {"moving",2,250,22.574539,88.049126,112.574638,138.049164,0.000000,"moving"};
+item5[] = {"groupReady",4,218,-241.934479,-42.956646,-151.934418,7.043327,0.000000,"groupReady"};
+item6[] = {"unitReady",4,218,22.614410,187.284714,112.614410,237.284714,1.000000,"unitReady"};
+item7[] = {"arrive",2,250,-106.229279,187.284714,-16.229231,237.284714,0.000000,"arrive"};
+item8[] = {"vehicle",4,218,-185.517670,241.414307,-95.517662,291.414307,1.000000,"vehicle"};
+item9[] = {"on_foot",4,218,-34.564720,252.087738,55.435280,302.087738,0.000000,"on foot"};
+item10[] = {"park_vehicle",2,250,-185.517639,316.890808,-95.517647,366.890808,0.000000,"park vehicle"};
+item11[] = {"search_gathering",2,250,-39.901413,366.867767,62.296822,426.016418,0.000000,"search" \n "gathering place"};
+item12[] = {"_",4,218,-152.734985,384.402710,-127.538033,407.719086,0.000000,""};
+item13[] = {"dead",4,218,170.517807,87.071106,260.517822,137.071106,2.000000,"dead"};
+item14[] = {"dead",1,250,171.280228,180.844955,261.280273,230.844955,0.000000,"dead"};
+item15[] = {"_",4,218,50.060394,45.902157,82.118843,69.980988,0.000000,""};
+item16[] = {"delay_loop",2,250,101.140457,-41.772552,191.140503,8.227453,0.000000,"delay loop"};
+item17[] = {"delay",4,218,101.140442,26.080044,191.140442,76.080048,0.000000,"delay"};
+item18[] = {"_",4,218,-9.522763,704.068604,27.872425,731.197021,0.000000,""};
+item19[] = {"to_few_units_lef",4,218,-228.211945,186.943985,-138.211945,236.943985,2.000000,"to few" \n "units left"};
+item20[] = {"failure",1,250,-349.431702,187.706375,-259.431671,237.706360,0.000000,"failure"};
+item21[] = {"lock_vehicle",2,250,-241.934967,26.841240,-151.934982,76.841209,0.000000,"lock vehicle"};
+item22[] = {"dead",4,218,170.400879,639.264343,260.400818,689.264282,2.000000,"dead"};
+item23[] = {"_",4,218,-126.051918,39.039497,-102.379707,63.880646,0.000000,""};
+item24[] = {"gathering__penning",2,250,-49.691143,752.097046,68.517273,830.305420,0.000000,"gathering/" \n "penning them up"};
+item25[] = {"move_out",2,250,-76.495956,26.080753,13.504045,76.080811,0.000000,"move out"};
+item26[] = {"_",4,218,-45.238083,100.032478,-16.229147,126.398422,0.000000,""};
+item27[] = {"_",4,218,-5.593931,440.058228,26.464550,464.137024,0.000000,""};
+item28[] = {"gather_victims",2,250,-35.444019,638.503357,54.555996,688.503296,0.000000,"gather victims"};
+item29[] = {"scriptsDone",4,218,-35.586933,858.450195,54.413067,908.450195,1.000000,"scriptsDone"};
+item30[] = {"_",4,218,-59.220951,705.210083,-25.637772,728.526489,0.000000,""};
+item31[] = {"delay_loop_1",2,250,-184.633972,691.105957,-94.633911,741.105957,0.000000,"delay loop"};
+item32[] = {"delay",4,218,-184.634033,767.344849,-94.633942,817.344849,0.000000,"delay"};
+item33[] = {"prepare__for_exe",2,4346,-35.968388,1069.250244,54.031567,1119.250000,0.000000,"prepare " \n "for execution"};
+item34[] = {"to_few_units_lef",4,218,-185.279800,440.820190,-95.279793,490.820190,1.000000,"to few" \n "units left"};
+item35[] = {"_",4,218,-6.158925,1140.154297,23.612389,1165.758057,0.000000,""};
+item36[] = {"execution",2,250,-36.654469,1188.108398,53.345547,1238.108398,0.000000,"execution"};
+item37[] = {"into_exec__posit",2,250,-36.692440,925.846924,53.307568,975.846924,0.000000,"into exec." \n "position"};
+item38[] = {"scriptsDone",4,218,-35.853840,998.807495,54.146145,1048.807617,0.000000,"scriptsDone"};
+item39[] = {"all_dead",4,218,-35.854969,1271.359863,54.145023,1321.359863,0.000000,"all dead"};
+item40[] = {"done",1,250,-36.693592,1366.124756,53.306431,1416.124756,0.000000,"done"};
+item41[] = {"",7,210,211.497589,1136.090332,219.497589,1144.090332,0.000000,""};
+item42[] = {"still_some_alive",4,218,-175.025360,1114.879150,-85.025208,1164.879639,0.000000,"still some" \n "alive"};
+item43[] = {"aquire_target__",2,250,-175.947662,1187.756104,-85.947662,1237.756104,0.000000,"aquire target, " \n "open fire"};
+item44[] = {"delay",4,218,-175.947815,1259.710205,-85.947678,1309.710205,0.000000,"delay"};
+item45[] = {"onArrival",2,250,-34.376411,490.043274,55.623604,540.043213,0.000000,"onArrival"};
+item46[] = {"scriptDone",4,218,-35.349354,561.110291,54.650654,611.110291,0.000000,"scriptDone"};
+link0[] = {0,1};
+link1[] = {0,2};
+link2[] = {1,3};
+link3[] = {2,25};
+link4[] = {3,5};
+link5[] = {4,6};
+link6[] = {4,13};
+link7[] = {4,15};
+link8[] = {5,21};
+link9[] = {6,7};
+link10[] = {7,8};
+link11[] = {7,9};
+link12[] = {7,19};
+link13[] = {8,10};
+link14[] = {9,11};
+link15[] = {10,12};
+link16[] = {11,22};
+link17[] = {11,27};
+link18[] = {11,34};
+link19[] = {12,11};
+link20[] = {13,14};
+link21[] = {15,16};
+link22[] = {16,17};
+link23[] = {17,4};
+link24[] = {18,24};
+link25[] = {19,20};
+link26[] = {21,23};
+link27[] = {22,14};
+link28[] = {23,25};
+link29[] = {24,22};
+link30[] = {24,29};
+link31[] = {24,30};
+link32[] = {25,26};
+link33[] = {26,4};
+link34[] = {27,45};
+link35[] = {28,18};
+link36[] = {28,22};
+link37[] = {29,37};
+link38[] = {30,31};
+link39[] = {31,32};
+link40[] = {32,24};
+link41[] = {33,35};
+link42[] = {34,20};
+link43[] = {35,36};
+link44[] = {36,39};
+link45[] = {36,41};
+link46[] = {36,42};
+link47[] = {37,38};
+link48[] = {38,33};
+link49[] = {39,40};
+link50[] = {41,22};
+link51[] = {42,43};
+link52[] = {43,44};
+link53[] = {44,36};
+link54[] = {45,46};
+link55[] = {46,28};
+globals[] = {0.000000,0,0,0,0,640,480,1,59,6316128,1,-411.722717,264.728210,1445.189697,778.556641,689,679,1};
+window[] = {0,-1,-1,-1,-1,942,1572,2929,132,1,706};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "RUBE_AI_exterminate";
+  class States
+  {
+    /*%FSM<STATE "init">*/
+    class init
+    {
+      name = "init";
+      init = /*%FSM<STATEINIT""">*/"/*" \n
+       "	Description:" \n
+       "	 group fsm to go out and exterminate a given" \n
+       "	 set if victims (unarmed civilians typically)" \n
+       "" \n
+       "	 Victims are arrested and gathered prior to" \n
+       "	 execution." \n
+       "" \n
+       "	 >> needs at least a two units in the group given" \n
+       "	 >> victims can be more than the given units, no problem." \n
+       "*/" \n
+       "" \n
+       "private [" \n
+       "	""_group"", ""_vehicle"", ""_victims"", ""_position""," \n
+       "	""_onArrival"", ""_onSuccess"", ""_onFailure""" \n
+       "];" \n
+       "" \n
+       "_group = grpNull;" \n
+       "_vehicle = objNull;" \n
+       "_victims = [];" \n
+       "_position = []; // auto. updated with first victims position if none is given" \n
+       "" \n
+       "_onArrival = """"; // spawned" \n
+       "_onSuccess = """"; // called" \n
+       "_onFailure = """"; // called" \n
+       "" \n
+       "" \n
+       "{" \n
+       "	switch (_x select 0) do" \n
+       "	{" \n
+       "		case ""group"": { _group = _x select 1; };" \n
+       "		case ""vehicle"": { _vehicle = _x select 1; };" \n
+       "		case ""victims"": { _victims = _x select 1; };" \n
+       "		case ""position"": { _position = _x select 1; };" \n
+       "		case ""onArrival"": { _onArrival = _x select 1; };" \n
+       "		case ""onSuccess"": { _onSuccess = _x select 1; };" \n
+       "		case ""onFailure"": { _onFailure = _x select 1; };" \n
+       "	};" \n
+       "} forEach _this;" \n
+       "" \n
+       "" \n
+       "// init" \n
+       "private [" \n
+       "	""_t"", ""_delay"", ""_i"", ""_pos"", ""_todo"", ""_units"", ""_handle""," \n
+       "	""_gatherPlace"", ""_gatherDirection"", ""_gatherDistance"", ""_gatherRadius"", ""_gatherDelay""," \n
+       "	""_areaRadius"", ""_killerPlace"", ""_killerRadius""," \n
+       "	""_maxGradient"", ""_adjustPos""," \n
+       "	""_leaderPosition"", ""_victimPositions"", ""_killerPositions""," \n
+       "	""_vehiclePositions"", ""_arrestScripts"", ""_targets"", ""_target""," \n
+       "	""_codeHandle""" \n
+       "];" \n
+       "" \n
+       "if ((typeName _victims) == ""GROUP"") then" \n
+       "{" \n
+       "	_victims = units _victims;" \n
+       "};" \n
+       "" \n
+       "if ((count _position) == 0) then" \n
+       "{" \n
+       "	_position = position (_victims select 0);" \n
+       "" \n
+       "	// try to find a road" \n
+       "	private [""_roads""];" \n
+       "	_roads = _position nearRoads 30;" \n
+       "	if ((count _roads) > 0) then" \n
+       "	{" \n
+       "		_position = position (_roads call RUBE_randomSelect);" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "_t = time;" \n
+       "_delay = 4.5 + (random 0.5);" \n
+       "_gatherDelay = 7 + (random 5);" \n
+       "_gatherPlace = []; // were the victims will be executed" \n
+       "_killerPlace = []; // were the killers will stand to fire" \n
+       "_killerRadius = 0;" \n
+       "_gatherDirection = 0;" \n
+       "_gatherDistance = 2.0;" \n
+       "_gatherRadius = (ceil ((count _victims) * 0.5)) * _gatherDistance;" \n
+       "_areaRadius = _gatherRadius + 3;" \n
+       "_maxGradient = 0.05;" \n
+       "_adjustPos = 1.0;" \n
+       "" \n
+       "_leaderPosition = [];" \n
+       "_victimPositions = [];" \n
+       "_killerPositions = [];" \n
+       "" \n
+       "_vehiclePositions = [];" \n
+       "_arrestScripts = [];" \n
+       "_targets = [];" \n
+       "" \n
+       "// empty/null handle for custom-code" \n
+       "_codeHandle =  0 spawn {};" \n
+       "" \n
+       "" \n
+       "// private functions" \n
+       "private [" \n
+       "	""_fillVehPos"", ""_getInVehicle""," \n
+       "	""_scriptsDone"", ""_getAliveVictims""" \n
+       "];" \n
+       "" \n
+       "// private function to retrieve available veh. pos." \n
+       "_fillVehPos = {" \n
+       "	private [""_n"", ""_i""];" \n
+       "	_n = _vehicle emptyPositions _this;" \n
+       "	if (_n > 0) then" \n
+       "	{" \n
+       "		for ""_i"" from 1 to _n do" \n
+       "		{" \n
+       "			_vehiclePositions set [(count _vehiclePositions), _this];" \n
+       "		};" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "// create vehicle position pool" \n
+       "if (!(isNull _vehicle)) then" \n
+       "{" \n
+       "	""Driver"" call _fillVehPos;" \n
+       "	""Gunner"" call _fillVehPos;" \n
+       "	""Commander"" call _fillVehPos;" \n
+       "	""Cargo"" call _fillVehPos;" \n
+       "};" \n
+       "" \n
+       "_getInVehicle = {" \n
+       "	private [""_units"", ""_n"", ""_i"", ""_j""];" \n
+       "	_units = units _group;" \n
+       "	_n = (count _units) min (count _vehiclePositions);" \n
+       "" \n
+       "	_vehicle lock false;" \n
+       "	_vehicle lockDriver false;" \n
+       "	_vehicle lockCargo false;" \n
+       "" \n
+       "	_units allowGetIn true;" \n
+       "	_units orderGetIn true;" \n
+       "" \n
+       "	for ""_i"" from 0 to (_n - 1) do" \n
+       "	{" \n
+       "		// backwards, so leader doesn't drive if there" \n
+       "		// are more in his groups (like guards.. these guys shall drive, hehe)" \n
+       "" \n
+       "		// DONT DO THIS! leader as cargo tends to disembark, pfff :/" \n
+       "		//_j = (_n - 1) - _i;" \n
+       "		_j = _i;" \n
+       "" \n
+       "		switch ( _vehiclePositions select _i) do" \n
+       "		{" \n
+       "			case ""Driver"": {  (_units select _j) assignAsDriver _vehicle; };" \n
+       "			case ""Gunner"": {  (_units select _j) assignAsGunner _vehicle; };" \n
+       "			case ""Commander"": {  (_units select _j) assignAsCommander _vehicle; };" \n
+       "			case ""Cargo"": {  (_units select _j) assignAsCargo _vehicle; };" \n
+       "		};" \n
+       "" \n
+       "		[(_units select _j)] orderGetIn true;" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "// check if all given scripts are done/completed" \n
+       "// [script-handles] => boolean" \n
+       "_scriptsDone = {" \n
+       "	private [""_done""];" \n
+       "	_done = true;" \n
+       "	{" \n
+       "		_done = _done && (scriptDone _x);" \n
+       "	} forEach _this;" \n
+       "	" \n
+       "	_done" \n
+       "};" \n
+       "" \n
+       "// return victims beeing still alive" \n
+       "_getAliveVictims = {" \n
+       "	private [""_vic""];" \n
+       "	_vic = [];" \n
+       "	{" \n
+       "		if (alive _x) then" \n
+       "		{" \n
+       "			_vic set [(count _vic), _x];" \n
+       "		};" \n
+       "	} forEach _victims;" \n
+       "" \n
+       "	_vic" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "vehicle">*/
+        class vehicle
+        {
+          priority = 1.000000;
+          to="get_in_vehicle";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(isNull _vehicle)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "on_foot">*/
+        class on_foot
+        {
+          priority = 0.000000;
+          to="move_out";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "get_in_vehicle">*/
+    class get_in_vehicle
+    {
+      name = "get_in_vehicle";
+      init = /*%FSM<STATEINIT""">*/"[] call _getInVehicle;" \n
+       "" \n
+       "/*" \n
+       "[" \n
+       "	[""group"", _group]," \n
+       "	[""position"", (position _vehicle)]," \n
+       "	[""type"", ""GETIN NEAREST""]" \n
+       "] call RUBE_updateWaypoint;" \n
+       "*/"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "groupReady">*/
+        class groupReady
+        {
+          priority = 0.000000;
+          to="lock_vehicle";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"//(_group call RUBE_groupReady)" \n
+           "({_x != (vehicle _x)} count (units _group)) == (count (units _group))"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "moving">*/
+    class moving
+    {
+      name = "moving";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 2.000000;
+          to="dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_group call RUBE_aliveGroup)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "unitReady">*/
+        class unitReady
+        {
+          priority = 1.000000;
+          to="arrive";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(unitReady (leader _group))"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="delay_loop";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "arrive">*/
+    class arrive
+    {
+      name = "arrive";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "to_few_units_lef">*/
+        class to_few_units_lef
+        {
+          priority = 2.000000;
+          to="failure";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(count (units _group)) < 2"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "vehicle">*/
+        class vehicle
+        {
+          priority = 1.000000;
+          to="park_vehicle";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(isNull _vehicle)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "on_foot">*/
+        class on_foot
+        {
+          priority = 0.000000;
+          to="search_gathering";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "park_vehicle">*/
+    class park_vehicle
+    {
+      name = "park_vehicle";
+      init = /*%FSM<STATEINIT""">*/"_vehicle lock false;" \n
+       "(units _group) orderGetIn false;" \n
+       "" \n
+       "{" \n
+       "	unassignVehicle _x;" \n
+       "} forEach (units _group);" \n
+       "" \n
+       "_group leaveVehicle _vehicle;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="search_gathering";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "search_gathering">*/
+    class search_gathering
+    {
+      name = "search_gathering";
+      init = /*%FSM<STATEINIT""">*/"// search for a gather place" \n
+       "//  ""_gatherRadius"", ""_maxGradient""" \n
+       "while {(count _gatherPlace) == 0} do" \n
+       "{" \n
+       "	_pos = [(position (leader _group)), [0, 0], [20, 20]] call RUBE_randomizePos;" \n
+       "	_gatherPlace = _pos isFlatEmpty [" \n
+       "		_areaRadius," \n
+       "		_adjustPos," \n
+       "		_maxGradient," \n
+       "		_areaRadius," \n
+       "		0," \n
+       "		false," \n
+       "		objNull" \n
+       "	];" \n
+       "	_adjustPos = _adjustPos * 1.5;" \n
+       "	_maxGradient = _maxGradient + 0.03;" \n
+       "};" \n
+       "" \n
+       "// layout direction" \n
+       "_gatherDirection = random 360;" \n
+       "" \n
+       "// retrieve needed layout positions" \n
+       "// 	""_leaderPosition"", ""_victimPositions"", ""_killerPositions""" \n
+       "" \n
+       "for ""_i"" from 0 to ((count _victims) - 1) do" \n
+       "{" \n
+       "	_victimPositions set [" \n
+       "		(count _victimPositions)," \n
+       "		([" \n
+       "			_gatherPlace," \n
+       "			((_i * _gatherDistance) - _gatherRadius)," \n
+       "			(_gatherDirection - 90)" \n
+       "		] call BIS_fnc_relPos)" \n
+       "	];" \n
+       "};" \n
+       "" \n
+       "_leaderPosition = [" \n
+       "	_gatherPlace, " \n
+       "	(_gatherRadius + (_gatherDistance * (1 + (random 2)))), " \n
+       "	(_gatherDirection + (10 - (random 20)))" \n
+       "] call BIS_fnc_relPos;" \n
+       "" \n
+       "_killerPlace = [_gatherPlace, _gatherRadius, _gatherDirection] call BIS_fnc_relPos;" \n
+       "_killerRadius = (ceil (((count (units _group)) - 1) * 0.5)) * _gatherDistance;" \n
+       "" \n
+       "for ""_i"" from 0 to ((count (units _group)) - 2) do" \n
+       "{" \n
+       "	_killerPositions set [" \n
+       "		(count _killerPositions)," \n
+       "		([" \n
+       "			_killerPlace," \n
+       "			((_i * _gatherDistance) - _killerRadius)," \n
+       "			(_gatherDirection - 90)" \n
+       "		] call BIS_fnc_relPos)" \n
+       "	];" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "/**************[DEBUG MARKERS]********************/" \n
+       "/*" \n
+       "[" \n
+       "	[""position"", _gatherPlace]," \n
+       "	[""type"", ""ELLIPSE""]," \n
+       "	[""size"", [_gatherRadius, _gatherRadius]]," \n
+       "	[""color"", ""ColorOrange""]," \n
+       "	[""alpha"", 0.67]" \n
+       "] call RUBE_mapDrawMarker;" \n
+       "" \n
+       "[" \n
+       "	[""position"", _leaderPosition]," \n
+       "	[""type"", ""mil_dot""]," \n
+       "	[""color"", ""ColorBlack""]" \n
+       "] call RUBE_mapDrawMarker;" \n
+       "" \n
+       "{" \n
+       "	[" \n
+       "		[""position"", _x]," \n
+       "		[""type"", ""mil_dot""]," \n
+       "		[""color"", ""ColorRed""]" \n
+       "	] call RUBE_mapDrawMarker;" \n
+       "} forEach _killerPositions;" \n
+       "" \n
+       "{" \n
+       "	[" \n
+       "		[""position"", _x]," \n
+       "		[""type"", ""mil_dot""]," \n
+       "		[""color"", ""ColorBlue""]" \n
+       "	] call RUBE_mapDrawMarker;" \n
+       "} forEach _victimPositions;" \n
+       "*/" \n
+       "/**************[DEBUG MARKERS]********************/"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 2.000000;
+          to="dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_group call RUBE_aliveGroup)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "to_few_units_lef">*/
+        class to_few_units_lef
+        {
+          priority = 1.000000;
+          to="failure";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(count (units _group)) < 2"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="onArrival";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "dead">*/
+    class dead
+    {
+      name = "dead";
+      init = /*%FSM<STATEINIT""">*/"if ((typeName _onFailure) == ""CODE"") then" \n
+       "{" \n
+       "	_group call _onFailure;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "delay_loop">*/
+    class delay_loop
+    {
+      name = "delay_loop";
+      init = /*%FSM<STATEINIT""">*/"// update time" \n
+       "_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="moving";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "failure">*/
+    class failure
+    {
+      name = "failure";
+      init = /*%FSM<STATEINIT""">*/"if ((typeName _onFailure) == ""CODE"") then" \n
+       "{" \n
+       "	_group call _onFailure;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "lock_vehicle">*/
+    class lock_vehicle
+    {
+      name = "lock_vehicle";
+      init = /*%FSM<STATEINIT""">*/"_vehicle lock true;" \n
+       "_vehicle lockCargo true;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="move_out";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "gathering__penning">*/
+    class gathering__penning
+    {
+      name = "gathering__penning";
+      init = /*%FSM<STATEINIT""">*/"(leader _group) doMove (_killerPositions call RUBE_randomSelect);" \n
+       "(leader _group) doWatch (_victims call RUBE_randomSelect);" \n
+       "" \n
+       "" \n
+       "/*************[DEBUG]**************/" \n
+       "private [""_arrested"", ""_togo""];" \n
+       "" \n
+       "_arrested = 0;" \n
+       "_togo = 0;" \n
+       "{" \n
+       "	if (scriptDone _x) then" \n
+       "	{" \n
+       "		_arrested = _arrested + 1;" \n
+       "	} else" \n
+       "	{" \n
+       "		_togo = _togo + 1;" \n
+       "	};" \n
+       "} forEach _arrestScripts;" \n
+       "" \n
+       "//hintSilent format[""GATHERING\nunits done: %1\narresting: %2"", _arrested, _togo];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 2.000000;
+          to="dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_group call RUBE_aliveGroup)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "scriptsDone">*/
+        class scriptsDone
+        {
+          priority = 1.000000;
+          to="into_exec__posit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_arrestScripts call _scriptsDone)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="delay_loop_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "move_out">*/
+    class move_out
+    {
+      name = "move_out";
+      init = /*%FSM<STATEINIT""">*/"[" \n
+       "	[""group"", _group]," \n
+       "	[""type"", ""MOVE""]," \n
+       "	[""position"", _position]," \n
+       "	[""completionRadius"", 30]," \n
+       "	[""speed"", ""FULL""]," \n
+       "	[""combatMode"", ""GREEN""]," \n
+       "	[""behaviour"", ""AWARE""]" \n
+       "] call RUBE_updateWaypoint;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="moving";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "gather_victims">*/
+    class gather_victims
+    {
+      name = "gather_victims";
+      init = /*%FSM<STATEINIT""">*/"// distribute victims on all units except the leader guys..." \n
+       "_units = (units _group) - [(leader _group)];" \n
+       "_todo = [_victims, (count _units)] call RUBE_distribute;" \n
+       "" \n
+       "" \n
+       "[(leader _group), _leaderPosition] spawn {" \n
+       "	(_this select 0) doMove (_this select 1);" \n
+       "	waitUntil{(unitReady (_this select 0)) || !(alive (_this select 0))};" \n
+       "	doStop (_this select 0);" \n
+       "};" \n
+       "" \n
+       "(leader _group) doWatch (_victims call RUBE_randomSelect);" \n
+       "" \n
+       "for ""_i"" from 0 to ((count _units) - 1) do" \n
+       "{" \n
+       "	_pos = [];" \n
+       "	{" \n
+       "		_pos set [(count _pos), (_victimPositions call RUBE_randomPop)];" \n
+       "	} forEach (_todo select _i);" \n
+       "" \n
+       "" \n
+       "	_handle = [(_units select _i), (_todo select _i), _pos] spawn {" \n
+       "		private [""_fsm"", ""_i"", ""_n"", ""_escort"", ""_target"", ""_destination""];" \n
+       "		_n = count (_this select 1);" \n
+       "		if (_n > 0) then" \n
+       "		{" \n
+       "			for ""_i"" from 0 to (_n - 1) do" \n
+       "			{" \n
+       "				_escort = _this select 0;" \n
+       "				_target = (_this select 1) select _i;" \n
+       "				_destination = (_this select 2) select _i;" \n
+       "" \n
+       "				//diag_log format[""escort: %1, target: %2, dest: %3"", _escort, _target, _destination];" \n
+       "" \n
+       "				_fsm = [" \n
+       "					[""unit"", _escort]," \n
+       "					[""target"", _target]," \n
+       "					[""destination"", _destination]" \n
+       "				] execFSM ""modules\common\RUBE\ai\inf\ai_surrenderEscortTo.fsm"";" \n
+       "				waitUntil{completedFSM _fsm};" \n
+       "" \n
+       "				/*" \n
+       "				// WTF seriously.. :| I don't get it." \n
+       "				_escort doFSM [""modules\common\RUBE\ai\inf\ai_surrenderEscortTo.fsm"", _destination, _target];" \n
+       "				waitUntil{unitReady_escort};" \n
+       "				*/" \n
+       "" \n
+       "" \n
+       "				// captured people should stop and watch leader" \n
+       "				((_this select 1) select _i) forceSpeed 0;" \n
+       "				((_this select 1) select _i) doWatch (leader _group);" \n
+       "" \n
+       "				// allow running again to capture next one/or after last one" \n
+       "				(_this select 0) forceSpeed -1;" \n
+       "			};" \n
+       "		};" \n
+       "	};" \n
+       "" \n
+       "	// register script handle" \n
+       "	_arrestScripts set [(count _arrestScripts), _handle];" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 2.000000;
+          to="dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_group call RUBE_aliveGroup)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="gathering__penning";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "delay_loop_1">*/
+    class delay_loop_1
+    {
+      name = "delay_loop_1";
+      init = /*%FSM<STATEINIT""">*/"// update time" \n
+       "_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="gathering__penning";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _gatherDelay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "prepare__for_exe">*/
+    class prepare__for_exe
+    {
+      name = "prepare__for_exe";
+      init = /*%FSM<STATEINIT""">*/"//hint ""PREPARE EXECUTION"";" \n
+       "" \n
+       "(leader _group) playAction ""gesturePoint"";" \n
+       "(leader _group) playAction ""gestureFreeze"";" \n
+       "" \n
+       "{" \n
+       "	_x setUnitPos ""UP"";" \n
+       "} forEach _units;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="execution";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "execution">*/
+    class execution
+    {
+      name = "execution";
+      init = /*%FSM<STATEINIT""">*/"//hint ""EXECUTION"";" \n
+       "" \n
+       "_targets = [] call _getAliveVictims;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 2.000000;
+          to="dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_group call RUBE_aliveGroup)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "still_some_alive">*/
+        class still_some_alive
+        {
+          priority = 0.000000;
+          to="aquire_target__";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(count _targets) > 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "all_dead">*/
+        class all_dead
+        {
+          priority = 0.000000;
+          to="done";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(count _targets) == 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "into_exec__posit">*/
+    class into_exec__posit
+    {
+      name = "into_exec__posit";
+      init = /*%FSM<STATEINIT""">*/"//hint ""INTO EXECUTION POSITION"";" \n
+       "" \n
+       "_arrestScripts = [];" \n
+       "" \n
+       "for ""_i"" from 0 to ((count _units) - 1) do" \n
+       "{" \n
+       "	_handle = [(_units select _i), (_killerPositions select _i)] spawn {" \n
+       "		(_this select 0) doMove (_this select 1);" \n
+       "		waitUntil{(unitReady (_this select 0)) || !(alive (_this select 0))};" \n
+       "		doStop (_this select 0);" \n
+       "	};" \n
+       "" \n
+       "	// target any victim" \n
+       "	_target =  (_victims call RUBE_randomSelect);" \n
+       "	(_units select _i) doWatch _target;" \n
+       "	(_units select _i) doTarget _target;" \n
+       "" \n
+       "	// register script handle" \n
+       "	_arrestScripts set [(count _arrestScripts), _handle];" \n
+       "};" \n
+       "" \n
+       "[(leader _group), _leaderPosition] spawn {" \n
+       "	(_this select 0) doMove (_this select 1);" \n
+       "	waitUntil{(unitReady (_this select 0)) || !(alive (_this select 0))};" \n
+       "	doStop (_this select 0);" \n
+       "};" \n
+       "" \n
+       "(leader _group) doWatch (_victimPositions call RUBE_randomSelect);"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "scriptsDone">*/
+        class scriptsDone
+        {
+          priority = 0.000000;
+          to="prepare__for_exe";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_arrestScripts call _scriptsDone)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "done">*/
+    class done
+    {
+      name = "done";
+      init = /*%FSM<STATEINIT""">*/"{" \n
+       "	_x setUnitPos ""AUTO"";" \n
+       "	_x doWatch objNull;" \n
+       "	_x forceSpeed -1;" \n
+       "} forEach (units _group);" \n
+       "" \n
+       "(units _group) commandFollow (leader _group);" \n
+       "" \n
+       "if ((typeName _onSuccess) == ""CODE"") then" \n
+       "{" \n
+       "	_group call _onSuccess;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "aquire_target__">*/
+    class aquire_target__
+    {
+      name = "aquire_target__";
+      init = /*%FSM<STATEINIT""">*/"// fire at victims randomly" \n
+       "// leader usually doesn't shoot himself..." \n
+       "if ((count (units _group)) > 1) then" \n
+       "{" \n
+       "	_units = (units _group) - [(leader _group)];" \n
+       "} else" \n
+       "{" \n
+       "	_units = units _group;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "{" \n
+       "	if ((count _targets) == 0) then" \n
+       "	{" \n
+       "		_targets = [] call _getAliveVictims;" \n
+       "	};" \n
+       "	" \n
+       "	if ((count _targets) > 0) then" \n
+       "	{" \n
+       "		_target = _targets call RUBE_randomPop;" \n
+       "" \n
+       "		_x commandTarget _target;" \n
+       "		_x commandFire _target;" \n
+       "	};" \n
+       "} forEach _units;" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "// update time" \n
+       "_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="execution";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "onArrival">*/
+    class onArrival
+    {
+      name = "onArrival";
+      init = /*%FSM<STATEINIT""">*/"// run onArrival code" \n
+       "if ((typeName _onArrival) == ""CODE"") then" \n
+       "{" \n
+       "	_codeHandle = _group spawn _onArrival;	" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "scriptDone">*/
+        class scriptDone
+        {
+          priority = 0.000000;
+          to="gather_victims";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _codeHandle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="init";
+  finalStates[] =
+  {
+    "dead",
+    "failure",
+    "done",
+  };
+};
+/*%FSM</COMPILE>*/

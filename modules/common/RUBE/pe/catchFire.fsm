@@ -1,0 +1,671 @@
+/*%FSM<COMPILE "C:\Programme\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, RUBE_PE_catchFire">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"init",0,250,-39.148243,-122.139137,50.851753,-72.139137,0.000000,"init"};
+item1[] = {"in_vehicle",4,218,-99.756462,-52.784637,-9.756462,-2.784646,1.000000,"in vehicle"};
+item2[] = {"getOut",2,250,-100.654114,38.775570,-10.654099,88.775574,0.000000,"getOut"};
+item3[] = {"out",4,218,-95.268288,116.871033,-17.835312,166.871033,0.000000,"out"};
+item4[] = {"start_fire___ppEffects",2,250,29.505013,115.973396,119.505173,165.973404,0.000000,"start fire" \n "(+ppEffects)"};
+item5[] = {"_",4,218,59.127438,-41.115204,91.677887,-12.658789,0.000000,""};
+item6[] = {"_",4,218,54.638950,203.943054,94.370605,233.297119,0.000000,""};
+item7[] = {"burning____taking",2,250,28.607201,275.755005,118.607224,325.755005,0.000000,"burning..." \n "taking damage"};
+item8[] = {"dead",4,218,161.223007,187.925629,251.222992,237.925598,4.000000,"dead"};
+item9[] = {"dead",1,250,328.095490,187.925629,418.095520,237.925613,0.000000,"dead"};
+item10[] = {"_",4,218,-28.842329,288.322113,-5.268372,312.290283,0.000000,""};
+item11[] = {"delay_loop",2,250,-128.481445,287.424469,-59.127304,313.187927,0.000000,"delay loop"};
+item12[] = {"delay",4,218,-125.788467,347.566956,-61.820282,387.692841,0.000000,"delay"};
+item13[] = {"spread_fire",4,218,83.419418,393.682678,188.051575,454.872009,2.000000,"spread" \n "fire"};
+item14[] = {"run_for__your_li",4,218,-72.982552,379.490570,42.838837,442.401306,1.000000,"run for " \n "your life"};
+item15[] = {"agony",4,218,139.008148,276.047455,229.008148,326.047455,3.000000,"agony"};
+item16[] = {"burning____in_ag",2,250,385.180481,274.199219,475.180450,324.199219,0.000000,"burning..." \n "in agony"};
+item17[] = {"_",4,218,503.193512,287.609985,528.822876,309.894806,0.000000,""};
+item18[] = {"delay_loop_1",2,250,555.941895,289.398071,621.802246,309.894806,0.000000,"delay loop"};
+item19[] = {"delay",4,218,557.729858,338.570160,620.014282,375.159607,0.000000,"delay"};
+item20[] = {"spread_fire",4,218,305.920807,382.756927,412.907379,446.167511,2.000000,"spread" \n "fire"};
+item21[] = {"start_agony",2,250,258.149078,281.179810,307.117096,317.820557,0.000000,"start" \n "agony"};
+item22[] = {"_",4,218,328.762299,285.950989,355.782928,311.140930,0.000000,""};
+item23[] = {"fire_ext_",4,218,29.133232,465.346802,119.133232,515.346924,3.000000,"fire ext."};
+item24[] = {"fire_ext_",4,218,386.016113,465.346863,476.016113,515.346924,3.000000,"fire ext."};
+item25[] = {"fire__extinguish",1,250,199.940811,466.300873,289.940796,516.300903,0.000000,"fire " \n "extinguished"};
+item26[] = {"in_ext__anim",4,218,144.595245,357.518616,234.595276,407.518616,2.000000,"in ext." \n "anim"};
+item27[] = {"in_ext__anim",4,218,259.103180,346.067810,349.103180,396.067810,2.000000,"in ext." \n "anim"};
+item28[] = {"no_unit",4,218,125.509872,164.763626,197.379425,204.267044,5.000000,"no unit"};
+item29[] = {"no_unit",4,218,398.420898,119.914612,463.610809,150.829926,5.000000,"no unit"};
+item30[] = {"",7,210,245.743393,131.365417,253.743439,139.365417,0.000000,""};
+link0[] = {0,1};
+link1[] = {0,5};
+link2[] = {1,2};
+link3[] = {2,3};
+link4[] = {3,4};
+link5[] = {4,6};
+link6[] = {5,4};
+link7[] = {6,7};
+link8[] = {7,8};
+link9[] = {7,10};
+link10[] = {7,13};
+link11[] = {7,14};
+link12[] = {7,15};
+link13[] = {7,23};
+link14[] = {7,26};
+link15[] = {7,28};
+link16[] = {8,9};
+link17[] = {10,11};
+link18[] = {11,12};
+link19[] = {12,7};
+link20[] = {13,7};
+link21[] = {14,7};
+link22[] = {15,21};
+link23[] = {16,8};
+link24[] = {16,17};
+link25[] = {16,20};
+link26[] = {16,24};
+link27[] = {16,27};
+link28[] = {16,29};
+link29[] = {17,18};
+link30[] = {18,19};
+link31[] = {19,16};
+link32[] = {20,16};
+link33[] = {21,22};
+link34[] = {22,16};
+link35[] = {23,25};
+link36[] = {24,25};
+link37[] = {26,7};
+link38[] = {27,16};
+link39[] = {28,30};
+link40[] = {29,30};
+link41[] = {30,9};
+globals[] = {0.000000,0,0,0,0,640,480,1,32,6316128,1,-170.151749,608.503418,559.051880,-44.023773,816,632,1};
+window[] = {0,-1,-1,-1,-1,807,1484,3086,44,1,833};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "RUBE_PE_catchFire";
+  class States
+  {
+    /*%FSM<STATE "init">*/
+    class init
+    {
+      name = "init";
+      init = /*%FSM<STATEINIT""">*/"/*" \n
+       "	Description:" \n
+       "	 unit fsm to catch fire and die eventually..." \n
+       "" \n
+       "	 > fire spreads to more named selections" \n
+       "	 > single fires may be extinguished by rolling on the ground" \n
+       "*/" \n
+       "" \n
+       "private [" \n
+       "	""_unit"", ""_t"", ""_delay"", ""_handle""," \n
+       "	""_particles"", ""_sound"", ""_smoke"", ""_extAnims"", ""_agonyAnims""," \n
+       "	""_selections"", ""_currentSelection"", ""_agonyThreshold""," \n
+       "	""_spreadFire"", ""_stopFire"", ""_run"", ""_extinguishFlame""," \n
+       "	""_extCoolDown"", ""_extCoolDownTime"", " \n
+       "	""_spreadCoolDown"", ""_spreadCoolDownTime""," \n
+       "	""_isMale"", ""_isPlayer"", ""_agonyTime""" \n
+       "];" \n
+       "" \n
+       "_unit = _this select 0;" \n
+       "" \n
+       "_t = time;" \n
+       "_delay = 1.5 + (random 0.5);" \n
+       "" \n
+       "_particles = [];" \n
+       "_sound = objNull;" \n
+       "_smoke = objNull;" \n
+       "" \n
+       "// animations that may extinguish a fire" \n
+       "_extAnims = [" \n
+       "	""amovppnemstpsraswrfldnon_amovppnemevaslowwrfldl""," \n
+       "	""amovppnemstpsraswrfldnon_amovppnemevaslowwrfldr""" \n
+       "];" \n
+       "" \n
+       "// agony animations" \n
+       "_agonyAnims = [" \n
+       "	""GestureSpasm0""," \n
+       "	""GestureSpasm1""," \n
+       "	""GestureSpasm2""," \n
+       "	""GestureSpasm3""," \n
+       "	""GestureSpasm4""," \n
+       "	""GestureSpasm5""," \n
+       "	""GestureSpasm6""" \n
+       "];" \n
+       "" \n
+       "_selections = [" \n
+       "	[""LeftHand"", ""LeftForeArm"", ""LeftArm"", ""LeftShoulder"", ""Neck"", ""Spine"", ""Pelvis"", ""LeftLeg"", ""RightLeg""]," \n
+       "	[""RightHand"", ""RightForeArm"", ""RightArm"", ""RightShoulder"", ""Neck"", ""Spine"", ""Pelvis"", ""RightLeg"", ""LeftLeg""]," \n
+       "	[""LeftLeg"", ""LeftUpLeg"", ""Pelvis"", ""Spine"", ""RightLeg"", ""Neck"", ""LeftShoulder"", ""RightShoulder"", ""RightArm"", ""LeftArm"", ""LeftForeArm"", ""RightForeArm"", ""RightHand"", ""LeftHand""]," \n
+       "	[""RightLeg"", ""RightUpLeg"", ""Pelvis"", ""Spine"", ""LeftLeg"", ""Neck"", ""RightShoulder"", ""LeftShoulder"", ""LeftArm"", ""RightArm"", ""RightForeArm"", ""LeftForeArm"", ""LeftHand"", ""RightHand""]," \n
+       "	[""Pelvis"", ""Spine"", ""Spine2"", ""RightUpLeg"", ""Spine3"", ""LeftUpLeg"", ""RightShoulder"", ""Neck"", ""LeftShoulder"", ""LeftArm"", ""LeftForeArm"", ""RightArm"", ""RightForeArm"", ""LeftHand"", ""RightHand""]" \n
+       "] call RUBE_randomSelect;" \n
+       "" \n
+       "_currentSelection = -1;" \n
+       "_agonyThreshold = 0.5 + (random 0.3);" \n
+       "" \n
+       "_spreadCoolDown = time;" \n
+       "_spreadCoolDownTime = 0;" \n
+       "" \n
+       "_extCoolDown = time;" \n
+       "_extCoolDownTime = 0;" \n
+       "" \n
+       "_agonyTime = time;" \n
+       "" \n
+       "_isPlayer = (_unit == player);" \n
+       "_isMale = false;" \n
+       "if  (_unit call RUBE_isMale) then" \n
+       "{" \n
+       "	_isMale = true;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "_unit setVariable [""RUBE_isBurning"", true, true];" \n
+       "" \n
+       "" \n
+       "_spreadFire = {" \n
+       "	if (_currentSelection == ((count _selections) - 1)) exitWith {};" \n
+       "" \n
+       "	_currentSelection = _currentSelection + 1;" \n
+       "" \n
+       "	// create soundsource for first fire" \n
+       "	if (_currentSelection == 0) then" \n
+       "	{" \n
+       "		_sound = createSoundSource [""Sound_Fire"", (position _unit), [], 0];" \n
+       "		_sound attachTo [_unit, [0,0,0], ""Head""];" \n
+       "	};	" \n
+       "" \n
+       "	// create smoke for second fire" \n
+       "	if (_currentSelection == 1) then" \n
+       "	{" \n
+       "		_smoke = [_unit] call RUBE_PE_catchFireSmoke;" \n
+       "	};" \n
+       "" \n
+       "	// catch fire" \n
+       "	_particles set [" \n
+       "		(count _particles)," \n
+       "		([_unit, (_selections select _currentSelection)] call RUBE_PE_catchFire)" \n
+       "	];" \n
+       "" \n
+       "	_spreadCoolDown = time;" \n
+       "	_spreadCoolDownTime = random 4.0;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "// [unit, particles, smoke, sound] => void (spawned)" \n
+       "_stopFire = {" \n
+       "	private [""_unit"", ""_particles"", ""_smoke"", ""_sound"", ""_p""];" \n
+       "	" \n
+       "	_unit = _this select 0;" \n
+       "	_particles = _this select 1;" \n
+       "	_smoke = _this select 2;" \n
+       "	_sound = _this select 3;" \n
+       "" \n
+       "	while {((count _particles) > 0)} do" \n
+       "	{" \n
+       "		_p = _particles call RUBE_randomPop;" \n
+       "		deleteVehicle _p;" \n
+       "" \n
+       "		sleep (random 3.0);" \n
+       "	};" \n
+       "" \n
+       "	deleteVehicle _sound;" \n
+       "" \n
+       "	sleep (12 + (random 20));" \n
+       "	deleteVehicle _smoke;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "_extinguishFlame = {" \n
+       "	if ((count _particles) > 0) then" \n
+       "	{" \n
+       "		_p = _particles call RUBE_randomPop;" \n
+       "		deleteVehicle _p;" \n
+       "" \n
+       "		_extCoolDown = time;" \n
+       "		_extCoolDownTime = random 1.0;" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "" \n
+       "// onFire? well... run for your life then..." \n
+       "_run = {" \n
+       "	if (_isPlayer) exitWith {};" \n
+       "" \n
+       "	_unit doMove ([(position _unit), [12,12], [30,30]] call RUBE_randomizePos);" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "in_vehicle">*/
+        class in_vehicle
+        {
+          priority = 1.000000;
+          to="getOut";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_unit != (vehicle _unit))"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="start_fire___ppEffects";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "getOut">*/
+    class getOut
+    {
+      name = "getOut";
+      init = /*%FSM<STATEINIT""">*/"_unit leaveVehicle (vehicle _unit);" \n
+       "unassignVehicle _unit;" \n
+       "_unit action [""EJECT"", _unit];" \n
+       "" \n
+       "[_unit] allowGetIn false;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "out">*/
+        class out
+        {
+          priority = 0.000000;
+          to="start_fire___ppEffects";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_unit == (vehicle _unit))"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "start_fire___ppEffects">*/
+    class start_fire___ppEffects
+    {
+      name = "start_fire___ppEffects";
+      init = /*%FSM<STATEINIT""">*/"[] call _spreadFire;" \n
+       "" \n
+       "_unit forceSpeed 30;" \n
+       "[] call _run;" \n
+       "" \n
+       "/*" \n
+       "	ppEffects more or less taken from the BIS AIS module" \n
+       "*/" \n
+       "private [""_priorityRadial"", ""_priorityCorrections"", ""_ppEffects"", ""_stopPP"", ""_adjustPP""];" \n
+       "_ppEffects = [];" \n
+       "" \n
+       "_adjustPP = {" \n
+       "	private [""_delta""];" \n
+       "	_delta = 0.5;" \n
+       "	if ((count _this) > 0) then" \n
+       "	{" \n
+       "		_delta = _this select 0;" \n
+       "	};" \n
+       "" \n
+       "	if ((count _ppEffects) < 1) exitWith {};" \n
+       "" \n
+       "	// radial blur" \n
+       "	// [blur_x,blur_y,start_x,start_y]" \n
+       "	if ((count _ppEffects) > 0) then" \n
+       "	{" \n
+       "		(_ppEffects select 0) ppEffectAdjust [random 0.005 + 0.0025, random 0.005 + 0.0025, 0.0, 0.0];" \n
+       "		(_ppEffects select 0) ppEffectCommit _delta;" \n
+       "	};" \n
+       "" \n
+       "	//color correction" \n
+       "	// [brightness, contrast, gamma, [R, G, B, multiplier], [R, G, B, multiplier], [R, G, B, multiplier]]" \n
+       "	if ((count _ppEffects) > 1) then" \n
+       "	{" \n
+       "		(_ppEffects select 1) ppEffectAdjust [1.0, 1.0, 0.0, (0.04 + (random 0.4)), (random 0.03), 0.0,  (0.04 + (random 0.4)), (random 0.03), 1.0, 1.0, 1.0, 0.149, 0.437, 0.074, 0.0];  " \n
+       "		(_ppEffects select 1) ppEffectCommit _delta;" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "_stopPP = {" \n
+       "	if ((count _ppEffects) < 1) exitWith {};" \n
+       "	{" \n
+       "		_x ppEffectEnable false;" \n
+       "	} forEach _ppEffects;" \n
+       "};" \n
+       "" \n
+       "if (_isPlayer) then" \n
+       "{" \n
+       "	_priorityRadial = 170; //priority also given by wanted order of pp effects" \n
+       "	_priorityCorrections = 1580; " \n
+       "" \n
+       "	_ppEffects = ppEffectCreate  [[""radialBlur"", _priorityRadial], [""colorCorrections"", _priorityCorrections]];" \n
+       "" \n
+       "	_priorityRadial = _priorityRadial + 1;" \n
+       "	_priorityCorrections = _priorityCorrections + 1;  " \n
+       "" \n
+       "	{" \n
+       "		_x ppEffectEnable true;" \n
+       "	} forEach _ppEffects;" \n
+       "" \n
+       "	[2.0] call _adjustPP;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="burning____taking";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "burning____taking">*/
+    class burning____taking
+    {
+      name = "burning____taking";
+      init = /*%FSM<STATEINIT""">*/"if (_isPlayer) then" \n
+       "{" \n
+       "	_unit setDamage ((damage _unit) + (random 0.005));" \n
+       "} else" \n
+       "{" \n
+       "	_unit setDamage ((damage _unit) + (random 0.05));" \n
+       "};" \n
+       "" \n
+       "" \n
+       "//diag_log format[""%1 with %2 flames (dmg: %3) (t: %4)"", _unit, (count _particles), (damage _unit), time];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "no_unit">*/
+        class no_unit
+        {
+          priority = 5.000000;
+          to="dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(isNil ""_unit"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 4.000000;
+          to="dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(alive _unit)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "agony">*/
+        class agony
+        {
+          priority = 3.000000;
+          to="start_agony";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(damage _unit) > _agonyThreshold"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "fire_ext_">*/
+        class fire_ext_
+        {
+          priority = 3.000000;
+          to="fire__extinguish";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(count _particles) == 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "in_ext__anim">*/
+        class in_ext__anim
+        {
+          priority = 2.000000;
+          to="burning____taking";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((animationState _unit) in _extAnims) && ((time - _extCoolDown) > _extCoolDownTime)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"[] call _extinguishFlame;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "spread_fire">*/
+        class spread_fire
+        {
+          priority = 2.000000;
+          to="burning____taking";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((random 1.0) > 0.67) && ((time - _spreadCoolDown) > _spreadCoolDownTime)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"[] call _spreadFire;" \n
+           "[] call _adjustPP;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "run_for__your_li">*/
+        class run_for__your_li
+        {
+          priority = 1.000000;
+          to="burning____taking";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((random 1.0) > 0.78) || (unitReady _unit)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"[] call _run;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="delay_loop";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "dead">*/
+    class dead
+    {
+      name = "dead";
+      init = /*%FSM<STATEINIT""">*/"_handle = [_unit, _particles, _smoke, _sound] spawn _stopFire;" \n
+       "" \n
+       "if (!_isMale) then" \n
+       "{" \n
+       "	_unit switchMove """";" \n
+       "};" \n
+       "" \n
+       "[] call _stopPP;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "delay_loop">*/
+    class delay_loop
+    {
+      name = "delay_loop";
+      init = /*%FSM<STATEINIT""">*/"[] call _adjustPP;" \n
+       "" \n
+       "_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="burning____taking";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "burning____in_ag">*/
+    class burning____in_ag
+    {
+      name = "burning____in_ag";
+      init = /*%FSM<STATEINIT""">*/"_unit setDamage ((damage _unit) + (random 0.05));" \n
+       "" \n
+       "" \n
+       "//diag_log format[""%1 with %2 flames (dmg: %3) (t: %4) [IN AGONY]"", _unit, (count _particles), (damage _unit), time];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "no_unit">*/
+        class no_unit
+        {
+          priority = 5.000000;
+          to="dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(isNil ""_unit"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 4.000000;
+          to="dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(alive _unit)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "fire_ext_">*/
+        class fire_ext_
+        {
+          priority = 3.000000;
+          to="fire__extinguish";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(count _particles) == 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"if (_isMale) then" \n
+           "{" \n
+           "	_unit playAction ""agonyStop"";" \n
+           "};"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "in_ext__anim">*/
+        class in_ext__anim
+        {
+          priority = 2.000000;
+          to="burning____in_ag";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((animationState _unit) in _extAnims) && ((time - _extCoolDown) > _extCoolDownTime)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"[] call _extinguishFlame;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "spread_fire">*/
+        class spread_fire
+        {
+          priority = 2.000000;
+          to="burning____in_ag";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((random 1.0) > 0.43) && ((time - _spreadCoolDown) > _spreadCoolDownTime)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"[] call _spreadFire;" \n
+           "[] call _adjustPP;" \n
+           "" \n
+           "if (_isMale && ((time - _agonyTime) > 4)) then" \n
+           "{" \n
+           "	_unit playAction (_agonyAnims call RUBE_randomSelect);" \n
+           "};"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="delay_loop_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "delay_loop_1">*/
+    class delay_loop_1
+    {
+      name = "delay_loop_1";
+      init = /*%FSM<STATEINIT""">*/"[] call _adjustPP;" \n
+       "" \n
+       "_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="burning____in_ag";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "start_agony">*/
+    class start_agony
+    {
+      name = "start_agony";
+      init = /*%FSM<STATEINIT""">*/"if (_isMale) then" \n
+       "{" \n
+       "	_unit playAction ""agonyStart"";" \n
+       "} else" \n
+       "{" \n
+       "	_unit switchMove ""AidlPercMstpSnonWnonDnon_panic1"";" \n
+       "};" \n
+       "" \n
+       "_agonyTime = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="burning____in_ag";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "fire__extinguish">*/
+    class fire__extinguish
+    {
+      name = "fire__extinguish";
+      init = /*%FSM<STATEINIT""">*/"_handle = [_unit, _particles, _smoke, _sound] spawn _stopFire;" \n
+       "" \n
+       "if (!_isMale) then" \n
+       "{" \n
+       "	_unit switchMove """";" \n
+       "};" \n
+       "" \n
+       "[] call _stopPP;" \n
+       "" \n
+       "_unit setVariable [""RUBE_isBurning"", false, true];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="init";
+  finalStates[] =
+  {
+    "dead",
+    "fire__extinguish",
+  };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,200 @@
+/*%FSM<COMPILE "C:\Programme\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, RUBE_AI_HELO_landAndDelete">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"init",0,250,-39.148243,-122.139137,50.851753,-72.139137,0.000000,"init"};
+item1[] = {"delay",4,218,-35.637703,-53.900928,48.663513,-8.785602,0.000000,"delay"};
+item2[] = {"fly_home",2,4346,-39.708298,13.670307,50.291718,63.670300,0.000000,"fly home"};
+item3[] = {"ready",4,218,-39.708321,87.754433,50.291679,137.754425,0.000000,"ready"};
+item4[] = {"crash",4,218,87.293068,15.298527,177.293076,65.298523,0.000000,"crash"};
+item5[] = {"dead",1,250,211.037979,15.298534,301.037964,65.298523,0.000000,"dead"};
+item6[] = {"land",2,250,-40.522423,321.404358,49.477600,371.404419,0.000000,"land"};
+item7[] = {"ready",4,218,-40.522446,399.151978,49.477646,449.152039,0.000000,"ready"};
+item8[] = {"delete",1,250,118.229317,398.337891,208.229416,448.337891,0.000000,"delete"};
+item9[] = {"check",2,250,-40.115398,168.758575,49.884624,218.758575,0.000000,"check"};
+item10[] = {"arrived",4,218,-40.929485,246.099152,49.070518,296.099152,1.000000,"arrived"};
+item11[] = {"move",4,218,-147.578003,88.161545,-57.578064,138.161530,0.000000,"move"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,4};
+link4[] = {3,9};
+link5[] = {4,5};
+link6[] = {6,7};
+link7[] = {7,8};
+link8[] = {9,10};
+link9[] = {9,11};
+link10[] = {10,6};
+link11[] = {11,2};
+globals[] = {0.000000,0,0,0,0,640,480,1,18,6316128,1,-232.836136,367.163940,417.639496,-122.116692,737,663,1};
+window[] = {0,-1,-1,-1,-1,948,1594,2857,154,1,754};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "RUBE_AI_HELO_landAndDelete";
+  class States
+  {
+    /*%FSM<STATE "init">*/
+    class init
+    {
+      name = "init";
+      init = /*%FSM<STATEINIT""">*/"/*" \n
+       "	Description:" \n
+       "	 lands a helo(-group) at a given position and deletes" \n
+       "	 the group/helo at touch down." \n
+       "	 We don't delete the helo on a crash though." \n
+       "*/" \n
+       "" \n
+       "private [""_group"", ""_helo"", ""_landingPosition"", ""_pilot"", ""_t"", ""_delay""];" \n
+       "" \n
+       "// parameters" \n
+       "_group = _this select 0;" \n
+       "_helo = _this select 1;" \n
+       "_landingPosition = _this select 2; // home air base" \n
+       "" \n
+       "// init" \n
+       "_pilot = assignedDriver _helo;" \n
+       "_t = time;" \n
+       "_delay = (2 + (random 3));"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="fly_home";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "fly_home">*/
+    class fly_home
+    {
+      name = "fly_home";
+      init = /*%FSM<STATEINIT""">*/"[" \n
+       "	[""group"", _group]," \n
+       "	[""position"",_landingPosition]," \n
+       "	[""type"", ""MOVE""]," \n
+       "	[""speed"", ""FULL""]," \n
+       "	[""completionRadius"", 100]" \n
+       "] call RUBE_updateWaypoint;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "crash">*/
+        class crash
+        {
+          priority = 0.000000;
+          to="dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!(alive _helo) || !(canMove _helo))"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "ready">*/
+        class ready
+        {
+          priority = 0.000000;
+          to="check";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"unitReady _pilot"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "dead">*/
+    class dead
+    {
+      name = "dead";
+      init = /*%FSM<STATEINIT""">*/"_helo setDamage 1.0;" \n
+       "[_group, false] call RUBE_deleteGroup;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "land">*/
+    class land
+    {
+      name = "land";
+      init = /*%FSM<STATEINIT""">*/"[" \n
+       "	[""group"", _group]," \n
+       "	[""position"",_landingPosition]," \n
+       "	[""type"", ""GETOUT""]" \n
+       "] call RUBE_updateWaypoint;" \n
+       "" \n
+       "_helo land ""LAND"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "ready">*/
+        class ready
+        {
+          priority = 0.000000;
+          to="delete";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(unitReady _pilot) || !(alive _pilot)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "delete">*/
+    class delete
+    {
+      name = "delete";
+      init = /*%FSM<STATEINIT""">*/"[_group, true] call RUBE_deleteGroup;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "check">*/
+    class check
+    {
+      name = "check";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "arrived">*/
+        class arrived
+        {
+          priority = 1.000000;
+          to="land";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((_helo distance _landingPosition) < 125)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "move">*/
+        class move
+        {
+          priority = 0.000000;
+          to="fly_home";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="init";
+  finalStates[] =
+  {
+    "dead",
+    "delete",
+  };
+};
+/*%FSM</COMPILE>*/

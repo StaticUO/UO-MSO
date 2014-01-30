@@ -1,0 +1,148 @@
+
+   RRRRRRRRRRRRRRRRR   UUUUUUUU     UUUUUUUUBBBBBBBBBBBBBBBBB   EEEEEEEEEEEEEEEEEEEEEE
+   R::::::::::::::::R  U::::::U     U::::::UB::::::::::::::::B  E::::::::::::::::::::E
+   R::::::RRRRRR:::::R U::::::U     U::::::UB::::::BBBBBB:::::B E::::::::::::::::::::E
+   RR:::::R     R:::::RUU:::::U     U:::::UUBB:::::B     B:::::BEE::::::EEEEEEEEE::::E
+     R::::R     R:::::R U:::::U     U:::::U   B::::B     B:::::B  E:::::E       EEEEEE
+     R::::R     R:::::R U:::::D     D:::::U   B::::B     B:::::B  E:::::E             
+     R::::RRRRRR:::::R  U:::::D     D:::::U   B::::BBBBBB:::::B   E::::::EEEEEEEEEE   
+     R:::::::::::::RR   U:::::D     D:::::U   B:::::::::::::BB    E:::::::::::::::E   
+     R::::RRRRRR:::::R  U:::::D     D:::::U   B::::BBBBBB:::::B   E:::::::::::::::E   
+     R::::R     R:::::R U:::::D     D:::::U   B::::B     B:::::B  E::::::EEEEEEEEEE   
+     R::::R     R:::::R U:::::D     D:::::U   B::::B     B:::::B  E:::::E             
+     R::::R     R:::::R U::::::U   U::::::U   B::::B     B:::::B  E:::::E       EEEEEE
+   RR:::::R     R:::::R U:::::::UUU:::::::U BB:::::BBBBBB::::::BEE::::::EEEEEEEE:::::E
+   R::::::R     R:::::R  UU:::::::::::::UU  B:::::::::::::::::B E::::::::::::::::::::E
+   R::::::R     R:::::R    UU:::::::::UU    B::::::::::::::::B  E::::::::::::::::::::E
+   RRRRRRRR     RRRRRRR      UUUUUUUUU      BBBBBBBBBBBBBBBBB   EEEEEEEEEEEEEEEEEEEEEE
+    
+                                                   /)         /) ,  /)                
+                                               _/_(/    _    //    (/_ __  _   __     
+                                               (__/ )__(/_  (/__(_/_) / (_(_(_/ (_(_/_
+                                                                                 .-/  
+                                                                                (_/
+                                         
+                     (or an endless odyssey of work in progress)
+                     
+
+
+
+
+   Author: rübe
+   Contact: http://forums.bistudio.com/member.php?u=11577 
+   Web:     http://non.sense.ch/        
+           
+                                                                                
+
+
+
+
+
+
+
+
+/*
+
+ * General notes:
+   --------------
+   
+   1) This framework demands a Combined Operations (CO) installation, which is 
+      Arma2 (A2) and the expansion Operation Arrowhead (OA) together. Some DLC 
+      such as BAF or PMC might work too, but isn't required.
+   
+   2) Functions are usually extensively commented, including ideas, tips, working
+      notes.. so either read and enjoy them or delete the "prose" and leave nothing 
+      but the functions contract in case this pisses you off. hehe
+      
+   3) As a standard practice, RUBE functions do never (or only occasionally) perform
+      any sort of type check on their input parameters. It's _design by contract_. 
+      I repeat:
+                   DESIGN BY CONTRACT
+      
+      So you might have to do your own typechecks, switches and what not to ensure 
+      that you pass the correct data structure to a RUBE function. 
+      You should be save as long as you read and respect the functions contracts. 
+      
+      Thus if things don't work as expected, first check your input before you come
+      complaining what a dickhead I am :)
+      
+   4) Regarding multiplayer, it's YOUR job to decide, what should get executed on the
+      server/the clients...
+      
+      (yeah, call me lazy, but I'm just not interested in tedious multiplayer
+       scripting/testing)
+       
+   5) RUBE might set variables on units or other objects, though all of them are
+      prefixed. Some reoccuring ones are:
+      
+       - RUBE_inUse (usually for objects)
+       - RUBE_isBusy (usually for units)
+       - RUBE_targets / RUBE_target (usually for units)
+       - RUBE_isBurning (for buildings or units)
+       - RUBE_isAvailable (for units/objects)
+       
+      ...which you may find usefull in other scripts. A call to RUBE_isTrue doesn't
+      cost much ;)
+
+   6) The acronym RUBE stands for "only sissies use the graphical ingame editor." 
+      
+       That's the spirit. ;)
+
+   *) Feel free to use this hotchpotch of functions and scripts as you like - as a
+      whole or only tidbtis of it. But don't blame me if your mission still sucks 
+      ass.
+
+
+ * Essential RUBE paradigms:
+   -------------------------
+
+   1) Function Parameters - tag them. Goddamn it!
+
+      Unless there is only a small and fixed number of parameters, go on as usual. 
+      But if there are more of them, and even more could be added later, and 
+      especially if there are optional parameters(!), use friggin tagged parameters 
+      (an array of [key, value]).
+      
+      For one, parameters are tagged/labeled, which makes reading code so much 
+      easier. Second, the order of the parameters doesn't matter at all, which makes
+      adding more (hopefully optional to not break backwards comp.) parameters later
+      very easy.
+      
+      Need an example?
+      Guess which one is better:
+      
+        a) ["Peter", 34, 1.2, 7, true, true false] call _function
+        
+        b) [
+              ["name", "Peter"],
+              ["age", 34],
+              ["score", 1.2],
+              ["deaths", 7],
+              ["noob", true],
+              ["ugly", true],
+              ["nice", false]
+           ] call _function
+      
+      Got it? Fine. And if not, well, screw you!
+
+   2) Waypoints: "There can be only one"
+   
+      There is only one waypoint for each group. Stacks of waypoints are nice if 
+      you're using the ingame editor... well, we don't. And I can tell you: a lot of
+      things are so much easier if you can count on your groups having only one
+      waypoint (and one fsm) running at a time. This especially enables us to easily
+      switch between task, shut down this fsm, to replace it with another one, etc...
+      If you have a stack of doom, erm, waypoints, for your groups, things get ugly or
+      simply tedious very fast.
+      
+      Now instead, write an fsm and make good frequent use of RUBE_updateWaypoint to
+      update that single waypoint as needed. Our waypoints now can be updated not only
+      if a waypoint "has finished" (unitReady in most cases) but we can have any inputs
+      triggering such an update.
+      
+      Try it, mess a bit around with this approach and it will grow on you, 
+      promised. 
+      
+      And if not, well, screw you! ;)
+
+*/

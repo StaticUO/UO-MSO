@@ -1,0 +1,951 @@
+/*%FSM<COMPILE "C:\Programme\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, weatherModule">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"init",0,250,-262.783020,-313.229034,-56.381081,-248.414124,0.000000,"init"};
+item1[] = {"_",4,218,-5.522516,-41.007904,20.498312,-16.755613,0.000000,""};
+item2[] = {"cycle_A__rain_particles",2,250,-183.018524,213.008881,-93.018517,263.008850,0.000000,"cycle A" \n "(rain/particles)"};
+item3[] = {"delay",4,218,-183.034668,286.542236,-93.034554,336.542236,1.000000,"delay"};
+item4[] = {"process__clean_u",2,250,148.986679,17.549721,238.986755,67.549713,0.000000,"process," \n "clean up"};
+item5[] = {"_",4,218,-259.126709,241.429001,-227.824432,270.537384,0.000000,""};
+item6[] = {"_",4,218,-326.699219,-290.857574,-301.458679,-268.946014,0.000000,""};
+item7[] = {"auto_advance_forecast",2,250,129.782806,-190.723877,257.271179,-142.866028,0.000000,"auto advance forecast/" \n "generate new day"};
+item8[] = {"new_day",4,218,156.789276,-71.290154,230.404358,-31.433205,3.000000,"new day"};
+item9[] = {"prepare_weather",2,250,-38.367722,-117.457527,51.632294,-67.457535,0.000000,"prepare" \n "weather"};
+item10[] = {"_",4,218,-6.768244,-176.755341,20.813032,-154.843765,0.000000,""};
+item11[] = {"weather_change_A",2,250,-199.916290,89.749641,-73.967606,133.758057,0.000000,"weather change A" \n "(overcast)"};
+item12[] = {"_",4,218,-151.449341,162.467743,-122.219681,188.501984,0.000000,""};
+item13[] = {"weather_change_B",2,250,-204.201324,359.329285,-72.261078,410.185181,0.000000,"weather change B" \n "(fog)"};
+item14[] = {"_",4,218,-42.859810,373.452057,-13.630154,398.630371,0.000000,""};
+item15[] = {"delay",4,218,148.865906,361.469177,238.865921,411.469177,1.000000,"delay"};
+item16[] = {"init_next_cycle",2,250,-37.831276,16.996128,52.168739,66.996109,0.000000,"init next cycle"};
+item17[] = {"_",4,218,90.236160,31.511734,113.474403,52.410416,0.000000,""};
+item18[] = {"_",4,218,-151.989243,29.799885,-123.615417,52.909729,0.000000,""};
+item19[] = {"cycle_B__rain_particles",2,250,20.906330,361.041199,110.906303,411.041199,0.000000,"cycle B" \n "(rain/particles)"};
+item20[] = {"color_filter",2,250,-110.467850,-229.153900,-51.155571,-188.677658,0.000000,"color filter"};
+item21[] = {"refresh",2,250,-386.691650,204.580856,-296.691620,254.580917,0.000000,"refresh"};
+item22[] = {"delay",4,218,-266.682739,183.864014,-215.198929,213.321915,1.000000,"delay"};
+item23[] = {"tick",4,218,-336.867920,116.246597,-272.545532,152.551849,0.000000,"tick"};
+item24[] = {"_",4,218,5.500049,433.793610,38.153435,458.971924,0.000000,""};
+item25[] = {"refresh_1",2,250,20.906601,486.860657,110.906616,536.860657,0.000000,"refresh"};
+item26[] = {"tick",4,218,-82.659752,462.894897,-22.616928,505.191528,0.000000,"tick"};
+item27[] = {"delay",4,218,75.685455,433.793610,134.872345,462.395630,1.000000,"delay"};
+item28[] = {"_",4,218,-94.803185,-103.421539,-66.459595,-81.949135,0.000000,""};
+item29[] = {"cycle_function",2,250,-341.205811,-229.277222,-288.242737,-186.684586,0.000000,"cycle" \n "function"};
+item30[] = {"_",4,218,-153.480042,-218.982758,-129.088440,-197.554153,0.000000,""};
+item31[] = {"_",4,218,-268.823792,-218.982544,-246.548584,-197.553909,0.000000,""};
+item32[] = {"refresh_function",2,250,-228.612213,-228.506378,-173.532776,-189.088333,0.000000,"refresh" \n "function"};
+item33[] = {"reset",4,218,76.149834,-52.843792,137.578430,-16.600393,2.000000,"reset"};
+item34[] = {"reset",4,218,21.123238,212.765472,111.123291,262.765381,2.000000,"reset"};
+link0[] = {0,6};
+link1[] = {1,16};
+link2[] = {2,3};
+link3[] = {2,5};
+link4[] = {2,34};
+link5[] = {3,13};
+link6[] = {4,8};
+link7[] = {4,17};
+link8[] = {4,33};
+link9[] = {5,21};
+link10[] = {6,29};
+link11[] = {7,10};
+link12[] = {8,7};
+link13[] = {9,1};
+link14[] = {10,9};
+link15[] = {11,12};
+link16[] = {12,2};
+link17[] = {13,14};
+link18[] = {14,19};
+link19[] = {15,4};
+link20[] = {16,18};
+link21[] = {17,16};
+link22[] = {18,11};
+link23[] = {19,15};
+link24[] = {19,24};
+link25[] = {19,34};
+link26[] = {20,28};
+link27[] = {21,22};
+link28[] = {21,23};
+link29[] = {22,2};
+link30[] = {23,21};
+link31[] = {24,25};
+link32[] = {25,26};
+link33[] = {25,27};
+link34[] = {26,25};
+link35[] = {27,19};
+link36[] = {28,9};
+link37[] = {29,31};
+link38[] = {30,20};
+link39[] = {31,32};
+link40[] = {32,30};
+link41[] = {33,9};
+link42[] = {34,4};
+globals[] = {0.000000,0,0,0,0,640,480,1,42,6316128,1,-404.836426,251.745178,399.091064,-275.699158,613,630,1};
+window[] = {0,-1,-1,-32000,-32000,819,119,1345,58,1,630};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "weatherModule";
+  class States
+  {
+    /*%FSM<STATE "init">*/
+    class init
+    {
+      name = "init";
+      init = /*%FSM<STATEINIT""">*/"/*" \n
+       "	Description:" \n
+       "	 RUBE_weatherModule" \n
+       "*/" \n
+       "" \n
+       "_logic = _this;" \n
+       "_weather = _logic getVariable ""forecast"";" \n
+       "" \n
+       "_weatherObject = player;" \n
+       "" \n
+       "_hardReset = false; // hard-reset without transition, used in conjunction with _reset" \n
+       "_reset = false; // can be activated to reset (skip cycles, etc.)" \n
+       "" \n
+       "_simulationClock = 2; // how many minutes a sim. step equals" \n
+       "_cycleDelay = 25; // gets randomized each cycle" \n
+       "_tickDelay = 1 + (random 0.1);" \n
+       "" \n
+       "_simulationT0 = time; " \n
+       "_t = 0;" \n
+       "" \n
+       "_temperature = 0;" \n
+       "_pressureLocal = 0;" \n
+       "_pressureEnv = 0;" \n
+       "" \n
+       "// active particles" \n
+       "_particles = [];" \n
+       "" \n
+       "// particle sources" \n
+       "_psSnow = objNull;" \n
+       "_psFog = objNull;" \n
+       "_psFogMin = 0.2; // min. radiation fog intensity to kick ass" \n
+       "" \n
+       "" \n
+       "/*" \n
+       "	private functions" \n
+       "*/ " \n
+       "" \n
+       "_getCycleDelay = {" \n
+       "	(7.5 + (random 10))" \n
+       "};" \n
+       "" \n
+       "_simulationAge = {" \n
+       "	(floor ((time - _simulationT0) / (60 * _simulationClock)))" \n
+       "};" \n
+       "" \n
+       "_syncOSC = {" \n
+       "	private [""_age""];" \n
+       "	_age = [] call _simulationAge;" \n
+       "" \n
+       "	while {(_this select 1) < _age} do" \n
+       "	{" \n
+       "		_this call RUBE_randomWalk;" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "" \n
+       "_updateCore = {" \n
+       "	private [""_dt"", ""_d0"", ""_d1""];" \n
+       "	_overcast call _syncOSC;" \n
+       "	_precipitation call _syncOSC;" \n
+       "" \n
+       "	_disturbances = [" \n
+       "	   [(_overcast select 0), (_precipitation select 0)]," \n
+       "	   _disturbanceMask" \n
+       "	] call RUBE_weatherApplyDisturbanceMask;" \n
+       "" \n
+       "	_overcastReal = _disturbances select 0;" \n
+       "	_precipitationReal = _disturbances select 1;" \n
+       "	_pressureLocalOffset = _disturbances select 2;" \n
+       "" \n
+       "	// update local pressure's base (+ offset from disturbance mask)" \n
+       "	(_pressureLocalOSC select 2) set [2, (_pressureLocalBase0 + _pressureLocalOffset)];" \n
+       "" \n
+       "	_pressureLocalOSC call _syncOSC;" \n
+       "	_pressureLocal = _pressureLocalOSC select 0;" \n
+       "" \n
+       "	_pressureEnvOSC call _syncOSC;" \n
+       "	_pressureEnv = _pressureEnvOSC select 0;" \n
+       "" \n
+       "	// interpolate Tmin and Trange to get continuous temperatures" \n
+       "	// - two day's values are equally mixed at 24:00 and " \n
+       "	// - todays value is ""pure"" at 12:00" \n
+       "	_dt = daytime;" \n
+       "	_d0 = 0;" \n
+       "	_d1 = 1;" \n
+       "" \n
+       "	if (_dt < 12) then" \n
+       "	{" \n
+       "		_dt = (12 + _dt) / 24;" \n
+       "	} else" \n
+       "	{" \n
+       "		_dt = (_dt - 12) / 24;" \n
+       "		_d0 = 1;" \n
+       "		_d1 = 2;" \n
+       "	};" \n
+       "" \n
+       "	_Tmin = ((1 - _dt) * (((_weather select _d0) select 0) select 0)) + " \n
+       "			  (_dt * (((_weather select _d1) select 0) select 0));" \n
+       "" \n
+       "	_Trange = ((1 - _dt) * (((_weather select _d0) select 0) select 1)) + " \n
+       "		   	      (_dt * (((_weather select _d1) select 0) select 1));" \n
+       "" \n
+       "	_temperature = [] call RUBE_temperature;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "_updateWind = {" \n
+       "	private [""_wd""];" \n
+       "" \n
+       "	_windSpeed call _syncOSC;" \n
+       "	_windDirection call _syncOSC;" \n
+       "" \n
+       "	_wd = [" \n
+       "		(_windSpeed select 0), " \n
+       "		_Tmin, " \n
+       "		_Trange, " \n
+       "		_weatherObject" \n
+       "	] call RUBE_weatherWindSpeed;" \n
+       "" \n
+       "	_windSpeedReal = _wd select 0;" \n
+       "	_windSpeedRealUC = _wd select 1;" \n
+       "" \n
+       "	_windDirectionReal = (_windDirection select 0) - 5 + (random 10);" \n
+       "" \n
+       "	setWind[" \n
+       "		((sin _windDirectionReal) * _windSpeedReal)," \n
+       "		((cos _windDirectionReal) *_windSpeedReal)," \n
+       "		true" \n
+       "	];" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="cycle_function";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "cycle_A__rain_particles">*/
+    class cycle_A__rain_particles
+    {
+      name = "cycle_A__rain_particles";
+      init = /*%FSM<STATEINIT""">*/"[] call _doCycle;" \n
+       "" \n
+       "_cycleDelay = [] call _getCycleDelay;" \n
+       "_ct = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "reset">*/
+        class reset
+        {
+          priority = 2.000000;
+          to="process__clean_u";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_reset"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 1.000000;
+          to="weather_change_B";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _cycleT0) > _cycleTimeA"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="refresh";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "process__clean_u">*/
+    class process__clean_u
+    {
+      name = "process__clean_u";
+      init = /*%FSM<STATEINIT""">*/"// kill unneeded particle sources" \n
+       "if (!(isNull _psSnow)) then" \n
+       "{" \n
+       "	if ((_snowReal == 0) || !(_logic getVariable ""enable-particles-snow"")) then" \n
+       "	{" \n
+       "		_particles = _particles - [_psSnow];" \n
+       "		deleteVehicle _psSnow;" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "if (!(isNull _psFog)) then" \n
+       "{" \n
+       "	if (((_fogReal select 1) < _psFogMin) || !(_logic getVariable ""enable-particles-fog"")) then" \n
+       "	{" \n
+       "		_particles = _particles - [_psFog];" \n
+       "		deleteVehicle _psFog;" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "new_day">*/
+        class new_day
+        {
+          priority = 3.000000;
+          to="auto_advance_forecast";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_logic getVariable ""enable-auto-advance-forecast"") && ((_date select 2) != (date select 2))"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "reset">*/
+        class reset
+        {
+          priority = 2.000000;
+          to="prepare_weather";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_reset"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="init_next_cycle";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "auto_advance_forecast">*/
+    class auto_advance_forecast
+    {
+      name = "auto_advance_forecast";
+      init = /*%FSM<STATEINIT""">*/"RUBE_weather setVariable [""date"", date, true];" \n
+       "[] call (RUBE_weather getVariable ""generate-next-day"");" \n
+       "" \n
+       "_weather = (RUBE_weather getVariable ""forecast"");" \n
+       "" \n
+       "/* TODO: extra cycle time, in case of greater differences old/new forecast */" \n
+       "" \n
+       "" \n
+       "if (_logic getVariable ""debug-engine"") then" \n
+       "{" \n
+       "	diag_log format[""[poll/generate new day: %1]"",time/60];" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="prepare_weather";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "prepare_weather">*/
+    class prepare_weather
+    {
+      name = "prepare_weather";
+      init = /*%FSM<STATEINIT""">*/"if (_reset && (_logic getVariable ""debug-engine"")) then" \n
+       "{" \n
+       "	diag_log format[""RESET WEATHER MODULE""];" \n
+       "	{" \n
+       "		diag_log format["" - %1"", _x];" \n
+       "	} forEach (_weather select 1);" \n
+       "};" \n
+       "" \n
+       "_reset = false;" \n
+       "_date = date;" \n
+       "_latitude = _logic getVariable ""latitude"";" \n
+       "_latitudeCoeff = (abs _latitude) / 90; // 0=equator, 1=polar" \n
+       "" \n
+       "_current = _weather select 1;" \n
+       "_Tmin = 0; // will be interpolated to get cont. temps in updateCore" \n
+       "_Trange = 0;" \n
+       "" \n
+       "_micro = _weather call RUBE_weatherGenerateMicro;" \n
+       "_disturbanceMask = (_current select 1) select 1;" \n
+       "_disturbances = [];" \n
+       "" \n
+       "_transitionTime = _micro select 0;" \n
+       "_oscs = _micro select 1;" \n
+       "" \n
+       "_pressureLocalOSC = _oscs select 0;" \n
+       "_pressureEnvOSC = _oscs select 1;" \n
+       "" \n
+       "_pressureLocalBase0 = (_pressureLocalOSC select 2) select 2;" \n
+       "_pressureLocalOffset = 0;" \n
+       "" \n
+       "_precipitation = _oscs select 2;" \n
+       "" \n
+       "_precipitationReal = 0; // rain+snow" \n
+       "_snow = 0; // ratio of precipitation!" \n
+       "" \n
+       "_rainReal = 0; // effective amount (minus snow)" \n
+       "_snowReal = 0; // effective amount" \n
+       "" \n
+       "_overcast = _oscs select 3;" \n
+       "_overcastReal = 0;" \n
+       "" \n
+       "_fog = _oscs select 4;" \n
+       "_fogReal = [0,0]; // intensity, duration" \n
+       "_fogD1 = (_current select 3) select 1;" \n
+       "_fogD2 = (_current select 3) select 2;" \n
+       "_fogD3 = (_current select 3) select 3;" \n
+       "" \n
+       "_windSpeed = _oscs select 5;" \n
+       "_windDirection = _oscs select 6;" \n
+       "" \n
+       "_windSpeedReal = 0; // choked" \n
+       "_windSpeedRealUC = 0; // unchoked" \n
+       "_windDirectionReal = 0;" \n
+       "" \n
+       "// set initial weather and color filter without transition" \n
+       "if (_t == 0 || _hardReset) then" \n
+       "{" \n
+       "	[] call _updateCore;" \n
+       "	[] call _updateWind;" \n
+       "	0 call _updateColorFilter;" \n
+       "" \n
+       "	_fog call _syncOSC;" \n
+       "	_fogReal = [(_fog select 0), _fogD1, _fogD2, _fogD3, _windSpeedRealUC] call RUBE_fog;" \n
+       "" \n
+       "	0 setOvercast _overcastReal;" \n
+       "	0 setFog (_fogReal select 0);" \n
+       "	0 setRain _rainReal;" \n
+       "" \n
+       "	_hardReset = false;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "if (_logic getVariable ""debug-engine"") then" \n
+       "{" \n
+       "	diag_log format[""[prepare weather: %1]"", time/60];" \n
+       "" \n
+       "	_i = 0;" \n
+       "	{" \n
+       "		diag_log format["" [%1] %2"", _i, _x];" \n
+       "		_i = _i + 1;" \n
+       "	} forEach _weather;" \n
+       "" \n
+       "	diag_log format["" - transition: %1 (%2)"", " \n
+       "		_transitionTime, " \n
+       "		_transitionTime / 60" \n
+       "	];" \n
+       "" \n
+       "	diag_log format["" - disturbance mask:""];" \n
+       "	diag_log format[""   - oscillator: %1"", _disturbanceMask select 0];" \n
+       "	diag_log format[""   - bands/keyframes:""];" \n
+       "	for ""_i"" from 0 to ((count (_disturbanceMask select 1)) - 1) do" \n
+       "	{" \n
+       "		diag_log format[""     [%1]: %2"", _i, ((_disturbanceMask select 1) select _i)];" \n
+       "	};" \n
+       "	diag_log format[""   - overcaster: %1"", _disturbanceMask select 2];" \n
+       "	diag_log """";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="init_next_cycle";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "weather_change_A">*/
+    class weather_change_A
+    {
+      name = "weather_change_A";
+      init = /*%FSM<STATEINIT""">*/"_overcast call _syncOSC;" \n
+       "" \n
+       "_cycleTimeA setOvercast _overcastReal;" \n
+       "" \n
+       "_cycleTimeA call _updateColorFilter;" \n
+       "" \n
+       "if (_logic getVariable ""debug-engine"") then" \n
+       "{" \n
+       "	diag_log format[""[weather change A: %1]"",time/60];" \n
+       "	diag_log format["" - overcast: %1"", _overcastReal];" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="cycle_A__rain_particles";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "weather_change_B">*/
+    class weather_change_B
+    {
+      name = "weather_change_B";
+      init = /*%FSM<STATEINIT""">*/"_fog call _syncOSC;" \n
+       "_fogReal = [(_fog select 0), _fogD1, _fogD2, _fogD3, _windSpeedRealUC] call RUBE_fog;" \n
+       "" \n
+       "_cycleTimeB setFog (_fogReal select 0);" \n
+       "" \n
+       "_cycleTimeB call _updateColorFilter;" \n
+       "" \n
+       "if (_logic getVariable ""debug-engine"") then" \n
+       "{" \n
+       "	diag_log format[""[weather change B: %1]"",time/60];" \n
+       "	diag_log format["" - fog: %1"", (_fogReal select 0)];" \n
+       "	diag_log format["" - fog (radiation): %1"", (_fogReal select 1)];" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="cycle_B__rain_particles";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "init_next_cycle">*/
+    class init_next_cycle
+    {
+      name = "init_next_cycle";
+      init = /*%FSM<STATEINIT""">*/"// calculate next cycle time" \n
+       "_cycleTime = 10 + ([" \n
+       "	_transitionTime," \n
+       "	(_transitionTime * 0.25)" \n
+       "] call RUBE_randomGauss);" \n
+       "" \n
+       "_cycleTimeA = _cycleTime * (0.4 + (random 0.2));" \n
+       "_cycleTimeB = _cycleTime - _cycleTimeA;" \n
+       "_cycleT0 = time;" \n
+       "" \n
+       "[] call _updateCore;" \n
+       "" \n
+       "if (_logic getVariable ""debug-engine"") then" \n
+       "{" \n
+       "	diag_log format[""[init next cycle: %1]"",time/60];" \n
+       "	diag_log format[" \n
+       "		"" - cycle time: %1 + %2 = %3""," \n
+       "		_cycleTimeA, " \n
+       "		_cycleTimeB," \n
+       "		_cycleTime" \n
+       "	];" \n
+       "" \n
+       "	_i = 0;" \n
+       "	diag_log format["" - oscillators:""];" \n
+       "	{" \n
+       "		diag_log format[""   [%1] %2"", _i, _x];" \n
+       "		_i = _i + 1;" \n
+       "	} forEach _oscs;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="weather_change_A";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "cycle_B__rain_particles">*/
+    class cycle_B__rain_particles
+    {
+      name = "cycle_B__rain_particles";
+      init = /*%FSM<STATEINIT""">*/"[] call _doCycle;" \n
+       "" \n
+       "_cycleDelay = [] call _getCycleDelay;" \n
+       "_ct = time;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "reset">*/
+        class reset
+        {
+          priority = 2.000000;
+          to="process__clean_u";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_reset"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 1.000000;
+          to="process__clean_u";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _cycleT0) > _cycleTime"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="refresh_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "color_filter">*/
+    class color_filter
+    {
+      name = "color_filter";
+      init = /*%FSM<STATEINIT""">*/"_colorFilter = ppEffectCreate [""colorCorrections"", 1601];" \n
+       "_colorFilter ppEffectEnable (_logic getVariable ""enable-color-filter"");" \n
+       "" \n
+       "// seconds -> void" \n
+       "_updateColorFilter = {" \n
+       "	if (!(_logic getVariable ""enable-color-filter"")) exitWith" \n
+       "	{" \n
+       "		_colorFilter ppEffectEnable false;" \n
+       "	};" \n
+       "	_colorFilter ppEffectEnable true;" \n
+       "" \n
+       "	[date, _temperature] call RUBE_weatherColorFnc;" \n
+       "" \n
+       "	_colorFilter ppEffectAdjust RUBE_weatherColorData;" \n
+       "	_colorFilter ppEffectCommit _this;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="prepare_weather";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "refresh">*/
+    class refresh
+    {
+      name = "refresh";
+      init = /*%FSM<STATEINIT""">*/"[] call _doRefresh;" \n
+       "" \n
+       "_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 1.000000;
+          to="cycle_A__rain_particles";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _ct) > _cycleDelay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "tick">*/
+        class tick
+        {
+          priority = 0.000000;
+          to="refresh";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _tickDelay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "refresh_1">*/
+    class refresh_1
+    {
+      name = "refresh_1";
+      init = /*%FSM<STATEINIT""">*/"[] call _doRefresh;" \n
+       "" \n
+       "_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 1.000000;
+          to="cycle_B__rain_particles";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _ct) > _cycleDelay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "tick">*/
+        class tick
+        {
+          priority = 0.000000;
+          to="refresh_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _tickDelay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "cycle_function">*/
+    class cycle_function
+    {
+      name = "cycle_function";
+      init = /*%FSM<STATEINIT""">*/"_doCycle = {" \n
+       "	private [""_radius"", ""_fullChoke"", ""_noChoke""];" \n
+       "" \n
+       "	[] call _updateCore;" \n
+       "	[] call _updateWind;" \n
+       "" \n
+       "	_snow = _temperature call RUBE_weatherSnowRatio;" \n
+       "	_snowReal = _snow * _precipitationReal;" \n
+       "	_rainReal = _precipitationReal - _snowReal;" \n
+       "" \n
+       "" \n
+       "	// choke rain and snow different depending on latitude" \n
+       "	// _latitudeCoeff :: 0=equator, 1=polar" \n
+       "" \n
+       "	_fullChoke = 0.01 + 0.04 * (1 - _latitudeCoeff);" \n
+       "	_noChoke = 0.2 + 0.5 * _latitudeCoeff;" \n
+       "	_snowReal = [_snowReal, _fullChoke, _noChoke] call RUBE_weatherRandomChoke;" \n
+       "" \n
+       "	_fullChoke = 0.01 + 0.04 * _latitudeCoeff;" \n
+       "	_noChoke = 0.2 + 0.5 * (1 - _latitudeCoeff);" \n
+       "	_rainReal = [_rainReal, _fullChoke, _noChoke] call RUBE_weatherRandomChoke;" \n
+       "" \n
+       "" \n
+       "	_fog call _syncOSC;" \n
+       "	_fogReal = [" \n
+       "		(_fog select 0), " \n
+       "		_fogD1, _fogD2, _fogD3," \n
+       "		_windSpeedRealUC" \n
+       "	] call RUBE_fog;" \n
+       "" \n
+       "	// ""overshoot"" a little so we don't end up with short bursts of rain" \n
+       "	// ...if there should be snow :/" \n
+       "	(4 + _cycleDelay) setRain _rainReal;" \n
+       "" \n
+       "" \n
+       "	if (_logic getVariable ""enable-particles-fog"") then" \n
+       "	{" \n
+       "		if ((_fogReal select 1) > _psFogMin) then" \n
+       "		{" \n
+       "			if (isNull _psFog) then" \n
+       "			{" \n
+       "				_psFog = ""#particlesource"" createVehicleLocal [0,0,0];" \n
+       "				_particles set [(count _particles), _psFog];" \n
+       "	" \n
+       "				_psFog setParticleCircle (RUBE_weatherPDFog select 2);" \n
+       "				_psFog setDropInterval (RUBE_weatherPDFog select 3);" \n
+       "			};" \n
+       "	" \n
+       "			// intensity -> particle spawn height" \n
+       "			((RUBE_weatherPDFog select 0) select 5) set [2," \n
+       "				([[-7,-7,-3], (_fogReal select 1)] call RUBE_bezier)" \n
+       "			];" \n
+       "	" \n
+       "			/*" \n
+       "			// intensity -> particle size (in time)" \n
+       "			((RUBE_weatherPDFog select 0) select 11) set [0," \n
+       "				([[10,14,14], (_fogReal select 1)] call RUBE_bezier)" \n
+       "			];" \n
+       "			((RUBE_weatherPDFog select 0) select 11) set [1," \n
+       "				(((RUBE_weatherPDFog select 0) select 11) select 0) + 1.5" \n
+       "			];" \n
+       "			((RUBE_weatherPDFog select 0) select 11) set [2," \n
+       "				(((RUBE_weatherPDFog select 0) select 11) select 0) + 2" \n
+       "			];" \n
+       "			*/" \n
+       "	" \n
+       "			// intensity -> particle color (alpha)" \n
+       "			(((RUBE_weatherPDFog select 0) select 12) select 1) set [3," \n
+       "				([[0.02, 0.02, 0.12], (_fogReal select 1)] call RUBE_bezier)" \n
+       "			];" \n
+       "	" \n
+       "			// intensity -> particle spawn radius (or fog density)" \n
+       "			_radius = [[300,300,90], (_fogReal select 1)] call RUBE_bezier;" \n
+       "			((RUBE_weatherPDFog select 1) select 1) set [0, _radius];" \n
+       "			((RUBE_weatherPDFog select 1) select 1) set [1, _radius];" \n
+       "	" \n
+       "			_psFog setParticleParams (RUBE_weatherPDFog select 0);" \n
+       "			_psFog setParticleRandom (RUBE_weatherPDFog select 1);" \n
+       "			//_psFog setParticleCircle (RUBE_weatherPDFog select 2);" \n
+       "			//_psFog setDropInterval (RUBE_weatherPDFog select 3);" \n
+       "		} else" \n
+       "		{" \n
+       "			if (!(isNull _psFog)) then" \n
+       "			{" \n
+       "				_particles = _particles - [_psFog];" \n
+       "				deleteVehicle _psFog;" \n
+       "			};" \n
+       "		};" \n
+       "	};" \n
+       "" \n
+       "" \n
+       "	if (_logic getVariable ""enable-particles-snow"") then" \n
+       "	{" \n
+       "		if (_snowReal > 0) then" \n
+       "		{" \n
+       "			if (isNull _psSnow) then" \n
+       "			{" \n
+       "				_psSnow = ""#particlesource"" createVehicleLocal [0,0,0];" \n
+       "				_particles set [(count _particles), _psSnow];" \n
+       "	" \n
+       "				_psSnow setParticleCircle (RUBE_weatherPDSnow select 2);" \n
+       "			};" \n
+       "	" \n
+       "			// intensity -> density of snowfall, by compressing more particles into a smaller field" \n
+       "			_radius = [[20, 13, 12], _snowReal] call RUBE_bezier;" \n
+       "			((RUBE_weatherPDSnow select 1) select 1) set [0, _radius];" \n
+       "			((RUBE_weatherPDSnow select 1) select 1) set [1, _radius];" \n
+       "	" \n
+       "			// intensity -> drop interval" \n
+       "			RUBE_weatherPDSnow set [3, (([[10, 2, 1], _snowReal] call RUBE_bezier) * 0.001)];" \n
+       "	" \n
+       "			// intensity -> rubbing" \n
+       "			(RUBE_weatherPDSnow select 0) set [10, ([[1.2, 0.4, 0.3], _snowReal] call RUBE_bezier)];" \n
+       "	" \n
+       "			// intensity -> RandomDirectionPeriod" \n
+       "			(RUBE_weatherPDSnow select 0) set [14, ([[0.4, 0.1], _snowReal] call RUBE_bezier)];" \n
+       "	" \n
+       "			// intensity -> RandomdirectionIntensity" \n
+       "			(RUBE_weatherPDSnow select 0) set [15, ([[0.05, 0.3], _snowReal] call RUBE_bezier)];" \n
+       "	" \n
+       "			_psSnow setParticleParams (RUBE_weatherPDSnow select 0);" \n
+       "			_psSnow setParticleRandom (RUBE_weatherPDSnow select 1);" \n
+       "			//_psSnow setParticleCircle (RUBE_weatherPDSnow select 2);" \n
+       "			_psSnow setDropInterval (RUBE_weatherPDSnow select 3);" \n
+       "		} else" \n
+       "		{" \n
+       "			if (!(isNull _psSnow)) then" \n
+       "			{" \n
+       "				_particles = _particles - [_psSnow];" \n
+       "				deleteVehicle _psSnow;" \n
+       "			};" \n
+       "		};" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="refresh_function";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "refresh_function">*/
+    class refresh_function
+    {
+      name = "refresh_function";
+      init = /*%FSM<STATEINIT""">*/"_doRefresh = {" \n
+       "	private [""_obj"", ""_pos"", ""_vel""];" \n
+       "" \n
+       "	if ((count _particles) > 0) then" \n
+       "	{" \n
+       "" \n
+       "		_obj = vehicle _weatherObject;" \n
+       "		_pos = position _obj;" \n
+       "	      _vel = velocity _obj;" \n
+       "" \n
+       "		{" \n
+       "			_x setPos [" \n
+       "				(_pos select 0) + (2 * (_vel select 0))," \n
+       "				(_pos select 1) + (2 * (_vel select 1))," \n
+       "				0" \n
+       "			];" \n
+       "		} forEach _particles;" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="color_filter";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="init";
+  finalStates[] =
+  {
+  };
+};
+/*%FSM</COMPILE>*/

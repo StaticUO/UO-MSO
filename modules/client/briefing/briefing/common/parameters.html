@@ -1,0 +1,15 @@
+<br/>Mission Parameters:
+<br/>
+" + (call {
+	private ["_params", "_string"];
+	_params		= ['parameters'] call CORE_fnc_getVariable;
+	_string		= "";
+	{
+		private ["_title", "_var", "_value"];
+		_title	= _x select 0;
+		_var	= _x select 1;
+		_value	= _x select 2;
+		_string = _string + ("<br/>" + _title + ": " + str(_value));
+	} forEach _params;
+	_string
+}) + "

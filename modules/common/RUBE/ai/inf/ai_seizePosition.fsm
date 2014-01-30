@@ -1,0 +1,1222 @@
+/*%FSM<COMPILE "C:\Programme\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, RUBE_AI_INF_seizePosition">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"init",0,4346,-401.736969,-314.898773,-311.736847,-264.898804,0.000000,"init"};
+item1[] = {"_",4,218,-374.828827,-245.612198,-338.180328,-220.236008,0.000000,""};
+item2[] = {"approach_decisio",2,250,-45.528957,6.436386,57.804401,68.985397,0.000000,"approach" \n "decision"};
+item3[] = {"dead",4,218,109.627907,12.351667,199.627945,62.351604,5.000000,"dead"};
+item4[] = {"failure",1,250,242.024963,12.262634,332.024902,62.262604,0.000000,"failure"};
+item5[] = {"casualties",4,218,4.437687,-98.788780,94.437637,-48.788811,2.000000,"casualties"};
+item6[] = {"in_position",4,218,-37.631142,241.974792,52.368919,291.974884,1.000000,"in position"};
+item7[] = {"onCasualties",2,250,10.022171,-176.690598,100.022079,-126.690613,0.000000,"onCasualties"};
+item8[] = {"scriptDone",4,218,125.337097,-180.997833,219.489487,-125.934967,0.000000,"scriptDone"};
+item9[] = {"_",4,218,-182.979263,66.476624,-153.371445,93.731491,0.000000,""};
+item10[] = {"delay_loop",2,250,-181.396667,118.173019,-106.381752,144.863297,0.000000,"delay loop"};
+item11[] = {"delay",4,218,-104.741058,78.423805,-37.218498,113.439003,0.000000,"delay"};
+item12[] = {"seize_position_d",2,250,-37.803101,614.906982,52.196915,664.906799,0.000000,"seize position" \n "decision"};
+item13[] = {"seized_",4,218,-37.248215,712.898254,52.751724,762.897888,2.000000,"seized?"};
+item14[] = {"success",1,250,-37.623486,797.504944,52.376606,847.504578,0.000000,"success"};
+item15[] = {"casualties",4,218,86.024635,614.957214,176.024658,664.957031,3.000000,"casualties"};
+item16[] = {"onCasualties_1",2,250,208.929626,616.631653,298.929810,666.631409,0.000000,"onCasualties"};
+item17[] = {"scriptDone",4,218,209.113571,528.734863,298.108368,580.283936,0.000000,"scriptDone"};
+item18[] = {"prepare_attack_",2,250,-38.185543,317.141846,51.814472,367.141876,0.000000,"prepare attack" \n "(sync / onReady)"};
+item19[] = {"green_signal__sync",4,218,-47.364956,397.253143,60.993855,457.267059,0.000000,"green signal" \n "(sync)"};
+item20[] = {"dead",4,218,66.960815,491.254761,156.960739,541.254822,4.000000,"dead"};
+item21[] = {"_",4,218,93.995926,684.712219,119.739998,711.346191,0.000000,""};
+item22[] = {"delay_loop_1",2,250,153.546844,693.933228,243.546844,743.933044,0.000000,"delay loop"};
+item23[] = {"delay",4,218,153.546814,769.393860,243.546783,819.393616,0.000000,"delay"};
+item24[] = {"",7,210,283.267792,436.013702,291.267792,444.013702,0.000000,""};
+item25[] = {"ready",4,218,-38.229759,88.414673,51.770325,138.414764,1.000000,"ready"};
+item26[] = {"next_position_re",2,250,-38.323956,167.767731,51.675953,217.767731,0.000000,"next position" \n "reached"};
+item27[] = {"next",4,218,-160.140533,167.634705,-70.140549,217.634750,0.000000,"next"};
+item28[] = {"approach_attack",2,250,-289.507141,12.358364,-199.507034,62.358368,0.000000,"approach" \n "attack position"};
+item29[] = {"_",4,218,-140.409073,25.981163,-110.904633,50.054466,0.000000,""};
+item30[] = {"seize_position_m",2,250,-38.618782,479.015930,51.381241,529.015625,0.000000,"seize position" \n "move"};
+item31[] = {"_",4,218,-6.961542,554.321289,20.814388,580.987244,0.000000,""};
+item32[] = {"AI_ready",4,218,-178.042236,614.910706,-88.042313,664.910828,1.000000,"AI ready"};
+item33[] = {"choose_attack_po",2,250,-401.256866,-192.127640,-311.256866,-142.127640,0.000000,"choose" \n "attack position"};
+item34[] = {"_",4,218,-370.365204,-115.471687,-342.293793,-90.766479,0.000000,""};
+item35[] = {"run__advance_cod",2,250,-289.625519,166.891434,-199.625519,216.891434,0.000000,"run " \n "advance code"};
+item36[] = {"scriptDone",4,218,-289.625580,88.390404,-199.625565,138.390411,0.000000,"scriptDone"};
+item37[] = {"run_seize_code",2,250,-179.323898,545.440857,-89.324005,595.440796,0.000000,"run" \n "seize code"};
+item38[] = {"scriptDone",4,218,-179.323959,479.151093,-89.324036,529.151184,0.000000,"scriptDone"};
+item39[] = {"contact",4,218,-154.074005,-66.776260,-64.073906,-16.776260,3.000000,"contact"};
+item40[] = {"onContact",2,250,-267.419647,-133.156998,-177.419632,-83.156998,0.000000,"onContact"};
+item41[] = {"scriptDone",4,218,-266.142578,-54.744728,-169.341797,-1.698195,0.000000,"scriptDone"};
+item42[] = {"leader_changed",4,218,81.686226,81.542702,197.223083,147.886292,1.000000,"leader changed"};
+item43[] = {"engage",4,218,-96.367554,-96.602654,-6.367588,-46.602623,4.000000,"engage"};
+item44[] = {"onEngage",2,250,-199.728409,-221.845444,-109.728447,-171.845444,0.000000,"onEngage"};
+item45[] = {"scriptDone",4,218,-81.104980,-222.705032,8.894981,-172.705032,0.000000,"scriptDone"};
+item46[] = {"quitFSM",4,218,108.726578,-50.821991,198.726501,-0.822037,5.000000,"quitFSM"};
+item47[] = {"quit",1,250,407.065399,-50.638390,497.065582,-0.638405,0.000000,"quit"};
+item48[] = {"quitFSM",4,218,90.976395,318.909302,180.976395,368.909302,1.000000,"quitFSM"};
+item49[] = {"",7,210,448.585876,339.853119,456.585876,347.853119,0.000000,""};
+item50[] = {"quitFSM",4,218,115.823624,520.935303,205.823624,570.935303,4.000000,"quitFSM"};
+item51[] = {"",7,210,449.187256,466.634491,457.187256,474.634491,0.000000,""};
+item52[] = {"onRoutePlanned",2,250,-404.238922,-58.318848,-314.238922,-8.318853,0.000000,"onRoutePlanned"};
+item53[] = {"_",4,218,-380.043610,21.987917,-339.074371,52.579918,0.000000,""};
+link0[] = {0,1};
+link1[] = {1,33};
+link2[] = {2,3};
+link3[] = {2,5};
+link4[] = {2,9};
+link5[] = {2,25};
+link6[] = {2,39};
+link7[] = {2,42};
+link8[] = {2,43};
+link9[] = {2,46};
+link10[] = {3,4};
+link11[] = {5,7};
+link12[] = {6,18};
+link13[] = {7,8};
+link14[] = {8,2};
+link15[] = {9,10};
+link16[] = {10,11};
+link17[] = {11,2};
+link18[] = {12,13};
+link19[] = {12,15};
+link20[] = {12,20};
+link21[] = {12,21};
+link22[] = {12,32};
+link23[] = {12,50};
+link24[] = {13,14};
+link25[] = {15,16};
+link26[] = {16,17};
+link27[] = {17,12};
+link28[] = {18,19};
+link29[] = {18,48};
+link30[] = {19,30};
+link31[] = {20,24};
+link32[] = {21,22};
+link33[] = {22,23};
+link34[] = {23,12};
+link35[] = {24,4};
+link36[] = {25,26};
+link37[] = {26,6};
+link38[] = {26,27};
+link39[] = {27,35};
+link40[] = {28,29};
+link41[] = {29,2};
+link42[] = {30,31};
+link43[] = {31,12};
+link44[] = {32,37};
+link45[] = {33,34};
+link46[] = {34,52};
+link47[] = {35,36};
+link48[] = {36,28};
+link49[] = {37,38};
+link50[] = {38,30};
+link51[] = {39,40};
+link52[] = {40,41};
+link53[] = {41,2};
+link54[] = {42,26};
+link55[] = {43,44};
+link56[] = {44,45};
+link57[] = {45,2};
+link58[] = {46,47};
+link59[] = {48,49};
+link60[] = {49,47};
+link61[] = {50,51};
+link62[] = {51,49};
+link63[] = {52,53};
+link64[] = {53,28};
+globals[] = {0.000000,0,0,0,0,640,480,1,67,6316128,1,-641.485901,106.233337,402.460327,-303.378479,732,691,1};
+window[] = {0,-1,-1,-1,-1,896,1738,3049,74,1,749};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "RUBE_AI_INF_seizePosition";
+  class States
+  {
+    /*%FSM<STATE "init">*/
+    class init
+    {
+      name = "init";
+      init = /*%FSM<STATEINIT""">*/"/*" \n
+       "	Description:" \n
+       "	 infantery group fsm to seize a position" \n
+       "	 works with player as leader too, in case he has to take command." \n
+       "" \n
+       "	 use the various event-handlers (onContact, onCasualties, ...) together with get-/setFSMVariable" \n
+       "	 to your advantage." \n
+       "*/" \n
+       "" \n
+       "private [" \n
+       "	""_group"", ""_position"", ""_positionRadius"", ""_deviance"", ""_precision"", ""_moveLength"", ""_attackDistance""," \n
+       "	""_triggerIndex"", ""_syncIndex"", ""_enableSubroutes""," \n
+       "	""_advanceFormation"", ""_advanceBehaviour"", ""_advanceSpeed"", ""_advanceCombatMode"", " \n
+       "	""_seizeSpeed"", ""_seizeFormation"", ""_seizeBehaviour"", ""_seizeCombatMode""," \n
+       "	""_onSuccess"", ""_onFailure"", ""_onCasualties"", ""_onReady"", ""_onContact"", ""_onEngage"", " \n
+       "	""_onRoutePlanned"", ""_onCasualtiesRepeat"", ""_onContactRepeat"", ""_onEngagementRepeat""," \n
+       "	""_advanceCodes"", ""_advanceCodeChance"", ""_seizeCodes"", ""_seizeCodeChance""," \n
+       "	""_moveExpPool""," \n
+       "	""_t"", ""_delay"", ""_playerIsLeader"", ""_lastGroupCount"", ""_attackPosition"", ""_isAttackPosition"", " \n
+       "	""_orgDistCoef"", ""_completionRadius"", ""_currentDestination"", ""_currentMoveTo"", ""_currentTargets"", " \n
+       "	""_contactHasBeenMade"", ""_engagementMade"", ""_casualtiesReported""" \n
+       "];" \n
+       "" \n
+       "// to be setVariabled from the outside if needed." \n
+       "_quitFSM = false;" \n
+       "" \n
+       "_group = grpNull;" \n
+       "_position = [];" \n
+       "_positionRadius = 300;" \n
+       "" \n
+       "// if A->B should be divided into subroutes of length moveLength" \n
+       "_enableSubroutes = true;" \n
+       "" \n
+       "_deviance = 105; // large deviance for better route finding!" \n
+       "_precision = 7; // position/terrain samples taken per step" \n
+       "_moveLength = 175;" \n
+       "_attackPosition = []; // might be auto. updated later" \n
+       "_attackDistance = 700;" \n
+       "" \n
+       "_triggerIndex = -1; // RUBE_MEMORY_DATA index!" \n
+       "_syncIndex = -1; // this one aswell." \n
+       "" \n
+       "_advanceSpeed = [""FULL""];" \n
+       "_advanceFormation = [""WEDGE"", ""VEE"", ""LINE""];" \n
+       "_advanceBehaviour = [""AWARE""];" \n
+       "_advanceCombatMode = [""GREEN""];" \n
+       "" \n
+       "" \n
+       "_seizeSpeed = [""NORMAL""];" \n
+       "_seizeFormation = [""WEDGE"", ""VEE"", ""LINE""];" \n
+       "_seizeBehaviour = [""AWARE""];" \n
+       "_seizeCombatMode = [""YELLOW""];" \n
+       "" \n
+       "_onSuccess = """";  // (called, no interruption)" \n
+       "_onFailure = """"; // (called, no interruption)" \n
+       "_onCasualties = """"; // (spawned, interrupts flow)" \n
+       "_onReady = """"; // to sync stuff together (called, no interruption)" \n
+       "_onContact = """"; // can only fire pre in position (spawned, interrupts flow)" \n
+       "_onEngage = """"; // attacking/opening fire prior to in position" \n
+       "_onRoutePlanned = """"; // (gets called)" \n
+       "" \n
+       "" \n
+       "_onCasualtiesRepeat = true;" \n
+       "_onContactRepeat = false;" \n
+       "_onEngagementRepeat = false;" \n
+       "" \n
+       "// code-pool to be run between waypoints while advancing (pre in-position)" \n
+       "_advanceCodes = [];" \n
+       "_advanceCodeChance = 0;" \n
+       "" \n
+       "// code-pool to be run between waypoints while seizing (post in-position)" \n
+       "_seizeCodes = [];" \n
+       "_seizeCodeChance = 0;" \n
+       "" \n
+       "// selectBestPlaces expression pool to choose next wp" \n
+       "// some variance is always nice... (especially for synchronized" \n
+       "// attacks/multiple groups)" \n
+       "_moveExpPool = [" \n
+       "	""forest + trees + (1 - meadow) + (1 - sea)""," \n
+       "	""(2 * forest) + trees + houses + (1 - meadow) + (1 - sea)""," \n
+       "	""forest + trees + (1 - hills) + (1 - meadow) + (1 - sea)""," \n
+       "	""(2 * houses) + trees + (1 - hills) + (1 - meadow) + (1 - sea)""," \n
+       "	""forest + trees + hills + (1 - meadow) + (1 - sea)""," \n
+       "	""(2 * trees) + hills + forest + (1 - houses) + (1 - sea)""" \n
+       "];" \n
+       "" \n
+       "/*" \n
+       "	read parameters" \n
+       "*/" \n
+       "{" \n
+       "	switch (_x select 0) do" \n
+       "	{" \n
+       "		case ""group"": { _group = _x select 1; };" \n
+       "		case ""position"": { _position = _x select 1; };" \n
+       "		case ""positionRadius"": { _positionRadius = _x select 1; };" \n
+       "		case ""deviance"": { _deviance = _x select 1; };" \n
+       "		case ""moveLength"": { _moveLength = _x select 1; };" \n
+       "		case ""attackPosition"": { _attackPosition = _x select 1; };" \n
+       "		case ""attackDistance"": { _attackDistance = _x select 1; };" \n
+       "		case ""trigger"": { _triggerIndex = _x select 1; };" \n
+       "		case ""synchronize"": { _syncIndex = _x select 1; };" \n
+       "		case ""onSuccess"": { _onSuccess = _x select 1; };" \n
+       "		case ""onFailure"": { _onFailure = _x select 1; };" \n
+       "		case ""onRoutePlanned"": { _onRoutePlanned = _x select 1; };" \n
+       "		case ""onContact"": " \n
+       "		{ " \n
+       "			if ((typeName (_x select 1)) == ""ARRAY"") then" \n
+       "			{" \n
+       "				_onContact = (_x select 1) select 0; " \n
+       "				_onContactRepeat = (_x select 1) select 1; " \n
+       "			} else" \n
+       "			{" \n
+       "				_onContact = _x select 1; " \n
+       "			};" \n
+       "		};" \n
+       "		case ""onEngage"": " \n
+       "		{ " \n
+       "			if ((typeName (_x select 1)) == ""ARRAY"") then" \n
+       "			{" \n
+       "				_onEngage = (_x select 1) select 0; " \n
+       "				_onEngagementRepeat = (_x select 1) select 1; " \n
+       "			} else" \n
+       "			{" \n
+       "				_onEngage = _x select 1; " \n
+       "			};" \n
+       "		};" \n
+       "		case ""onCasualties"": " \n
+       "		{ " \n
+       "			if ((typeName (_x select 1)) == ""ARRAY"") then" \n
+       "			{" \n
+       "				_onCasualties = (_x select 1) select 0; " \n
+       "				_onCasualtiesRepeat = (_x select 1) select 1; " \n
+       "			} else" \n
+       "			{" \n
+       "				_onCasualties = _x select 1; " \n
+       "			};" \n
+       "		};" \n
+       "		case ""onReady"": " \n
+       "		{ " \n
+       "			if ((typeName (_x select 1)) == ""ARRAY"") then" \n
+       "			{" \n
+       "				_onReady = (_x select 1) select 0; " \n
+       "				_onReadyRepeat = (_x select 1) select 1; " \n
+       "			} else" \n
+       "			{" \n
+       "				_onReady = _x select 1; " \n
+       "			};" \n
+       "		};" \n
+       "		case ""advanceCodes"":" \n
+       "		{" \n
+       "			if ((typeName (_x select 1)) == ""ARRAY"") then" \n
+       "			{" \n
+       "				_advanceCodes = _x select 1;" \n
+       "			} else " \n
+       "			{" \n
+       "				_advanceCodes = [(_x select 1)];	" \n
+       "			}; " \n
+       "		 };" \n
+       "		case ""advanceCodeCoef"": { _advanceCodeChance = (_x select 1) * 100; };" \n
+       "		case ""seizeCodes"":" \n
+       "		{" \n
+       "			if ((typeName (_x select 1)) == ""ARRAY"") then" \n
+       "			{" \n
+       "				_seizeCodes = _x select 1;" \n
+       "			} else " \n
+       "			{" \n
+       "				_seizeCodes = [(_x select 1)];	" \n
+       "			}; " \n
+       "		 };" \n
+       "		case ""seizeCodeCoef"": { _seizeCodeChance = (_x select 1) * 100; };" \n
+       "	};" \n
+       "} forEach _this;" \n
+       "" \n
+       "" \n
+       "/*" \n
+       "	initialize" \n
+       "*/" \n
+       "" \n
+       "_t = time;" \n
+       "_delay = 4.5 + (random 0.5);" \n
+       "_playerIsLeader = ((leader _group) == player);" \n
+       "_lastGroupCount = count (units _group);" \n
+       "_isAttackPosition = false;" \n
+       "_orgDistCoef = 1; // will be updated later" \n
+       "_completionRadius = 15;" \n
+       "_behaviour = """";" \n
+       "_combatMode = """";" \n
+       "_currentDestination = [];" \n
+       "_currentMoveTo = [];" \n
+       "_currentTargets = []; // for onContact" \n
+       "_contactHasBeenMade = false;" \n
+       "_engagementMade = false;" \n
+       "_casualtiesReported = false;" \n
+       "" \n
+       "// empty/null handle for advance/seize-code" \n
+       "_codeHandle =  0 spawn {};" \n
+       "" \n
+       "" \n
+       "if (_precision < 1) then" \n
+       "{" \n
+       "	_precision = 1;" \n
+       "};" \n
+       "" \n
+       "/*" \n
+       "	some private functions" \n
+       "*/" \n
+       "" \n
+       "private [" \n
+       "	""_isReady"", ""_gotCasualties"", ""_madeContact"", ""_madeEngagement"", ""_getAttackPosition"", ""_getNextPosition"", " \n
+       "	""_getNextSeizePosition"", ""_selectBestPosition"", ""_haveGreenLight""" \n
+       "];" \n
+       "" \n
+       "// is group ready" \n
+       "_isReady = {" \n
+       "	if (!(alive (leader _group))) exitWith" \n
+       "	{" \n
+       "		false" \n
+       "	};" \n
+       "" \n
+       "	if (((leader _group) != player) && unitReady (leader _group)) exitWith" \n
+       "	{" \n
+       "		true" \n
+       "	};" \n
+       "" \n
+       "	(((leader _group) distance _currentMoveTo) < _completionRadius)" \n
+       "};" \n
+       "" \n
+       "" \n
+       "// gotCasualties" \n
+       "_gotCasualties = {" \n
+       "	if (_casualtiesReported) exitWith" \n
+       "	{" \n
+       "		false" \n
+       "	};" \n
+       "	(_lastGroupCount > (count (units _group)))" \n
+       "};" \n
+       "" \n
+       "" \n
+       "// returns true on contact (and writes the targets" \n
+       "// to _currentTargets)" \n
+       "_madeContact = {" \n
+       "	// contact can be made only once" \n
+       "	if (_contactHasBeenMade) exitWith " \n
+       "	{" \n
+       "		false" \n
+       "	};" \n
+       "	_currentTargets = _group call RUBE_getEnemyContact;" \n
+       "" \n
+       "	((count _currentTargets) > 0)" \n
+       "};" \n
+       "" \n
+       "" \n
+       "// returns true if group is engaging/opened fire" \n
+       "_madeEngagement = {" \n
+       "	if (_engagementMade) exitWith" \n
+       "	{" \n
+       "		false" \n
+       "	};" \n
+       "" \n
+       "	(_group call RUBE_isEngaging)" \n
+       "};" \n
+       "" \n
+       "" \n
+       "// searches a position from where to launch " \n
+       "// the attack; or where to wait until green light (sync)" \n
+       "_getAttackPosition = {" \n
+       "	private [""_dir"", ""_start"", ""_p"", ""_step"", ""_i"", ""_samples""];" \n
+       "	_dir = [_position, (leader _group)] call BIS_fnc_dirTo; " \n
+       "	_start = _dir - (_deviance * 0.5);" \n
+       "	// double precision for attack position" \n
+       "	_p = ceil (_precision * 2);" \n
+       "	_step = _deviance / _p;" \n
+       "" \n
+       "	// retrieve and choose best samples" \n
+       "	_samples = [];" \n
+       "	for ""_i"" from 0 to (_p - 1) do" \n
+       "	{" \n
+       "		_samples set [(count _samples), ([" \n
+       "			_position," \n
+       "			_attackDistance," \n
+       "			(_start + (_i * _step))" \n
+       "		] call BIS_fnc_relPos)];" \n
+       "" \n
+       "		_samples set [(count _samples), ([" \n
+       "			_position," \n
+       "			(_attackDistance * (1.15 + (random 0.5)))," \n
+       "			(_start + (_i * _step))" \n
+       "		] call BIS_fnc_relPos)];" \n
+       "	};" \n
+       "" \n
+       "   (_samples call _selectBestPosition)" \n
+       "};" \n
+       "" \n
+       "// returns the next position on the way to the" \n
+       "// attack position, returning the attack position" \n
+       "// itself at some point... (indicated by setting" \n
+       "// _isAttackPosition to true)" \n
+       "_getNextPosition = {" \n
+       "	private [""_target"", ""_d"", ""_dir"", ""_start"", ""_step"", ""_i"", ""_samples"", ""_pos""];" \n
+       "" \n
+       "	_target = _attackPosition;" \n
+       "	if ((count _this) > 0) then" \n
+       "	{" \n
+       "		_target = _this;" \n
+       "	};" \n
+       "" \n
+       "	// no subroutes if player is leader or " \n
+       "	// explicitly shut off" \n
+       "	if (((count _this) == 0) && (((leader _group) == player) || !_enableSubroutes)) exitWith" \n
+       "	{" \n
+       "		_isAttackPosition = true;" \n
+       "		_pos = _attackPosition;" \n
+       "		_pos" \n
+       "	};" \n
+       "" \n
+       "	// deviance proportional/shrinking to attack position distance" \n
+       "	_d = _deviance * ((leader _group) distance _target) * _orgDistCoef;" \n
+       "	_dir = [(leader _group), _target] call BIS_fnc_dirTo;" \n
+       "	_start = _dir - (_d * 0.5);" \n
+       "	_step = _d / _precision;" \n
+       "" \n
+       "	// retrieve and choose best samples" \n
+       "	_samples = [];" \n
+       "	for ""_i"" from 0 to (_precision - 1) do" \n
+       "	{" \n
+       "		_samples set [_i, ([" \n
+       "			(position (leader _group))," \n
+       "			(_moveLength * (0.5 + (random 1)))," \n
+       "			(_start + (_i * _step))" \n
+       "		] call BIS_fnc_relPos)];" \n
+       "	};" \n
+       "	_pos = _samples call _selectBestPosition;" \n
+       "	_pos set [2,0];" \n
+       "" \n
+       "	// final move" \n
+       "	if ((count _this) == 0) then" \n
+       "	{" \n
+       "		if ((_pos distance _attackPosition) < (_moveLength * 1.05)) then" \n
+       "		{" \n
+       "			_pos = _attackPosition;" \n
+       "			_isAttackPosition = true;" \n
+       "		};" \n
+       "	};" \n
+       "" \n
+       "	_pos" \n
+       "};" \n
+       "" \n
+       "// returns next position to SAD/seize the position" \n
+       "_getNextSeizePosition = {" \n
+       "	private [""_pos""];" \n
+       "	" \n
+       "	if (((leader _group) distance _position) > _positionRadius) then" \n
+       "	{" \n
+       "		_pos = _position call _getNextPosition;" \n
+       "	} else" \n
+       "	{" \n
+       "		_pos = [_position, [0,0], [_positionRadius, _positionRadius]] call RUBE_randomizePos;" \n
+       "	};" \n
+       "" \n
+       "	_pos" \n
+       "};" \n
+       "" \n
+       "// chooses the best position out of a given set" \n
+       "// of positions" \n
+       "_selectBestPosition = {" \n
+       "	private[""_directDirection"", ""_list""];" \n
+       "	// sort list by best sample value (forest and stuff is good)" \n
+       "	// sample values between ~1.0 - 5.0 <=> detour/dir diff relTo _currentDestination" \n
+       "	_directDirection = [(leader _group), _currentDestination] call BIS_fnc_dirTo;" \n
+       "	_list = [" \n
+       "		_this," \n
+       "		{" \n
+       "			private [""_detour"", ""_dCoeff""];" \n
+       "			_dCoeff = 1.0 + (random 1.5);" \n
+       "			_detour = [([(leader _group), _this] call BIS_fnc_dirTo), _directDirection] call RUBE_dirDiff;" \n
+       "			_detour = (_detour * (_dCoeff / 180)) - _dCoeff;" \n
+       "			(([_this, (_moveExpPool call RUBE_randomSelect)] call RUBE_positionExpValue) + _detour)" \n
+       "		}" \n
+       "	] call RUBE_shellSort;" \n
+       "" \n
+       "	// return last one/highest sample value" \n
+       "	(_list select ((count _list) -1))" \n
+       "};" \n
+       "" \n
+       "" \n
+       "// returns true on green light or if attack isn't" \n
+       "// synchronized at all" \n
+       "_haveGreenLight = {" \n
+       "	if (_syncIndex < 0) exitWith" \n
+       "	{" \n
+       "		true" \n
+       "	};" \n
+       "" \n
+       "	(_syncIndex call RUBE_getData)" \n
+       "};" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="choose_attack_po";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "approach_decisio">*/
+    class approach_decisio
+    {
+      name = "approach_decisio";
+      init = /*%FSM<STATEINIT""">*/"// reset advance behaviour if needed/possible" \n
+       "if (((waypointBehaviour [_group, (currentWaypoint _group)]) in _advanceBehaviour) && ((count _currentTargets) == 0)) then" \n
+       "{" \n
+       "	[" \n
+       "		[""group"", _group]," \n
+       "		[""behaviour"", (_advanceBehaviour call RUBE_randomSelect)]" \n
+       "	] call RUBE_updateWaypoint;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "quitFSM">*/
+        class quitFSM
+        {
+          priority = 5.000000;
+          to="quit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_quitFSM"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 5.000000;
+          to="failure";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_group call RUBE_aliveGroup)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "engage">*/
+        class engage
+        {
+          priority = 4.000000;
+          to="onEngage";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_group call _madeEngagement)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "contact">*/
+        class contact
+        {
+          priority = 3.000000;
+          to="onContact";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_group call _madeContact)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "casualties">*/
+        class casualties
+        {
+          priority = 2.000000;
+          to="onCasualties";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_group call _gotCasualties)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "leader_changed">*/
+        class leader_changed
+        {
+          priority = 1.000000;
+          to="next_position_re";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_playerIsLeader && ((leader _group) != player) || (!_playerIsLeader && ((leader _group) == player)))"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_isAttackPosition = false;" \n
+           "_playerIsLeader = ((leader _group) == player);" \n
+           "" \n
+           "// follow one" \n
+           "(units _group) commandFollow (leader _group);"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "ready">*/
+        class ready
+        {
+          priority = 1.000000;
+          to="next_position_re";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_group call _isReady)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="delay_loop";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "failure">*/
+    class failure
+    {
+      name = "failure";
+      init = /*%FSM<STATEINIT""">*/"// run onFailure" \n
+       "if ((typeName _onFailure) == ""CODE"") then" \n
+       "{" \n
+       "	_group call _onFailure;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "onCasualties">*/
+    class onCasualties
+    {
+      name = "onCasualties";
+      init = /*%FSM<STATEINIT""">*/"if (!_onCasualtiesRepeat) then" \n
+       "{" \n
+       "	_casualtiesReported = true;" \n
+       "};" \n
+       "" \n
+       "// update last group count" \n
+       "_lastGroupCount = (count (units _group));" \n
+       "" \n
+       "// run onCasualties" \n
+       "if ((typeName _onCasualties) == ""CODE"") then" \n
+       "{" \n
+       "	_codeHandle = _group spawn _onCasualties;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "scriptDone">*/
+        class scriptDone
+        {
+          priority = 0.000000;
+          to="approach_decisio";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _codeHandle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "delay_loop">*/
+    class delay_loop
+    {
+      name = "delay_loop";
+      init = /*%FSM<STATEINIT""">*/"// update time" \n
+       "_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="approach_decisio";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "seize_position_d">*/
+    class seize_position_d
+    {
+      name = "seize_position_d";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 4.000000;
+          to="failure";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_group call RUBE_aliveGroup)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "quitFSM">*/
+        class quitFSM
+        {
+          priority = 4.000000;
+          to="quit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_quitFSM"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "casualties">*/
+        class casualties
+        {
+          priority = 3.000000;
+          to="onCasualties_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_group call _gotCasualties)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "seized_">*/
+        class seized_
+        {
+          priority = 2.000000;
+          to="success";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_triggerIndex call RUBE_getData)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "AI_ready">*/
+        class AI_ready
+        {
+          priority = 1.000000;
+          to="run_seize_code";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_group call _isReady) && ((leader _group) != player)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="delay_loop_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "success">*/
+    class success
+    {
+      name = "success";
+      init = /*%FSM<STATEINIT""">*/"// run onSuccess" \n
+       "if ((typeName _onSuccess) == ""CODE"") then" \n
+       "{" \n
+       "	_group call _onSuccess;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "onCasualties_1">*/
+    class onCasualties_1
+    {
+      name = "onCasualties_1";
+      init = /*%FSM<STATEINIT""">*/"if (!_onCasualtiesRepeat) then" \n
+       "{" \n
+       "	_casualtiesReported = true;" \n
+       "};" \n
+       "" \n
+       "// update last group count" \n
+       "_lastGroupCount = (count (units _group));" \n
+       "" \n
+       "// run onCasualties" \n
+       "if ((typeName _onCasualties) == ""CODE"") then" \n
+       "{" \n
+       "	_codeHandle = _group spawn _onCasualties;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "scriptDone">*/
+        class scriptDone
+        {
+          priority = 0.000000;
+          to="seize_position_d";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _codeHandle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "prepare_attack_">*/
+    class prepare_attack_
+    {
+      name = "prepare_attack_";
+      init = /*%FSM<STATEINIT""">*/"// hide and wait if synchronized (and no premature green up)" \n
+       "if ((_syncIndex >= 0) && !([] call _haveGreenLight)) then" \n
+       "{" \n
+       "	[" \n
+       "		[""group"", _group]," \n
+       "		[""type"", ""MOVE""]," \n
+       "		[""behaviour"", ""STEALTH""]," \n
+       "		[""combatMode"", ""GREEN""]" \n
+       "	] call RUBE_updateWaypoint;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "// run onReady" \n
+       "if ((typeName _onReady) == ""CODE"") then" \n
+       "{" \n
+       "	_group call _onReady;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "quitFSM">*/
+        class quitFSM
+        {
+          priority = 1.000000;
+          to="quit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_quitFSM"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "green_signal__sync">*/
+        class green_signal__sync
+        {
+          priority = 0.000000;
+          to="seize_position_m";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([] call _haveGreenLight)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "delay_loop_1">*/
+    class delay_loop_1
+    {
+      name = "delay_loop_1";
+      init = /*%FSM<STATEINIT""">*/"// update time" \n
+       "_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "delay">*/
+        class delay
+        {
+          priority = 0.000000;
+          to="seize_position_d";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _t) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "next_position_re">*/
+    class next_position_re
+    {
+      name = "next_position_re";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "in_position">*/
+        class in_position
+        {
+          priority = 1.000000;
+          to="prepare_attack_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_isAttackPosition"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "next">*/
+        class next
+        {
+          priority = 0.000000;
+          to="run__advance_cod";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "approach_attack">*/
+    class approach_attack
+    {
+      name = "approach_attack";
+      init = /*%FSM<STATEINIT""">*/"_currentDestination = _attackPosition;" \n
+       "_currentMoveTo = [] call _getNextPosition;" \n
+       "" \n
+       "[" \n
+       "	[""group"", _group]," \n
+       "	[""type"", ""MOVE""]," \n
+       "	[""position"", _currentMoveTo]," \n
+       "	[""behaviour"", (_advanceBehaviour call RUBE_randomSelect)]," \n
+       "	[""combatMode"", (_advanceCombatMode call RUBE_randomSelect)]," \n
+       "	[""formation"",  (_advanceFormation call RUBE_randomSelect)]," \n
+       "	[""speed"", (_advanceSpeed call RUBE_randomSelect)]," \n
+       "	[""completionRadius"", _completionRadius]" \n
+       "] call RUBE_updateWaypoint;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="approach_decisio";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "seize_position_m">*/
+    class seize_position_m
+    {
+      name = "seize_position_m";
+      init = /*%FSM<STATEINIT""">*/"_currentDestination = _position;" \n
+       "_currentMoveTo = [] call _getNextSeizePosition;" \n
+       "" \n
+       "// ready up/form on leader if synchronized" \n
+       "if (_syncIndex >= 0) then" \n
+       "{" \n
+       "	(units _group) commandFollow (leader _group);" \n
+       "};" \n
+       "" \n
+       "if ((leader _group) != player) then" \n
+       "{" \n
+       "	[" \n
+       "		[""group"", _group]," \n
+       "		[""type"", ""MOVE""]," \n
+       "		[""position"", _currentMoveTo]," \n
+       "		[""behaviour"", (_seizeBehaviour call RUBE_randomSelect)]," \n
+       "		[""combatMode"",(_seizeCombatMode call RUBE_randomSelect)]," \n
+       "		[""formation"",  (_seizeFormation call RUBE_randomSelect)]," \n
+       "		[""speed"", (_seizeSpeed call RUBE_randomSelect)]," \n
+       "		[""completionRadius"", _completionRadius]" \n
+       "	] call RUBE_updateWaypoint;" \n
+       "} else" \n
+       "{" \n
+       "	// player is in charge..." \n
+       "	_currentMoveTo = _position;" \n
+       "" \n
+       "	[" \n
+       "		[""group"", _group]," \n
+       "		[""type"", ""SAD""]," \n
+       "		[""position"", _position]," \n
+       "		[""completionRadius"", _completionRadius]" \n
+       "	] call RUBE_updateWaypoint;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="seize_position_d";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "choose_attack_po">*/
+    class choose_attack_po
+    {
+      name = "choose_attack_po";
+      init = /*%FSM<STATEINIT""">*/"_currentDestination = _position;" \n
+       "" \n
+       "if ((count _attackPosition) == 0) then" \n
+       "{" \n
+       "	_attackPosition = [] call _getAttackPosition;" \n
+       "};" \n
+       "" \n
+       "_orgDistCoef = 1 / ((leader _group) distance _attackPosition);" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="onRoutePlanned";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(count _attackPosition) > 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "run__advance_cod">*/
+    class run__advance_cod
+    {
+      name = "run__advance_cod";
+      init = /*%FSM<STATEINIT""">*/"if (((leader _group) != player) && ((count _advanceCodes) > 0)) then" \n
+       "{" \n
+       "	if (_advanceCodeChance call RUBE_chance) then" \n
+       "	{" \n
+       "		_codeHandle = _group spawn ([_group, _advanceCodes] call RUBE_AI_selectSubroutine);" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "scriptDone">*/
+        class scriptDone
+        {
+          priority = 0.000000;
+          to="approach_attack";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _codeHandle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "run_seize_code">*/
+    class run_seize_code
+    {
+      name = "run_seize_code";
+      init = /*%FSM<STATEINIT""">*/"if ((count _seizeCodes) > 0) then" \n
+       "{" \n
+       "	if (_seizeCodeChance call RUBE_chance) then" \n
+       "	{" \n
+       "		_codeHandle = _group spawn ([_group, _seizeCodes] call RUBE_AI_selectSubroutine);" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "scriptDone">*/
+        class scriptDone
+        {
+          priority = 0.000000;
+          to="seize_position_m";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _codeHandle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "onContact">*/
+    class onContact
+    {
+      name = "onContact";
+      init = /*%FSM<STATEINIT""">*/"if (!_onContactRepeat) then" \n
+       "{" \n
+       "	_contactHasBeenMade = true;" \n
+       "};" \n
+       "" \n
+       "// run onReady" \n
+       "if ((typeName _onContact) == ""CODE"") then" \n
+       "{" \n
+       "	_codeHandle = [_group, _currentTargets] spawn _onContact;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "scriptDone">*/
+        class scriptDone
+        {
+          priority = 0.000000;
+          to="approach_decisio";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _codeHandle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "onEngage">*/
+    class onEngage
+    {
+      name = "onEngage";
+      init = /*%FSM<STATEINIT""">*/"if (!_onEngagementRepeat) then" \n
+       "{" \n
+       "	_engagementMade = true;" \n
+       "};" \n
+       "" \n
+       "// run onEngage" \n
+       "if ((typeName _onEngage) == ""CODE"") then" \n
+       "{" \n
+       "	_codeHandle = _group spawn _onEngage;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "scriptDone">*/
+        class scriptDone
+        {
+          priority = 0.000000;
+          to="approach_decisio";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _codeHandle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "quit">*/
+    class quit
+    {
+      name = "quit";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "onRoutePlanned">*/
+    class onRoutePlanned
+    {
+      name = "onRoutePlanned";
+      init = /*%FSM<STATEINIT""">*/"// run onRoutePlanned" \n
+       "if ((typeName _onRoutePlanned) == ""CODE"") then" \n
+       "{" \n
+       "	[" \n
+       "		_group," \n
+       "		 [" \n
+       "			(position (leader _group))," \n
+       "			_attackPosition," \n
+       "			_position" \n
+       "		]" \n
+       "	] call _onRoutePlanned;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="approach_attack";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="init";
+  finalStates[] =
+  {
+    "failure",
+    "success",
+    "quit",
+  };
+};
+/*%FSM</COMPILE>*/

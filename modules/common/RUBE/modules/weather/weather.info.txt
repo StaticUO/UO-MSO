@@ -1,0 +1,146 @@
+/*
+   RUBE weather module (generator/engine)
+   --
+   
+   This is a pseudo-scientific* weather machine, written by a guy who's 
+   got not much clue about weather at all, but looks out the window. 
+   
+                                                         Sometimes.
+   
+   
+     * In particular this means that a lot of your cpu cycles will
+       be wasted for funny functions, that most likely have no real 
+       purpose anyway and even if, one could replace them by much
+       cheaper piecewise functions (or simply choose a sane approach
+       in the first place) and you wouldn't ever notice it.
+
+                             But I do. I see patterns. 
+                               Patterns everywhere! 
+                               
+       So screw you. :)
+       
+       
+       (functions called from the weather engine might be optimised at 
+        some point though...)
+   
+   --
+   While the core idea of this module is to provide persistent (saveable), 
+   continous, naturally random weather which is forecastable over n days,
+   the weather engine can also be used with absolute control and scripted
+   events. 
+   
+   
+   RUBE weather module consists of two main components:
+   
+      1) The weather generator, which produces a forecast for several 
+         days, including at least the previous and the next day - so 
+         three in minimum.
+         
+      2) The weather engine (fsm), which takes that forecast and 
+         manipulates the ingame weather.
+
+
+   1) The generator produces the weather for at least 3 days, such that we 
+      have a previous and (at least) a next day for our current day. More 
+      days of forecast are possible. 
+      
+
+            ------------  --------------  -----------  ---------- 
+            | 0: prev. |  | 1: current |  | 2: next |  | 3: ... | 
+            |    day   |  |    day     |  |    day  |  |    day |
+            ------------  --------------  -----------  ----------
+            
+            |---------------------------------------------------->
+            
+      
+      That weather data (or forecast) can then again be passed to the 
+      generator, to generate a new day of forecast and shifting/processing 
+      the item's of the weather data, s.t. the previous day get's dropped, 
+      the current day get's placed to the previous day, and so on... 
+      
+      Forecasts get rapidly unreliably, which means, that data  further in 
+      the future will be manipulated more, each time a new day get's 
+      processed...
+
+
+      
+   2) Given some forecast produced by the generator, we may pass it to the
+      weather engine.
+      
+      The single components of weather (temperature, pressure, overcast,
+      precipitation, fog, ...) will be simulated by random 1D-Walkers/
+      Oscillators, whose settings (initial  position, range, ...) are 
+      defined by the previous, the  current and the next days weather 
+      data/forecast.
+      
+                               - 
+                              / \  _     
+                             /   \/ |        
+                            /       \      ---------->
+                           /         \    /     
+                          /           ---/     
+                 <--------                   
+                   
+          \______________/ \________________/ \_______________/
+            0: previous      1: current day        2: next 
+         
+                      (bounded, random oscillation)   
+      
+      
+      On top of this are some functions modeling diurnal (daily) cycles for 
+      some key-components, such as the temperature or the fog-levels 
+      (particularly for radiation-/ground-fog).
+      
+      And there are some dynamic mechanism, such as fog getting killed by 
+      too much wind.
+      
+      
+   No comprendo nada? 
+   
+      Take a look at `init-editor.sqf` which runs the weather module with 
+      defaults. This, btw., is the script that get's executed if the 
+      `RUBE Weather`-Logic  get's dropped onto the map in the editor - though 
+      that's only available if you run the RUBE library as addon.  
+   
+   
+   Some ideas:
+   
+      - forecast for permanent/dynamic campaigns
+      
+      - generate weather (which will seasonaly fit in) and manipulate that 
+        weather data prior to launching the weather module. The first item 
+        is the previous day, index=1 is the current day, index=2 the next 
+        one. 
+        
+        Generally: if a components value is constant over these three days, 
+        so will the weather be. If not, then.. then may god help us all. :)   
+        
+        -> by reseting the weather engine, the weather will be 
+           reinitialized, which means that you can model (extreme) 
+           weather-changes totally by scripting, at any point in time 
+           you like.
+           
+           Simply update the weather data as desired and hit _reset.
+           The next full cycle will transition to the new settings.
+           
+      - tweak the code and have fun. Or don't. I don't care. :P
+
+   --
+   
+   TODO:
+   
+      - clouds iff above ground and overcast>0
+      
+*/
+
+/*
+   _________________________________________________________________________
+   
+   Disclaimer:
+   
+    *) the weather symbols/icons for this module were drawn from scratch, 
+       yet they're highly inspired by the amazing weather symbols from: 
+       
+       http://www.tagesanzeiger.ch/wetter/ 
+       
+*/
