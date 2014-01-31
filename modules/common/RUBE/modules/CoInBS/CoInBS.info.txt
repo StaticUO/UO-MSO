@@ -1,9 +1,0 @@
-
-no, BS doesn't stand for bullshit, it stands for building site. 
-                                                ---------------
-
-In this version of CoIn, we do not directly place down stuff with the CoIn interface. Instead we merely place down building sites (for the choosen building).
-To advance these constructions, you (or the AI) need to grab some supplies (physically; in the form of ingame-objects) and build that stuff. In consequence, you can place down as many building sites as you like, if you're out of (physical) supplies, you can't finish them anyway...
-
-Or something like this. At least that's the plan. 
-We'll see how this turns out later... /:
